@@ -1,0 +1,32 @@
+.body{
+    width: 100vw;
+    height: 100vh;
+}
+.border{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3% auto;
+    border: 1px solid;
+    width: 40%; 
+    height: 45%;
+    background: rgb(124, 72, 121);
+}
+
+.preg{
+    font-size: xx-large;
+    margin: 3%;
+    
+}
+.logininput{
+    background: rgb(225, 224, 224);
+    width: 65%;
+    height: 10%;
+    margin: 3% 0;
+}
+
+.loginbutton{
+    width: 50%;
+    height: 10%;
+    margin-top: 3%;
+}

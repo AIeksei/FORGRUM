@@ -1,0 +1,73 @@
+.body {
+
+    margin: 10vh 5vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+    
+  
+}
+.userInfo{
+    width: 30%;
+}
+.userSize {
+    width: 110px;
+    height: 110px;
+    border-radius: 100px;
+    border: 1px solid;
+}
+
+.points {
+    width: fit-content;
+}
+
+.edit {
+    width: 30px;
+    height: 30px;
+
+}
+
+.name {
+    display: flex;
+    align-items: center;
+
+}
+
+.profborder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid;
+    width: 100%;
+    height: 60px;
+    margin: 2% 0;
+    padding: 0 2%;
+    box-sizing: border-box;
+    background-color: rgb(189, 183, 183);
+}
+
+.recEndExit {
+    margin: 0 auto;
+   width: 40%;
+}
+
+.record {
+    border: 1px solid;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.marginRight0{
+    width: fit-content;
+    margin-right: 0;
+    margin-left: auto;
+}
+p{
+    font-size: x-large;
+}

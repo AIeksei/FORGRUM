@@ -1,0 +1,53 @@
+.body{
+    width: 100vw;
+    height: 100vh;
+}
+.border{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3% auto;
+    border: 1px solid;
+    width: 40%; 
+    height: 60%;
+    background: rgb(124, 72, 121);
+}
+
+.preg{
+    font-size: xx-large;
+    margin: 2%;
+    
+}
+.reginput{
+    background: rgb(225, 224, 224);
+    width: 65%;
+    height: 10%;
+    margin: 1% 0;
+}
+.genders{
+    margin: 2% 0;
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+}
+.gender{
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gender p{
+    margin: 0;
+}
+.gender input{
+    margin: 0 auto;
+}
+.regbutton{
+    width: 50%;
+    height: 7%;
+}
+
+.phref{
+    color:black;
+    font-size: large;
+}

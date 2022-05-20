@@ -1,0 +1,79 @@
+.body {
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+}
+
+.comment {
+	width: 100%;
+	padding: 2%;
+	border: 1px solid;
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box;
+}
+
+.size {
+	width: 90px;
+	height: 90px;
+	border-radius: 100px;
+	border: 1px solid;
+
+}
+
+.photo {
+	display: flex;
+	flex-direction: column;
+	font-size: large;
+	align-items: center;
+
+}
+
+.message {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	padding-left: 4%;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.ocenka {
+	display: flex;
+	flex-direction: row;
+
+}
+
+.sizelike {
+	width: 80px;
+	height: 80px;
+	border-radius: 100px;
+}
+
+.sizedislike {
+	width: 80px;
+	height: 80px;
+	border-radius: 100px;
+}
+
+
+.h {
+	font-size: xx-large;
+
+}
+
+.p {
+	font-size: large;
+}
+
+.msinput {
+	min-width: 40%;
+	width: fit-content;
+	height: 100%;
+	overflow: hidden;
+}
