@@ -1,7 +1,7 @@
 import './Banner.css';
 import React from 'react';
 let style = "style";
-function BannerProf() {
+const BannerProf =({ToMain})=> {
 
   return (
       <header className="banner">
@@ -10,7 +10,7 @@ function BannerProf() {
           <h1 className="Page_header">FORGRUM</h1>
         </div>
         <div className="profile">
-          <p>На главную</p>
+        <input type={'button'} onClick={ToMain} value="На главную"></input>
         </div>
       </header>
   );

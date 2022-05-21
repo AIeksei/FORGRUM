@@ -1,6 +1,6 @@
-import './Forgrum.css';
+import './MainPage.css';
 import React from 'react';
-function Forgrum() {
+const MainPage =({ToBranch})=> {
     return (
         <div className='body'>
             <div className='space_beetwen search'>
@@ -59,4 +59,4 @@ function Forgrum() {
     )
 }
 
-export default Forgrum;
+export default MainPage;

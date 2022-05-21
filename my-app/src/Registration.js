@@ -1,6 +1,6 @@
 import './Registration.css';
 import React from 'react';
-function Registration() {
+const Registration =({ToLog}) =>{
     return (
         <div className='body'>
             <div className='border'>
@@ -26,7 +26,7 @@ function Registration() {
                     </div>
                 </div>
                 <input  type='button' value="Зарегестрироваться" className='regbutton'></input>
-                <p className='phref'>Уже есть профиль?</p>
+                <a className='phref' href ="" onClick={ToLog}>Уже есть профиль?</a>
             </div>
         </div>
     )
