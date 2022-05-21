@@ -1,6 +1,5 @@
-import './Body.css';
+import './Branch.css';
 import React from 'react';
-let style = "style";
 function Body() {
 	return (
 		<div className="body">
@@ -51,4 +50,4 @@ function Body() {
 	);
 }
 
-export default Body;
+export default Branch;
