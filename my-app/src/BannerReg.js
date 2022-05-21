@@ -1,6 +1,5 @@
 import './BannerReg.css';
 import React from 'react';
-let style = "style";
 function BannerReg() {
 
   return (
