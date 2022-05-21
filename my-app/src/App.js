@@ -1,35 +1,72 @@
 import './App.css';
 import React from 'react';
-let style = "style";
-function App() {
+import Registration from "./Registration"
+import BannerReg from './BannerReg';
+import MainPage from './MainPage';
+import Profile from './Profile';
+import { render } from '@testing-library/react';
+import Login from './Login';
+import Banner from './Banner';
+import BannerProf from './BannerProf';
 
-  let addInfo = React.createRef();
-  function Add() {
-alert(",j,")
-    return (
-      <div>
-        <label>Введите название книги<input type="text"></input></label>
-      </div>
-    );
-
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      route: 'MainPage',
+    };
   }
-  return (
-    <div className="App">
-      <header className="App-header">
+
+  OnLoginRegButtonClick = (event) => {
+    this.setState({ route: 'reg' });
+  }
+
+  OnRegToLoginButtonClick = (event) => {
+    this.setState({ route: 'login' });
+  }
+
+  OnMainToProfileButtonClick = (event) => {
+    this.setState({ route: 'Profile' });
+  }
+  OnProfileToMainButtonClick = (event) => {
+    this.setState({ route: 'MainPage' });
+  }
+
+  render() {
+    const { route } = this.state;
+    if (route === 'reg') {
+      return (
         <div>
-          <h1>Библиотека</h1>
+          <BannerReg />
+          <Registration ToLog={this.OnRegToLoginButtonClick} />
         </div>
-        <ol>
-          <li className={style} ref={addInfo} onClick={Add}>Добавить информацию о книгах и авторах</li>
-          <li className={style} id="change">Изменить название книги</li>
-          <li className={style} id="remove">Удалить из базы книгу</li>
-          <li className={style} id="print">Вывести все книги заданного автора</li>
-          <li className={style} id="rating">Рассчитать рейтинг автора</li>
-        </ol>
-      </header>
-    </div>
-  );
+      );
+    }
+    else if (route === "login") {
+      return (
+        <div>
+          <BannerReg />
+          <Login ToReg={this.OnLoginRegButtonClick} />
+        </div>
+      );
+    }
+    else if (route === "MainPage") {
+      return (
+        <div>
+          <Banner ToProfile={this.OnMainToProfileButtonClick}/>
+          <MainPage ToBranch={this.OnLoginRegButtonClick} />
+        </div>
+      );
+    }
+    else if (route === "Profile") {
+      return (
+        <div>
+          < BannerProf ToMain={this.OnProfileToMainButtonClick} />
+          <Profile  />
+        </div>
+      );
+    }
+  }
 }
 
-
-export default  App ;
+export default App;
