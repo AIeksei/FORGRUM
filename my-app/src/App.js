@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      route: 'MainPage',
+      route: 'login',
     };
   }
 
