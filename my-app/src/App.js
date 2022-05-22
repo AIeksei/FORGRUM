@@ -9,6 +9,7 @@ import Banner from './Banner';
 import BannerProf from './BannerProf';
 import ConfirmMail from './СonfirmMail'
 import validator from 'validator';
+
 //запуск приложения
 class App extends React.Component {
   constructor() {
@@ -46,13 +47,10 @@ class App extends React.Component {
     const number =  event.target.parentElement.children[5].value;
     const password =  event.target.parentElement.children[7].value;
     const passwordConfirm =  event.target.parentElement.children[9].value;
-    console.log(email);
-    console.log(name);
-    console.log(number);
-    console.log(password);
-    console.log(passwordConfirm);
+
     let radios = document.querySelectorAll('input[type="radio"]');
     let gender;
+    
     
     for (let radio of radios) {
       if (radio.checked) { 
@@ -73,7 +71,7 @@ class App extends React.Component {
           toLog = false;
       }  else  {document.getElementById("passERR").innerHTML = "";}
       if(!validator.isStrongPassword(password, {minSymbols: 0})) {
-          document.getElementById("passERR").innerHTML = "Пароль должен содержать маленькие, большие буквы и число, минимум 8 символов";
+          document.getElementById("passERR").innerHTML = "Пароль должен содержать маленькие, большие <br> буквы и число, минимум 8 символов";
           toLog = false;
       }  else  {document.getElementById("passERR").innerHTML = "";}
       if(!validator.isMobilePhone(number)) {
@@ -81,7 +79,7 @@ class App extends React.Component {
           toLog = false;
       } else  {document.getElementById("phERR").innerHTML = "";}
       if(gender == null) {
-        document.getElementById("genERR").innerHTML = "Выберете пол";
+        document.getElementById("genERR").innerHTML = "Выберите пол";
         toLog = false;
     }  else  {document.getElementById("genERR").innerHTML = "";}
     const requestOptions = {
@@ -97,6 +95,7 @@ class App extends React.Component {
     if (toLog)
      this.setState({ route: 'Confirm' });
   }
+
     render(){
       const { route } = this.state;
       if (route === 'reg') {
