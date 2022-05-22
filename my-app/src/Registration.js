@@ -3,7 +3,7 @@ import React from 'react';
 const Registration =({ToLog}) =>{
     return (
         <div className='bodyRegistration'>
-            <div className='border'>
+            <div className='borderRegistration'>
                 <p className='preg'>Регистрация</p>
                 <input placeholder='e-mail'
                     type='text' className='reginput' id = "email"></input>
