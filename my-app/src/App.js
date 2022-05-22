@@ -54,6 +54,7 @@ class App extends React.Component {
     if (email.trim() != '') {
       fetch("http://localhost:8080/users/", requestOptions)
     }
+    route = 'login'
   }
     render(){
       const { route } = this.state;
