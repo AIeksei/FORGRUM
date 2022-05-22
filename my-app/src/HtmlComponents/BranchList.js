@@ -1,15 +1,10 @@
 import React from 'react'
-import BranchForm from './HtmlComponents/BranchForm'
-const styles = {
-  ul: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0
-  }
-}
+import './Css/BranchList.css'
+import BranchForm from './BranchForm'
+
 function Branchlist(props){
     return (
-      <ul style={styles.ul}>
+      <div className='BranchList'>
           {props.branches.map(branches => {
             return (
               <BranchForm
@@ -17,7 +12,7 @@ function Branchlist(props){
               />
             );
           })}
-       </ul>
+       </div>
       )
 }
 

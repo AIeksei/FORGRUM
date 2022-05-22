@@ -1,6 +1,6 @@
 import './Css/MainPage.css';
 import React from 'react';
-import Branchlist from '../BranchList';
+import Branchlist from './BranchList';
 const MainPage =({ToBranch})=> {
     const branches = [
         {id: 1, autor: "lol", count: 101, tag: "cats", title : "CAT" },
