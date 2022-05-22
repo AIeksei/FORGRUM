@@ -6,11 +6,11 @@ const Registration =({ToLog,ToReg}) =>{
             <div className='borderRegistration'>
                 <p className='preg'>Регистрация</p>
                 <input placeholder='e-mail'
-                    type='text' className='reginput' id = "email"></input>
+                    type='email' className='reginput' id = "email"></input>
                 <input placeholder='Имя'
                     type='text' className='reginput' id = "name"></input>
                 <input placeholder='Номер телефона'
-                    type='text' className='reginput' id = "number"></input>
+                    type='tel' className='reginput' id = "number"></input>
                 <input placeholder='Пароль'
                     type='password' className='reginput' id = "password"></input>
                      <input placeholder='Повторите пароль'
