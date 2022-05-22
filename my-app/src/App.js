@@ -42,10 +42,10 @@ class App extends React.Component {
   onCreateUserButtonClick = (event) => {
     let toLog = true;
     const email = event.target.parentElement.children[1].value;
-    const name =  event.target.parentElement.children[2].value;
-    const number =  event.target.parentElement.children[3].value;
-    const password =  event.target.parentElement.children[4].value;
-    const passwordConfirm =  event.target.parentElement.children[5].value;
+    const name =  event.target.parentElement.children[3].value.trim();
+    const number =  event.target.parentElement.children[5].value;
+    const password =  event.target.parentElement.children[7].value;
+    const passwordConfirm =  event.target.parentElement.children[9].value;
     console.log(email);
     console.log(name);
     console.log(number);
@@ -57,25 +57,37 @@ class App extends React.Component {
     for (let radio of radios) {
       if (radio.checked) { 
          gender = radio.value;
-      }
-    }
-  
-      event.preventDefault();
+      } 
+    }  
+
       if(!validator.isEmail(email)) {
-          alert("Не правильная почта")
+          document.getElementById("emERR").innerHTML = "Не правильная почта";
           toLog = false;
-      } else if(password !== passwordConfirm) {
-          alert("Введите одинаковые пороли")
+      } else  {document.getElementById("emERR").innerHTML = "";}
+      if(name == "") {
+        document.getElementById("nameERR").innerHTML = "Введите имя пользователя";
+        toLog = false;
+    }  else  {document.getElementById("nameERR").innerHTML = "";}
+      if(password !== passwordConfirm) {
+          document.getElementById("passERR").innerHTML = "Введите одинаковые пароли";
           toLog = false;
-      } else if(!validator.isStrongPassword(password, {minSymbols: 8})) {
-          alert("Пароль должен содержать маленькие, большие буквы и число, минимум 8 символов")
+      }  else  {document.getElementById("passERR").innerHTML = "";}
+      if(!validator.isStrongPassword(password, {minSymbols: 0})) {
+          document.getElementById("passERR").innerHTML = "Пароль должен содержать маленькие, большие буквы и число, минимум 8 символов";
           toLog = false;
-      }
-  
+      }  else  {document.getElementById("passERR").innerHTML = "";}
+      if(!validator.isMobilePhone(number)) {
+        document.getElementById("phERR").innerHTML = "введите верный номер телефона";
+          toLog = false;
+      } else  {document.getElementById("phERR").innerHTML = "";}
+      if(gender == null) {
+        document.getElementById("genERR").innerHTML = "Выберете пол";
+        toLog = false;
+    }  else  {document.getElementById("genERR").innerHTML = "";}
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, isModerator: false, gender: gender, password: password, confirmPassword: passwordConfirm })
+      body: JSON.stringify({ name: name, email: email, isModerator: false, gender: gender, phoneNumber : number, password: password, confirmPassword: passwordConfirm })
     };
   
     if (email.trim() != '') {
@@ -83,7 +95,7 @@ class App extends React.Component {
       .then(response => response.json())
     }
     if (toLog)
-     this.setState({ route: 'login' });
+     this.setState({ route: 'Confirm' });
   }
     render(){
       const { route } = this.state;
@@ -116,6 +128,14 @@ class App extends React.Component {
           <div>
             < BannerProf ToMain={this.OnProfileToMainButtonClick} />
             < Profile ProfToLog={this.OnProfileToLogin}/>
+          </div>
+        );
+      } 
+      else if (route === 'Confirm') {
+        return (
+          <div>
+            <BannerReg />
+            <ConfirmMail/>
           </div>
         );
       }
