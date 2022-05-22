@@ -8,6 +8,7 @@ import Login from './HtmlComponents/Login';
 import Banner from './HtmlComponents/Banner';
 import BannerProf from './HtmlComponents/BannerProf';
 import ConfirmMail from './HtmlComponents/СonfirmMail'
+import CreateBranch from "./HtmlComponents/CreateBranch"
 import validator from 'validator';
 
 //запуск приложения
@@ -19,7 +20,10 @@ class App extends React.Component {
       route: 'login',
     };
   }
-
+  OnProfileToCreateBranch = (event) => {
+    this.setState({ route: 'CreateBranch' });
+  }
+  
   OnProfileToLogin = (event) => {
     this.setState({ route: 'login' });
   }
@@ -31,7 +35,7 @@ class App extends React.Component {
     this.setState({ route: 'login' });
   }
 
-  OnMainToProfileButtonClick = (event) => {
+  OnBannerToProfileButtonClick = (event) => {
     this.setState({ route: 'Profile' });
   }
   OnProfileToMainButtonClick = (event) => {
@@ -117,7 +121,7 @@ class App extends React.Component {
       else if (route === "MainPage") {
         return (
           <div>
-            <Banner ToProfile={this.OnMainToProfileButtonClick} />
+            <Banner ToProfile={this.OnBannerToProfileButtonClick} />
             <MainPage ToBranch={this.OnLoginRegButtonClick} />
           </div>
         );
@@ -126,7 +130,8 @@ class App extends React.Component {
         return (
           <div>
             < BannerProf ToMain={this.OnProfileToMainButtonClick} />
-            < Profile ProfToLog={this.OnProfileToLogin}/>
+            < Profile ProfToLog={this.OnProfileToLogin}
+            ToCreateBranch = {this.OnProfileToCreateBranch}/>
           </div>
         );
       } 
@@ -135,6 +140,14 @@ class App extends React.Component {
           <div>
             <BannerReg />
             <ConfirmMail/>
+          </div>
+        );
+      }
+      else if (route === 'CreateBranch') {
+        return (
+          <div>
+            <Banner ToProfile={this.OnBannerToProfileButtonClick} />
+            <CreateBranch />
           </div>
         );
       }

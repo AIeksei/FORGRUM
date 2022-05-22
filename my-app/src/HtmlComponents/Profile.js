@@ -1,7 +1,7 @@
 import './Css/Profile.css';
 import React from 'react';
 import rename from './Components/Rename'
-const Profile =({ProfToLog})=> {
+const Profile =({ProfToLog,ToCreateBranch})=> {
     return (
         <div className='bodyProfile'>
             <div className='user'>
@@ -23,6 +23,7 @@ const Profile =({ProfToLog})=> {
                 <div className='profborder'>
                     <p>Пароль</p>
                 </div>
+                <input type="button" onClick={ToCreateBranch} value="Создать свою ветку"></input>
             </div>
             <div className='recEndExit'>
                 <div className='record'>
