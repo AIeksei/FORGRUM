@@ -20,7 +20,10 @@ class App extends React.Component {
       route: 'Branch',
     };
   }
-
+  OnProfileToCreateBranch = (event) => {
+    this.setState({ route: 'CreateBranch' });
+  }
+  
   OnProfileToLogin = (event) => {
     this.setState({ route: 'login' });
   }
@@ -107,7 +110,7 @@ class App extends React.Component {
       else if (route === "MainPage") {
         return (
           <div>
-            <Banner ToProfile={this.OnMainToProfileButtonClick} />
+            <Banner ToProfile={this.OnBannerToProfileButtonClick} />
             <MainPage ToBranch={this.OnLoginRegButtonClick} />
           </div>
         );
@@ -116,7 +119,8 @@ class App extends React.Component {
         return (
           <div>
             < BannerProf ToMain={this.OnProfileToMainButtonClick} />
-            < Profile ProfToLog={this.OnProfileToLogin}/>
+            < Profile ProfToLog={this.OnProfileToLogin}
+            ToCreateBranch = {this.OnProfileToCreateBranch}/>
           </div>
         );
       } 
@@ -132,6 +136,14 @@ class App extends React.Component {
           <div>
             <Banner ToProfile={this.OnMainToProfileButtonClick} />
             <Branch />
+          </div>
+        );
+      }
+      else if (route === 'CreateBranch') {
+        return (
+          <div>
+            <Banner ToProfile={this.OnBannerToProfileButtonClick} />
+            <CreateBranch />
           </div>
         );
       }

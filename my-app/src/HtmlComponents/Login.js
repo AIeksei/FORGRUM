@@ -13,7 +13,6 @@ const Login = ({ToReg, ToMain})=>{
                 <div className='butreg'> 
                     <input type={'button'} id ="reg" value={"У вас нет аккаунта?"} onClick={ToReg}></input>
                 </div>
-                
             </div>
         </div>
     )
