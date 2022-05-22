@@ -1,4 +1,4 @@
-import './BannerReg.css';
+import './Css/BannerReg.css';
 import React from 'react';
 function BannerReg() {
 

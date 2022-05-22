@@ -1,4 +1,4 @@
-import './Login.css';
+import './Css/Login.css';
 import React from 'react';
 const Login = ({ToReg, ToMain})=>{
     return (

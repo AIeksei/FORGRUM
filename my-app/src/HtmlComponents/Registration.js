@@ -1,4 +1,4 @@
-import './Registration.css';
+import './Css/Registration.css';
 import React from 'react';
 const Registration =({ToLog,ToReg}) =>{
     return (

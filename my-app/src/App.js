@@ -1,13 +1,13 @@
-import './App.css';
+import './HtmlComponents/Css/App.css';
 import React from 'react';
-import Registration from "./Registration"
-import BannerReg from './BannerReg';
-import MainPage from './MainPage';
-import Profile from './Profile';
-import Login from './Login';
-import Banner from './Banner';
-import BannerProf from './BannerProf';
-import ConfirmMail from './СonfirmMail'
+import Registration from "./HtmlComponents/Registration"
+import BannerReg from './HtmlComponents/BannerReg';
+import MainPage from './HtmlComponents/MainPage';
+import Profile from './HtmlComponents/Profile';
+import Login from './HtmlComponents/Login';
+import Banner from './HtmlComponents/Banner';
+import BannerProf from './HtmlComponents/BannerProf';
+import ConfirmMail from './HtmlComponents/СonfirmMail'
 import validator from 'validator';
 //запуск приложения
 class App extends React.Component {

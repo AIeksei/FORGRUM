@@ -1,4 +1,4 @@
-import './Banner.css';
+import './Css/Banner.css';
 import React from 'react';
 const Banner = ({ToProfile})=> {
 

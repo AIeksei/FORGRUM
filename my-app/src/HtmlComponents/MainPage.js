@@ -1,4 +1,4 @@
-import './MainPage.css';
+import './Css/MainPage.css';
 import React from 'react';
 const MainPage =({ToBranch})=> {
     return (
