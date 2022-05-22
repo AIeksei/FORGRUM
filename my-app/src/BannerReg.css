@@ -1,6 +1,6 @@
-.banner{
+.bannerReg{
 background:rgb(117, 64, 117);
 display: flex;
-text-align: center;
+justify-content: center;
 }
 

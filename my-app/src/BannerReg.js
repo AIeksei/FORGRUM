@@ -3,7 +3,7 @@ import React from 'react';
 function BannerReg() {
 
   return (
-      <header className="banner">
+      <header className="bannerReg">
         <div></div>
         <div className=" header">
           <h1 className="Page_header">FORGRUM</h1>

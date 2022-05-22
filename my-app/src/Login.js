@@ -2,7 +2,7 @@ import './Login.css';
 import React from 'react';
 const Login = ({ToReg})=>{
     return (
-        <div className='body'>
+        <div className='bodyLogin'>
             <div className='border'>
                 <p className='preg'>Авторизация</p>
                 <input placeholder='e-mail'

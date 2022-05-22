@@ -2,7 +2,7 @@ import './Registration.css';
 import React from 'react';
 const Registration =({ToLog}) =>{
     return (
-        <div className='body'>
+        <div className='bodyRegistration'>
             <div className='border'>
                 <p className='preg'>Регистрация</p>
                 <input placeholder='e-mail'
@@ -17,11 +17,11 @@ const Registration =({ToLog}) =>{
                     type='text' className='reginput'></input>
                 <div className='genders'>
                     <div className='gender'>
-                        <input type='radio' name='gender'></input>
+                        <input type='radio' name='gender' value="Муж"></input>
                         <p>Муж</p>
                     </div>
                     <div className='gender'>
-                        <input type='radio' name='gender'></input>
+                        <input type='radio' name='gender' value="Жен"></input>
                         <p>Жен</p>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import './Profile.css';
 import React from 'react';
 function Profile() {
     return (
-        <div className='body'>
+        <div className='bodyProfile'>
             <div className='user'>
                 <img className='userSize' src='profile.png'></img>
                 <div className='points'>Очки</div>
