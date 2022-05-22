@@ -7,14 +7,15 @@ import Profile from './Profile';
 import Login from './Login';
 import Banner from './Banner';
 import BannerProf from './BannerProf';
-import СonfirmMail from './СonfirmMail'
+import ConfirmMail from './СonfirmMail'
+import validator from 'validator';
 //запуск приложения
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       regStruct: [],
-      route: 'MainPage',
+      route: 'login',
     };
   }
 
@@ -39,7 +40,7 @@ class App extends React.Component {
     this.setState({ route: 'MainPage' });
   }
   onCreateUserButtonClick = (event) => {
- 
+    let toLog = true;
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[2].value;
     const number =  event.target.parentElement.children[3].value;
@@ -58,6 +59,19 @@ class App extends React.Component {
          gender = radio.value;
       }
     }
+  
+      event.preventDefault();
+      if(!validator.isEmail(email)) {
+          alert("Не правильная почта")
+          toLog = false;
+      } else if(password !== passwordConfirm) {
+          alert("Введите одинаковые пороли")
+          toLog = false;
+      } else if(!validator.isStrongPassword(password, {minSymbols: 8})) {
+          alert("Пароль должен содержать маленькие, большие буквы и число, минимум 8 символов")
+          toLog = false;
+      }
+  
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -68,7 +82,8 @@ class App extends React.Component {
       fetch("http://localhost:8080/users/", requestOptions)
       .then(response => response.json())
     }
-    this.setState({ route: 'login' });
+    if (toLog)
+     this.setState({ route: 'login' });
   }
     render(){
       const { route } = this.state;
