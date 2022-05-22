@@ -8,14 +8,14 @@ import Login from './HtmlComponents/Login';
 import Banner from './HtmlComponents/Banner';
 import BannerProf from './HtmlComponents/BannerProf';
 import ConfirmMail from './HtmlComponents/СonfirmMail'
-import validator from 'validator';
+import valid from './HtmlComponents/Components/ValidReg'
 
 //запуск приложения
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      regStruct: [],
+      password: '',
       route: 'login',
     };
   }
@@ -32,16 +32,27 @@ class App extends React.Component {
   }
 
   OnMainToProfileButtonClick = (event) => {
-    this.setState({ route: 'Profile' });
+    this.setState({ route: 'Profile' /*передать айди пользователя*/});
   }
   OnProfileToMainButtonClick = (event) => {
-    this.setState({ route: 'MainPage' });
+    this.setState({ route: 'MainPage'  /*передать айди пользователя*/ });
   }
   OnLoginToMainButtonClick = (event) => {
-    this.setState({ route: 'MainPage' });
+    const email = event.target.parentElement.children[1].value;
+    const password =  event.target.parentElement.children[2].value;
+    if (email.trim() != '') {
+      fetch("http://localhost:8080/email/" + email)
+      .then(response => response.json())
+      .then(password => this.setState({ phoneNumber: password }));
+      console.log(password) 
+    }
+    if (password !== password){
+      //ошибка неверный пароль
+    }else {this.setState({ route: 'MainPage'  /*передать айди пользователя*/});}
+    
   }
   onCreateUserButtonClick = (event) => {
-    let toLog = true;
+  
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[3].value.trim();
     const number =  event.target.parentElement.children[5].value;
@@ -57,31 +68,8 @@ class App extends React.Component {
          gender = radio.value;
       } 
     }  
-
-      if(!validator.isEmail(email)) {
-          document.getElementById("emERR").innerHTML = "Не правильная почта";
-          toLog = false;
-      } else  {document.getElementById("emERR").innerHTML = "";}
-      if(name == "") {
-        document.getElementById("nameERR").innerHTML = "Введите имя пользователя";
-        toLog = false;
-    }  else  {document.getElementById("nameERR").innerHTML = "";}
-      if(password !== passwordConfirm) {
-          document.getElementById("passERR").innerHTML = "Введите одинаковые пароли";
-          toLog = false;
-      }  else  {document.getElementById("passERR").innerHTML = "";}
-      if(!validator.isStrongPassword(password, {minSymbols: 0})) {
-          document.getElementById("passERR").innerHTML = "Пароль должен содержать маленькие, большие <br> буквы и число, минимум 8 символов";
-          toLog = false;
-      }  else  {document.getElementById("passERR").innerHTML = "";}
-      if(!validator.isMobilePhone(number)) {
-        document.getElementById("phERR").innerHTML = "введите верный номер телефона";
-          toLog = false;
-      } else  {document.getElementById("phERR").innerHTML = "";}
-      if(gender == null) {
-        document.getElementById("genERR").innerHTML = "Выберите пол";
-        toLog = false;
-    }  else  {document.getElementById("genERR").innerHTML = "";}
+    let toLog = valid(email, name, password, passwordConfirm, number, gender);
+      
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
