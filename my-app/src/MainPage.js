@@ -2,7 +2,7 @@ import './MainPage.css';
 import React from 'react';
 const MainPage =({ToBranch})=> {
     return (
-        <div className='body'>
+        <div className='bodyMain'>
             <div className='space_beetwen search'>
                 <div className='search'>
                     <img className='searchImg' src='search.png' ></img>
