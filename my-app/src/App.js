@@ -9,6 +9,7 @@ import Banner from './HtmlComponents/Banner';
 import BannerProf from './HtmlComponents/BannerProf';
 import ConfirmMail from './HtmlComponents/СonfirmMail'
 import valid from './HtmlComponents/Components/ValidReg'
+import CreateBranch from './HtmlComponents/CreateBranch';
 
 //запуск приложения
 class App extends React.Component {
@@ -21,6 +22,9 @@ class App extends React.Component {
   }
   OnProfileToCreateBranch = (event) => {
     this.setState({ route: 'CreateBranch' });
+  }
+  OnCreateBranchToMain = (event) => {
+    this.setState({ route: 'MainPage' });
   }
   
   OnProfileToLogin = (event) => {
@@ -108,7 +112,7 @@ class App extends React.Component {
       else if (route === "MainPage") {
         return (
           <div>
-            <Banner ToProfile={this.OnBannerToProfileButtonClick} />
+            <Banner ToProfile={this.OnMainToProfileButtonClick} />
             <MainPage ToBranch={this.OnLoginRegButtonClick} />
           </div>
         );
@@ -134,7 +138,7 @@ class App extends React.Component {
         return (
           <div>
             <Banner ToProfile={this.OnBannerToProfileButtonClick} />
-            <CreateBranch />
+            <CreateBranch ToMain={this.OnCreateBranchToMain}/>
           </div>
         );
       }
