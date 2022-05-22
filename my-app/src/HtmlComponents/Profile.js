@@ -1,6 +1,6 @@
 import './Css/Profile.css';
 import React from 'react';
-import rename from '.Rename'
+import rename from './Components/Rename'
 const Profile =({ProfToLog})=> {
     return (
         <div className='bodyProfile'>
