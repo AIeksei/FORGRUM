@@ -7,13 +7,14 @@ import Profile from './Profile';
 import Login from './Login';
 import Banner from './Banner';
 import BannerProf from './BannerProf';
+import ConfirmMail from './СonfirmMail'
 //запуск приложения
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       regStruct: [],
-      route: 'login',
+      route: 'MainPage',
     };
   }
 

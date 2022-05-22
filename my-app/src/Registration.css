@@ -1,6 +1,6 @@
 .bodyRegistration{
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
 }
 .borderRegistration{
     display: flex;
@@ -9,7 +9,7 @@
     margin: 3% auto;
     border: 1px solid;
     width: 40%; 
-    height: 60%;
+    height: 80%;
     background: rgb(124, 72, 121);
 }
 
@@ -50,4 +50,5 @@
 .phref{
     color:black;
     font-size: large;
+    margin: 1%;
 }
