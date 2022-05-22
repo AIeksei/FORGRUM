@@ -4,8 +4,7 @@ function BannerReg() {
 
   return (
       <header className="bannerReg">
-        <div></div>
-        <div className=" header">
+        <div>
           <h1 className="Page_header">FORGRUM</h1>
         </div>
       </header>

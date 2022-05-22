@@ -1,6 +1,5 @@
 import './Banner.css';
 import React from 'react';
-let style = "style";
 const BannerProf =({ToMain})=> {
 
   return (

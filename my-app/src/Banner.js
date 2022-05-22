@@ -4,8 +4,7 @@ const Banner = ({ToProfile})=> {
 
   return (
       <header className="banner">
-        <div></div>
-        <div className=" header">
+        <div className="header">
           <h1 className="Page_header">FORGRUM</h1>
         </div>
         <div className="profile">

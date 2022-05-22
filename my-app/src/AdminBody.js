@@ -1,9 +1,8 @@
 import './AdminBody.css';
 import React from 'react';
-let style = "style";
 function AdminBody() {
 	return (
-		<div className="body">
+		<div className="bodyAdmin">
 			<div className="comment">
 				<div className="photo">
 					<img className='size' src='profile.png'></img>
