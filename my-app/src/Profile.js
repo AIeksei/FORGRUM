@@ -1,5 +1,6 @@
 import './Profile.css';
 import React from 'react';
+import rename from './Rename'
 const Profile =({ProfToLog})=> {
     return (
         <div className='bodyProfile'>
@@ -11,9 +12,9 @@ const Profile =({ProfToLog})=> {
                 <div className='profborder'>
                     <p>e-mail</p>
                 </div>
-                <div className='profborder'>
-                    <p>Имя</p>
-                    <img className='edit' src='edit.png'></img>
+                <div className='profborder'   >
+                    <p id ="UserName">Имя</p>
+                    <img className='edit' src='edit.png' onClick={()=>{rename(document.getElementById("UserName"));}}></img>
                 </div>
                 
                 <div className='profborder'>
