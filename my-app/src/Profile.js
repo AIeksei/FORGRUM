@@ -1,6 +1,6 @@
 import './Profile.css';
 import React from 'react';
-function Profile() {
+const Profile =({ProfToLog})=> {
     return (
         <div className='bodyProfile'>
             <div className='user'>
@@ -27,7 +27,7 @@ function Profile() {
                 <div className='record'>
                     <p>Ветки в которых принимается участие</p>
                 </div>
-                <p className='marginRight0'>Выйти из аккаунта</p>
+                <input type="button" className='marginRight0' onClick={ProfToLog} value="Выйти из аккаунта"></input>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import Profile from './Profile';
 import Login from './Login';
 import Banner from './Banner';
 import BannerProf from './BannerProf';
-import ConfirmMail from './СonfirmMail'
+import СonfirmMail from './СonfirmMail'
 //запуск приложения
 class App extends React.Component {
   constructor() {
@@ -18,6 +18,9 @@ class App extends React.Component {
     };
   }
 
+  OnProfileToLogin = (event) => {
+    this.setState({ route: 'login' });
+  }
   OnLoginRegButtonClick = (event) => {
     this.setState({ route: 'reg' });
   }
@@ -97,12 +100,11 @@ class App extends React.Component {
         return (
           <div>
             < BannerProf ToMain={this.OnProfileToMainButtonClick} />
-            <Profile />
+            < Profile ProfToLog={this.OnProfileToLogin}/>
           </div>
         );
       }
     }
   }
-
 
 export default App;
