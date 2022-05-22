@@ -38,6 +38,7 @@
 }
 .gender p{
     margin: 0;
+    font-size: medium;
 }
 .gender input{
     margin: 0 auto;
@@ -51,4 +52,7 @@
     color:black;
     font-size: large;
     margin: 1%;
+}
+.Err{
+    color: rgb(250, 146, 146);
 }
