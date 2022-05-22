@@ -10,6 +10,7 @@ import BannerProf from './HtmlComponents/BannerProf';
 import ConfirmMail from './HtmlComponents/СonfirmMail'
 import valid from './HtmlComponents/Components/ValidReg'
 import CreateBranch from './HtmlComponents/CreateBranch';
+import Branch from './HtmlComponents/Branch';
 
 //запуск приложения
 class App extends React.Component {
@@ -17,7 +18,7 @@ class App extends React.Component {
     super();
     this.state = {
       password: '',
-      route: 'login',
+      route: 'Branch',
     };
   }
   OnProfileToCreateBranch = (event) => {
@@ -58,6 +59,7 @@ class App extends React.Component {
     }else {this.setState({ route: 'MainPage'  /*передать айди пользователя*/});}
     
   }
+  
   onCreateUserButtonClick = (event) => {
   
     const email = event.target.parentElement.children[1].value;
@@ -131,6 +133,13 @@ class App extends React.Component {
           <div>
             <BannerReg />
             <ConfirmMail/>
+          </div>
+        );
+      }else if (route === "Branch") {
+        return (
+          <div>
+            <Banner ToProfile={this.OnMainToProfileButtonClick} />
+            <Branch />
           </div>
         );
       }

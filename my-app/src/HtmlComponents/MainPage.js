@@ -1,6 +1,13 @@
 import './Css/MainPage.css';
 import React from 'react';
+import Branchlist from '../BranchList';
 const MainPage =({ToBranch})=> {
+    const branches = [
+        {id: 1, autor: "lol", count: 101, tag: "cats", title : "CAT" },
+        {id: 2, autor: "test", count: 24, tag: "dogs", title : "DOG" },
+        {id: 3, autor: "test1", count: 32, tag: "cs", title : "Navi" },
+        {id: 4, autor: "art", count: 14, tag: "major", title : "Faze" }
+    ]
     return (
         <div className='bodyMain'>
             <div className='space_beetwen search'>
@@ -20,41 +27,7 @@ const MainPage =({ToBranch})=> {
                     <option value="value3">Сортировка 3</option>
                 </select>
             </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 10</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 100</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 50</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 30</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 80</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 34</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
-            <div className="root">
-                <p className="count">Количество сообщений : 28</p>
-                <p className="NameRoot">Title</p>
-                <p className="AutorRoot">Autor</p>
-            </div>
+            <Branchlist branches = {branches} />
         </div>
     )
 }
