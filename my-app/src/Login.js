@@ -1,6 +1,6 @@
 import './Login.css';
 import React from 'react';
-const Login = ({ToReg})=>{
+const Login = ({ToReg, ToMain})=>{
     return (
         <div className='bodyLogin'>
             <div className='border'>
@@ -9,7 +9,7 @@ const Login = ({ToReg})=>{
                     type='text' className='logininput'></input>
                 <input placeholder='Пароль'
                     type='text' className='logininput'></input>
-                <input  type = 'button' value = "Войти" className = 'loginbutton'></input>
+                <input  type = 'button' value = "Войти" className = 'loginbutton' onClick={ToMain}></input>
                 <div className='butreg'> 
                     <input type={'button'} id ="reg" value={"У вас нет аккаунта?"} onClick={ToReg}></input>
                 </div>

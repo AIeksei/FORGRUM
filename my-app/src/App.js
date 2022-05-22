@@ -7,6 +7,7 @@ import Profile from './Profile';
 import Login from './Login';
 import Banner from './Banner';
 import BannerProf from './BannerProf';
+
 //запуск приложения
 class App extends React.Component {
   constructor() {
@@ -31,30 +32,40 @@ class App extends React.Component {
   OnProfileToMainButtonClick = (event) => {
     this.setState({ route: 'MainPage' });
   }
+  OnLoginToMainButtonClick = (event) => {
+    this.setState({ route: 'MainPage' });
+  }
   onCreateUserButtonClick = (event) => {
-    const email = document.getElementById("email");
-    const name = document.getElementById("name");
-    const number = document.getElementById("number");
-    const password = document.getElementById("password");
-    const passwordConfirm = document.getElementById("passwordConfirm");
+ 
+    const email = event.target.parentElement.children[1].value;
+    const name =  event.target.parentElement.children[2].value;
+    const number =  event.target.parentElement.children[3].value;
+    const password =  event.target.parentElement.children[4].value;
+    const passwordConfirm =  event.target.parentElement.children[5].value;
+    console.log(email);
+    console.log(name);
+    console.log(number);
+    console.log(password);
+    console.log(passwordConfirm);
     let radios = document.querySelectorAll('input[type="radio"]');
     let gender;
-
+    
     for (let radio of radios) {
-      if (radio.checked) {
+      if (radio.checked) { 
          gender = radio.value;
       }
     }
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, isModerator: 0, gender: gender, password: password, confirmPassword: passwordConfirm })
+      body: JSON.stringify({ name: name, email: email, isModerator: false, gender: gender, password: password, confirmPassword: passwordConfirm })
     };
-
+  
     if (email.trim() != '') {
       fetch("http://localhost:8080/users/", requestOptions)
+      .then(response => response.json())
     }
-    route = 'login'
+    this.setState({ route: 'login' });
   }
     render(){
       const { route } = this.state;
@@ -62,7 +73,7 @@ class App extends React.Component {
         return (
           <div>
             <BannerReg />
-            <Registration ToLog={this.OnRegToLoginButtonClick} />
+            <Registration ToLog={this.OnRegToLoginButtonClick} ToReg = {this.onCreateUserButtonClick}/>
           </div>
         );
       }
@@ -70,7 +81,7 @@ class App extends React.Component {
         return (
           <div>
             <BannerReg />
-            <Login ToReg={this.OnLoginRegButtonClick} />
+            <Login ToReg={this.OnLoginRegButtonClick} ToMain ={this.OnLoginToMainButtonClick}/>
           </div>
         );
       }
