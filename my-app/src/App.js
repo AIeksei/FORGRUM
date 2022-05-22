@@ -7,7 +7,7 @@ import Profile from './Profile';
 import Login from './Login';
 import Banner from './Banner';
 import BannerProf from './BannerProf';
-
+//запуск приложения
 class App extends React.Component {
   constructor() {
     super();
