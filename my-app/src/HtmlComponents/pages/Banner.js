@@ -1,6 +1,6 @@
-import './Css/Banner.css';
+import '../Css/Banner.css';
 import { Outlet } from 'react-router-dom';
-import { CustomLink } from './Components/CustomLink'
+import { CustomLink } from '../Components/CustomLink'
 import { Link } from 'react-router-dom';
 import React from 'react';
 const Banner = ()=> {

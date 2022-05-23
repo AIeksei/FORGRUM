@@ -1,4 +1,4 @@
-import './Css/AdminBody.css';
+import '../Css/AdminBody.css';
 import React from 'react';
 function AdminBody() {
 	return (

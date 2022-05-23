@@ -1,5 +1,5 @@
 import React from 'react'
-import './Css/BranchList.css'
+import '../Css/BranchList.css'
 import {BranchForm} from './BranchForm'
 
 function Branchlist(props){

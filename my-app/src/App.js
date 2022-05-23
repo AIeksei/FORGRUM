@@ -1,15 +1,14 @@
 import './HtmlComponents/Css/App.css';
 import React from 'react';
-import {Registration} from "./HtmlComponents/Registration"
-import {BannerReg} from './HtmlComponents/BannerReg';
-import {MainPage} from './HtmlComponents/MainPage';
-import {Profile} from './HtmlComponents/Profile';
-import {Login} from './HtmlComponents/Login';
-import {Banner} from './HtmlComponents/Banner';
-import {ConfirmMail} from './HtmlComponents/СonfirmMail'
-import {valid} from './HtmlComponents/Components/ValidReg'
-import {CreateBranch} from './HtmlComponents/CreateBranch';
-import {Branch} from './HtmlComponents/Branch';
+import {Registration} from "./HtmlComponents/pages/Registration"
+import {BannerReg} from './HtmlComponents/pages/BannerReg';
+import {MainPage} from './HtmlComponents/pages/MainPage';
+import {Profile} from './HtmlComponents/pages/Profile';
+import {Login} from './HtmlComponents/pages/Login';
+import {Banner} from './HtmlComponents/pages/Banner';
+import {ConfirmMail} from './HtmlComponents/pages/СonfirmMail'
+import {CreateBranch} from './HtmlComponents/pages/CreateBranch';
+import {Branch} from './HtmlComponents/pages/Branch';
 import { Routes, Route, Link } from 'react-router-dom';
 
 //запуск приложения
@@ -22,13 +21,16 @@ function App() {
        <Route path="registration" element={<Registration />} />
        <Route path="confirm" element={<ConfirmMail />} />
        </Route>
+      
         <Route path="/" element={<Banner />}>
           <Route path="/main" element={<MainPage />} />
-          <Route path="profile" element={<Profile />}/>
+          <Route path="profile/:id" element={<Profile />}/>
           <Route path="branch" element={<Branch />} />
-          <Route path="create" element={<CreateBranch />} />
+          <Route path="profile/:id/create" element={<CreateBranch />} />
         </Route>
+       
       </Routes>
+
   );
 }
 

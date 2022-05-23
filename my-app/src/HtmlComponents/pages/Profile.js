@@ -1,6 +1,6 @@
-import './Css/Profile.css';
+import '../Css/Profile.css';
 import React from 'react';
-import {rename} from './Components/Rename'
+import {rename} from '../Components/Rename'
 import { Link } from 'react-router-dom';
 const Profile =()=> {
     return (

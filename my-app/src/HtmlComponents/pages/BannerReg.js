@@ -1,4 +1,4 @@
-import './Css/BannerReg.css';
+import '../Css/BannerReg.css';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 function BannerReg() {

@@ -1,4 +1,4 @@
-import './Css/Login.css';
+import '../Css/Login.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Login = ()=>{

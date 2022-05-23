@@ -1,7 +1,7 @@
-import './Css/Registration.css';
+import '../Css/Registration.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {valid} from './Components/ValidReg'
+import {valid} from '../Components/ValidReg'
 const Registration =() =>{
     function onCreateUserButtonClick(event){
     let checked;

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Css/NoteList.css";
+import "../Css/NoteList.css";
 import {NoteForm} from './NoteForm'
 
 function NoteList(props){

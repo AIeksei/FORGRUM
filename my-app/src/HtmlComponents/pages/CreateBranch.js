@@ -1,4 +1,4 @@
-import './Css/CreateBranch.css';
+import '../Css/CreateBranch.css';
 import React from 'react';
 const CreateBranch = ()=> {
 

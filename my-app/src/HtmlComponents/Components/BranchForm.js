@@ -1,5 +1,5 @@
 import React from 'react'
-import './Css/BranchForm.css'
+import '../Css/BranchForm.css'
 function BranchForm({ branches }) {
     return (
         <li className='rootBranch'>

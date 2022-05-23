@@ -1,4 +1,4 @@
-import './Css/СonfirmMail.css';
+import '../Css/СonfirmMail.css';
 import React from 'react';
 function ConfirmMail() {
   return (

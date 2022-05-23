@@ -1,9 +1,9 @@
-import './Css/MainPage.css';
+import '../Css/MainPage.css';
 import React from 'react';
-import {Branchlist} from './BranchList';
-import { FindingBranches } from './Components/FindingTagAndTitle';
-import { SortListTitle } from './Components/SortListTitle';
-import { SortListCount } from './Components/SortListCount';
+import {Branchlist} from '../Components/BranchList';
+import { FindingBranches } from '../Components/FindingTagAndTitle';
+import { SortListTitle } from '../Components/SortListTitle';
+import { SortListCount } from '../Components/SortListCount';
 const MainPage =()=> {
     const branches = [
         {id: 1, autor: "lol", count: 101, tag: "cats", title : "DOG" },
