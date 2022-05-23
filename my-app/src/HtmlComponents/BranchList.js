@@ -4,7 +4,7 @@ import {BranchForm} from './BranchForm'
 
 function Branchlist(props){
     return (
-      <div className='branchList'>
+      <ul className='branchList' id = "ul">
           {props.branches.map(branches => {
             return (
               <BranchForm
@@ -12,7 +12,7 @@ function Branchlist(props){
               />
             );
           })}
-       </div>
+       </ul>
       )
 }
 

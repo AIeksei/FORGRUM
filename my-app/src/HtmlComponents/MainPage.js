@@ -1,6 +1,7 @@
 import './Css/MainPage.css';
 import React from 'react';
 import {Branchlist} from './BranchList';
+import { MainFunc } from './Components/FindByTag';
 const MainPage =()=> {
     const branches = [
         {id: 1, autor: "lol", count: 101, tag: "cats", title : "CAT" },
@@ -13,7 +14,7 @@ const MainPage =()=> {
             <div className='space_beetwen search'>
                 <div className='search'>
                     <img className='searchImg' src='search.png' ></img>
-                    <input type="text" className="searchInput" placeholder="Поиск по тегу"></input>
+                    <input type="text" className="searchInput" placeholder="Поиск по тегу" id ="tag" onKeyUp={()=>{MainFunc(document.getElementById("ul"),document.getElementById("tag"));}}></input>
                 </div>
                 <div className='search'>
                     <img className='searchImg' src='search.png' ></img>

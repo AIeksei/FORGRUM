@@ -2,7 +2,7 @@ import React from 'react'
 import './Css/BranchForm.css'
 function BranchForm({ branches }) {
     return (
-        <div className='rootBranch'>
+        <li className='rootBranch'>
             <div className="AutorBranch"> {branches.autor} </div>
             <div className='NameRoot'>
                 <div className='titleBranch' >{branches.title} </div>
@@ -10,7 +10,7 @@ function BranchForm({ branches }) {
             </div>
             <div className='countMessage'>Количество сообщений : {branches.count} </div>
             
-        </div>
+        </li>
     )
 }
 export {BranchForm}
