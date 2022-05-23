@@ -1,19 +1,37 @@
 import './HtmlComponents/Css/App.css';
 import React from 'react';
-import Registration from "./HtmlComponents/Registration"
-import BannerReg from './HtmlComponents/BannerReg';
-import MainPage from './HtmlComponents/MainPage';
-import Profile from './HtmlComponents/Profile';
-import Login from './HtmlComponents/Login';
-import Banner from './HtmlComponents/Banner';
-import BannerProf from './HtmlComponents/BannerProf';
-import ConfirmMail from './HtmlComponents/СonfirmMail'
-import valid from './HtmlComponents/Components/ValidReg'
-import CreateBranch from './HtmlComponents/CreateBranch';
-import Branch from './HtmlComponents/Branch';
+import {Registration} from "./HtmlComponents/Registration"
+import {BannerReg} from './HtmlComponents/BannerReg';
+import {MainPage} from './HtmlComponents/MainPage';
+import {Profile} from './HtmlComponents/Profile';
+import {Login} from './HtmlComponents/Login';
+import {Banner} from './HtmlComponents/Banner';
+import {BannerProf} from './HtmlComponents/BannerProf';
+import {ConfirmMail} from './HtmlComponents/СonfirmMail'
+import {valid} from './HtmlComponents/Components/ValidReg'
+import {CreateBranch} from './HtmlComponents/CreateBranch';
+import {Branch} from './HtmlComponents/Branch';
+import { Routes, Route, Link } from 'react-router-dom';
 
 //запуск приложения
-class App extends React.Component {
+
+function App() {
+  return (
+      <Routes>
+        <Route path="/" element={<Banner />}>
+          <Route index element={<MainPage />} />
+          <Route path="profile" element={<Profile />}/>
+          <Route path="login" element={<Login />} />
+          <Route path="confirm" element={<ConfirmMail />} />
+          <Route path="registration" element={<Registration />} />
+          <Route path="branch" element={<Branch />} />
+          <Route path="create" element={<CreateBranch />} />
+        </Route>
+      </Routes>
+  );
+}
+
+/*class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -40,10 +58,10 @@ class App extends React.Component {
   }
 
   OnMainToProfileButtonClick = (event) => {
-    this.setState({ route: 'Profile' /*передать айди пользователя*/});
+    this.setState({ route: 'Profile' /*передать айди пользователя});
   }
   OnProfileToMainButtonClick = (event) => {
-    this.setState({ route: 'MainPage'  /*передать айди пользователя*/ });
+    this.setState({ route: 'MainPage'  /*передать айди пользователя });
   }
   OnLoginToMainButtonClick = (event) => {
     const email = event.target.parentElement.children[1].value;
@@ -56,7 +74,7 @@ class App extends React.Component {
     }
     if (password !== password){
       //ошибка неверный пароль
-    }else {this.setState({ route: 'MainPage'  /*передать айди пользователя*/});}
+    }else {this.setState({ route: 'MainPage'  /*передать айди пользователя);}
     
   }
   
@@ -152,6 +170,6 @@ class App extends React.Component {
         );
       }
     }
-  }
+  }*/
 
 export default App;

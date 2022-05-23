@@ -38,4 +38,4 @@ const Registration =({ToLog,ToReg}) =>{
     )
 }
 
-export default Registration;
+export {Registration};

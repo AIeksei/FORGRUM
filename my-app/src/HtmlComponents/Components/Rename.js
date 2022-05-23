@@ -17,4 +17,4 @@ function rename(curName){
     input.focus();
     }
     
-  export default rename;
+  export {rename};

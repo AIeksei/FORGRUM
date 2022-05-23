@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Css/NoteList.css";
-import NoteForm from './NoteForm'
+import {NoteForm} from './NoteForm'
 
 function NoteList(props){
     return (
@@ -13,4 +13,4 @@ function NoteList(props){
        </div>
       )
 }
-export default NoteList;
+export {NoteList};

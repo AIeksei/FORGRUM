@@ -28,4 +28,4 @@ if(gender == null) {
 }  else  {document.getElementById("genERR").innerHTML = "";}
 return toLog;
 }
-export default valid;
+export {valid};

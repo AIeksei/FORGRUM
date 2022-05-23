@@ -1,6 +1,6 @@
 import './Css/Branch.css';
 import React from 'react';
-import NoteList from './NoteList'
+import {NoteList} from './NoteList'
 const Branch = () => {
 	const notes = [
 		{ id: 1, autor: "lol", text: "CAT" , img: "profile.png"},
@@ -45,4 +45,4 @@ const Branch = () => {
 	);
 }
 
-export default Branch;
+export {Branch};

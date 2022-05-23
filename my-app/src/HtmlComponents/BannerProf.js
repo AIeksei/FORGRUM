@@ -15,4 +15,4 @@ const BannerProf =({ToMain})=> {
   );
 } 
 
-export default BannerProf;
+export {BannerProf};

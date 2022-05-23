@@ -53,4 +53,4 @@ function AdminBody() {
 	);
 }
 
-export default AdminBody;
+export {AdminBody};

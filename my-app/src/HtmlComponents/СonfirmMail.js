@@ -1,6 +1,6 @@
 import './Css/СonfirmMail.css';
 import React from 'react';
-function СonfirmMail() {
+function ConfirmMail() {
   return (
       <div>
        <h className='Confirm'>Вам на почту отправлено письмо.
@@ -10,4 +10,4 @@ function СonfirmMail() {
   );
 } 
 
-export default СonfirmMail;
+export {ConfirmMail};

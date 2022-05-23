@@ -1,6 +1,6 @@
 import './Css/Profile.css';
 import React from 'react';
-import rename from './Components/Rename'
+import {rename} from './Components/Rename'
 const Profile =({ProfToLog,ToCreateBranch})=> {
     return (
         <div className='bodyProfile'>
@@ -35,4 +35,4 @@ const Profile =({ProfToLog,ToCreateBranch})=> {
     )
 }
 
-export default Profile;
+export {Profile};

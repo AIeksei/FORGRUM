@@ -18,4 +18,4 @@ const Login = ({ToReg, ToMain})=>{
     )
 }
 
-export default Login;
+export {Login};

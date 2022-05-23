@@ -1,6 +1,6 @@
 import './Css/CreateBranch.css';
 import React from 'react';
-const createBranch = ({ToMain})=> {
+const CreateBranch = ({ToMain})=> {
 
   return (
     <div className='bodyCreateBranch'>
@@ -18,4 +18,4 @@ const createBranch = ({ToMain})=> {
   );
 } 
 
-export default createBranch;
+export {CreateBranch};

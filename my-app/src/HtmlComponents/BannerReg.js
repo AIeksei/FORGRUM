@@ -11,4 +11,4 @@ function BannerReg() {
   );
 } 
 
-export default BannerReg;
+export {BannerReg};

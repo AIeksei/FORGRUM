@@ -19,4 +19,4 @@ function NoteForm({ note }) {
         </div>
     )
 }
-export default NoteForm;
+export {NoteForm};

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Css/BranchForm.css'
-export default function BranchForm({ branches }) {
+function BranchForm({ branches }) {
     return (
         <div className='rootBranch'>
             <div className="AutorBranch"> {branches.autor} </div>
@@ -13,3 +13,4 @@ export default function BranchForm({ branches }) {
         </div>
     )
 }
+export {BranchForm}
