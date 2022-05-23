@@ -24,7 +24,7 @@ const Profile =()=> {
                 <div className='profborder'>
                     <p>Пароль</p>
                 </div>
-                <Link to="/create" className='loginbutton' > <input  type = 'button' value = "Создать свою ветку" className = 'marginRight0'  ></input> </Link>
+                <Link to="create" className='loginbutton' > <input  type = 'button' value = "Создать свою ветку" className = 'marginRight0'  ></input> </Link>
             </div>
             <div className='recEndExit'>
                 <div className='record'>

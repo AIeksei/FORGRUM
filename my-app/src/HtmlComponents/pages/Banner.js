@@ -12,7 +12,7 @@ const Banner = ()=> {
         <Link to="/main"> <div className="Page_header">FORGRUM </div></Link>
         </div>
         <div className="profile">
-        <CustomLink to="/profile" >профиль</CustomLink>
+        <CustomLink to="/profile/1" >профиль</CustomLink>
   
         </div>
       </header>

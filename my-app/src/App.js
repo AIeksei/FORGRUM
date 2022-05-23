@@ -9,27 +9,42 @@ import {Banner} from './HtmlComponents/pages/Banner';
 import {ConfirmMail} from './HtmlComponents/pages/СonfirmMail'
 import {CreateBranch} from './HtmlComponents/pages/CreateBranch';
 import {Branch} from './HtmlComponents/pages/Branch';
+import { RequireAuth } from './HtmlComponents/Hoc/RequireAuth';
+import { AuthProvider } from './HtmlComponents/Hoc/AuthProvider';
+
 import { Routes, Route, Link } from 'react-router-dom';
 
 //запуск приложения
 
 function App() {
   return (
+    <AuthProvider>
       <Routes>
        <Route path="/" element={<BannerReg />}>
        <Route path="login" element={<Login />} />
        <Route path="registration" element={<Registration />} />
        <Route path="confirm" element={<ConfirmMail />} />
        </Route>
-      
         <Route path="/" element={<Banner />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route path="profile/:id" element={<Profile />}/>
-          <Route path="branch" element={<Branch />} />
-          <Route path="profile/:id/create" element={<CreateBranch />} />
+          <Route path="/main" element={
+            <RequireAuth>
+              <MainPage />
+            </RequireAuth>} />
+          <Route path="profile/:id" element={
+          <RequireAuth>
+          <MainPage />
+        </RequireAuth>} />
+          <Route path="branch" element={
+          <RequireAuth>
+            <MainPage />
+        </RequireAuth>} />
+          <Route path="profile/:id/create" element={
+            <RequireAuth>
+              <CreateBranch />
+            </RequireAuth>} />
         </Route>
-       
       </Routes>
+      </AuthProvider>
 
   );
 }
