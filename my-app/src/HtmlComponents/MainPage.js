@@ -1,32 +1,33 @@
 import './Css/MainPage.css';
 import React from 'react';
 import {Branchlist} from './BranchList';
-import { MainFunc } from './Components/FindByTag';
+import { FindingBranches } from './Components/FindingTagAndTitle';
+import { SortListTitle } from './Components/SortListTitle';
+import { SortListCount } from './Components/SortListCount';
 const MainPage =()=> {
     const branches = [
-        {id: 1, autor: "lol", count: 101, tag: "cats", title : "CAT" },
-        {id: 2, autor: "test", count: 24, tag: "dogs", title : "DOG" },
-        {id: 3, autor: "test1", count: 32, tag: "cs", title : "Navi" },
-        {id: 4, autor: "art", count: 14, tag: "major", title : "Faze" }
+        {id: 1, autor: "lol", count: 101, tag: "cats", title : "DOG" },
+        {id: 2, autor: "test", count: 24, tag: "dogs", title : "CAT" },
+        {id: 3, autor: "test1", count: 32, tag: "major", title : "Navi" },
+        {id: 4, autor: "art", count: 14, tag: "major", title : "AFaze" }
     ]
     return (
         <div className='bodyMain'>
             <div className='space_beetwen search'>
                 <div className='search'>
                     <img className='searchImg' src='search.png' ></img>
-                    <input type="text" className="searchInput" placeholder="Поиск по тегу" id ="tag" onKeyUp={()=>{MainFunc(document.getElementById("ul"),document.getElementById("tag"));}}></input>
+                    <input type="text" className="searchInput" placeholder="Поиск по тегу" id ="tagFind" onKeyUp={()=>{FindingBranches(document.getElementById("ul"),document.getElementById("tagFind"), document.getElementsByClassName("tags"));}}></input>
                 </div>
                 <div className='search'>
                     <img className='searchImg' src='search.png' ></img>
-                    <input type="text" className="searchInput" placeholder="Поиск по заголовку"></input>
+                    <input type="text" className="searchInput" placeholder="Поиск по заголовку" id ="titleFind" onKeyUp={()=>{FindingBranches(document.getElementById("ul"),document.getElementById("titleFind"), document.getElementsByClassName("titleBranch"));}}></input>
                 </div>
             </div>
             <div className="Sort">
-                <select name="select" className="select">
-                    <option value="value1">Сортировка 1</option>
-                    <option value="value2" selected>Сортировка 2</option>
-                    <option value="value3">Сортировка 3</option>
-                </select>
+             
+                    <input type={"button"} value = "title"  className="select" onClick={()=>SortListTitle(document.getElementById("ul"), document.getElementsByClassName("titleBranch"))}/>
+                    <input type={"button"} value = "count"  className="select" onClick={()=>SortListCount(branches = {branches})}/>
+                
             </div>
         
             <Branchlist branches = {branches} />
