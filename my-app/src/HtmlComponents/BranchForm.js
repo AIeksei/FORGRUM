@@ -1,12 +1,15 @@
 import React from 'react'
 import './Css/BranchForm.css'
-export default function BranchForm({branches}){
+export default function BranchForm({ branches }) {
     return (
-        <div className='BranchForm'> 
-            <div className='BranchItem'> {branches.autor} </div>
-            <div> {branches.title} </div>
-            <div> {branches.count} </div>
-            <div> {branches.tag}  </div>
+        <div className='rootBranch'>
+            <div className="AutorBranch"> {branches.autor} </div>
+            <div className='NameRoot'>
+                <div className='titleBranch' >{branches.title} </div>
+                <div> Теги: {branches.tag}  </div>
+            </div>
+            <div className='countMessage'>Количество сообщений : {branches.count} </div>
+            
         </div>
     )
 }

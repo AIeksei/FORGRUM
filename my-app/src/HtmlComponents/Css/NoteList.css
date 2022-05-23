@@ -1,0 +1,11 @@
+.all_comments{
+    display: flex;
+    flex-direction: column;
+}
+
+.note{
+    display: flex;
+    flex-direction: row;
+
+}
+

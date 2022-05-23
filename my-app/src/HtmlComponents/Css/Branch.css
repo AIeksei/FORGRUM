@@ -1,4 +1,4 @@
-.body {
+.branchBody {
 	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
@@ -11,6 +11,11 @@
 	display: flex;
 	flex-direction: row;
 	box-sizing: border-box;
+}
+
+.user_name {
+	width: 100%;
+	font-size: medium;
 }
 
 .size {
@@ -26,6 +31,7 @@
 	flex-direction: column;
 	font-size: large;
 	align-items: center;
+	width: 10%;
 
 }
 
@@ -72,8 +78,7 @@
 }
 
 .msinput {
-	min-width: 40%;
-	width: fit-content;
-	height: 100%;
+	width: 80%;
+	height: 100px;
 	overflow: hidden;
 }

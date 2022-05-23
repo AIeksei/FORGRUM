@@ -27,6 +27,7 @@ const MainPage =({ToBranch})=> {
                     <option value="value3">Сортировка 3</option>
                 </select>
             </div>
+        
             <Branchlist branches = {branches} />
         </div>
     )

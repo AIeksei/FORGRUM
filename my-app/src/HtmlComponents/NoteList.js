@@ -1,17 +1,16 @@
 import React from 'react'
+import "./Css/NoteList.css";
 import NoteForm from './NoteForm'
 
 function NoteList(props){
     return (
-      <ul>
-          {props.notes.map(notes => {
+      <div className='all_comments'>
+          {props.notes.map(note => {
             return (
-              <NoteForm
-              notes={notes}
-              />
+              <NoteForm note={note} />
             );
           })}
-       </ul>
+       </div>
       )
 }
 export default NoteList;
