@@ -8,7 +8,7 @@ function BranchForm({ branches }) {
                 <div className='titleBranch' >{branches.title} </div>
                 <div className='tags'> Теги: {branches.tag}  </div>
             </div>
-            <div className='countMessage'>Количество сообщений : <div className='count'>{branches.count}</div> </div>
+            <div className='countMessage'>Количество сообщений : <div className='count' value = {branches.count}> {branches.count} </div> </div>
             
         </li>
     )

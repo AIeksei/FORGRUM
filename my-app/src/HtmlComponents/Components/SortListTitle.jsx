@@ -16,7 +16,6 @@ function SortListTitle(e,title) {
         li[i].parentNode.insertBefore(li[i + 1], li[i]);
         switching = true;
       }
-      console.log(li)
     }
   }
 export{SortListTitle}
