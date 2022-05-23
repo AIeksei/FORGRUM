@@ -1,6 +1,6 @@
 import './Css/CreateBranch.css';
 import React from 'react';
-const CreateBranch = ({ToMain})=> {
+const CreateBranch = ()=> {
 
   return (
     <div className='bodyCreateBranch'>
@@ -12,7 +12,8 @@ const CreateBranch = ({ToMain})=> {
             type='text' className='CreateBranchArea'></textarea>
               <textarea placeholder='Теги'
             type='text' className='CreateBranchTag'></textarea>
-        <input  type = 'button' value = "Создать ветку" className = 'CreateBranchbutton' onClick={ToMain} ></input>
+            
+        <input  type = 'button' value = "Создать ветку" className = 'CreateBranchbutton' ></input>
     </div>
 </div>
   );

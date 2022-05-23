@@ -1,7 +1,8 @@
 import './Css/Profile.css';
 import React from 'react';
 import {rename} from './Components/Rename'
-const Profile =({ProfToLog,ToCreateBranch})=> {
+import { Link } from 'react-router-dom';
+const Profile =()=> {
     return (
         <div className='bodyProfile'>
             <div className='user'>
@@ -23,13 +24,14 @@ const Profile =({ProfToLog,ToCreateBranch})=> {
                 <div className='profborder'>
                     <p>Пароль</p>
                 </div>
-                <input type="button" onClick={ToCreateBranch} value="Создать свою ветку"></input>
+                <Link to="/create" className='loginbutton' > <input  type = 'button' value = "Создать свою ветку" className = 'marginRight0'  ></input> </Link>
             </div>
             <div className='recEndExit'>
                 <div className='record'>
                     <p>Ветки в которых принимается участие</p>
                 </div>
-                <input type="button" className='marginRight0' onClick={ProfToLog} value="Выйти из аккаунта"></input>
+                <Link to="/login" className='loginbutton' > <input  type = 'button' value = "Выйти из аккаунта" className = 'marginRight0'  ></input> </Link>
+
             </div>
         </div>
     )

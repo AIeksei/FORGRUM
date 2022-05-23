@@ -6,7 +6,6 @@ import {MainPage} from './HtmlComponents/MainPage';
 import {Profile} from './HtmlComponents/Profile';
 import {Login} from './HtmlComponents/Login';
 import {Banner} from './HtmlComponents/Banner';
-import {BannerProf} from './HtmlComponents/BannerProf';
 import {ConfirmMail} from './HtmlComponents/СonfirmMail'
 import {valid} from './HtmlComponents/Components/ValidReg'
 import {CreateBranch} from './HtmlComponents/CreateBranch';
@@ -21,11 +20,11 @@ function App() {
        <Route path="/" element={<BannerReg />}>
        <Route path="login" element={<Login />} />
        <Route path="registration" element={<Registration />} />
+       <Route path="confirm" element={<ConfirmMail />} />
        </Route>
         <Route path="/" element={<Banner />}>
           <Route path="/main" element={<MainPage />} />
           <Route path="profile" element={<Profile />}/>
-          <Route path="confirm" element={<ConfirmMail />} />
           <Route path="branch" element={<Branch />} />
           <Route path="create" element={<CreateBranch />} />
         </Route>

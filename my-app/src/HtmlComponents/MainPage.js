@@ -1,7 +1,7 @@
 import './Css/MainPage.css';
 import React from 'react';
 import {Branchlist} from './BranchList';
-const MainPage =({ToBranch})=> {
+const MainPage =()=> {
     const branches = [
         {id: 1, autor: "lol", count: 101, tag: "cats", title : "CAT" },
         {id: 2, autor: "test", count: 24, tag: "dogs", title : "DOG" },

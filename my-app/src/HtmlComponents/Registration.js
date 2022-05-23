@@ -2,8 +2,9 @@ import './Css/Registration.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {valid} from './Components/ValidReg'
-const Registration =({ToLog,ToReg}) =>{
+const Registration =() =>{
     function onCreateUserButtonClick(event){
+    let checked;
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[3].value.trim();
     const number =  event.target.parentElement.children[5].value;
@@ -18,7 +19,7 @@ const Registration =({ToLog,ToReg}) =>{
          gender = radio.value;
       } 
     }  
-    valid(email, name, password, passwordConfirm, number, gender);
+    checked = valid(email, name, password, passwordConfirm, number, gender);
 }
     return (
         <div className='bodyRegistration'>

@@ -1,8 +1,7 @@
 import './Css/Login.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'react-bulma-components/lib/components/button';
-const Login = ({ToReg, ToMain})=>{
+const Login = ()=>{
     return (
         <div className='bodyLogin'>
             <div className='borderLogin'>
@@ -11,7 +10,7 @@ const Login = ({ToReg, ToMain})=>{
                     type='text' className='logininput'></input>
                 <input placeholder='Пароль'
                     type='text' className='logininput'></input>
-                    <Button to="/main" renderAs={Link}>My button linked to react-router-dom</Button>
+                 <Link to="/main" className='loginbutton' > <input  type = 'button' value = "Войти" className = 'loginbutton'  ></input> </Link>
                 <div className='butreg'> 
                 <Link to="/registration" >У вас нет аккаунта?</Link>
                 </div>
