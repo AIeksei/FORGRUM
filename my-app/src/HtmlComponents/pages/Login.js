@@ -19,7 +19,7 @@ const Login = ()=>{
             document.getElementById("emERR").innerHTML = "Введите почту";
             checked = false;
         }
-        if(checked)
+       // if(checked)
         signin(user, () => navigate("/main", {replace: true}));
     }
 
