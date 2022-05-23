@@ -1,8 +1,11 @@
 import '../Css/Profile.css';
 import React from 'react';
 import {rename} from '../Components/Rename'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UseAuth } from '../Hook/UseAuth';
 const Profile =()=> {
+    const {signout} = UseAuth();
+    const navigate = useNavigate();
     return (
         <div className='bodyProfile'>
             <div className='user'>
@@ -30,7 +33,8 @@ const Profile =()=> {
                 <div className='record'>
                     <p>Ветки в которых принимается участие</p>
                 </div>
-                <Link to="/login" className='loginbutton' > <input  type = 'button' value = "Выйти из аккаунта" className = 'marginRight0'  ></input> </Link>
+                <button value = "Выйти из аккаунта" className = 'marginRight0' onClick={() => signout(() => navigate('/login', {replace: true}))}></button>
+    
 
             </div>
         </div>

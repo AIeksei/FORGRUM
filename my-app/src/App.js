@@ -32,7 +32,7 @@ function App() {
             </RequireAuth>} />
           <Route path="profile/:id" element={
           <RequireAuth>
-          <MainPage />
+          <Profile />
         </RequireAuth>} />
           <Route path="branch" element={
           <RequireAuth>
