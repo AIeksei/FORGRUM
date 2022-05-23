@@ -11,6 +11,7 @@ const MainPage =()=> {
         {id: 3, autor: "test1", count: 32, tag: "major", title : "Navi" },
         {id: 4, autor: "art", count: 14, tag: "major", title : "AFaze" }
     ]
+    
     return (
         <div className='bodyMain'>
             <div className='space_beetwen search'>
