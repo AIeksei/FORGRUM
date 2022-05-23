@@ -1,5 +1,6 @@
 import './Css/Banner.css';
 import { Outlet } from 'react-router-dom';
+import { CustomLink } from './Components/CustomLink'
 import React from 'react';
 const Banner = ({ToProfile})=> {
 
@@ -10,7 +11,8 @@ const Banner = ({ToProfile})=> {
           <h1 className="Page_header">FORGRUM</h1>
         </div>
         <div className="profile">
-          <input type={'button'} onClick={ToProfile} value="Профиль"></input>
+        <CustomLink to="/profile" >профиль</CustomLink>
+  
         </div>
       </header>
       

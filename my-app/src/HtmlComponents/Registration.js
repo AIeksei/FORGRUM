@@ -1,6 +1,25 @@
 import './Css/Registration.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {valid} from './Components/ValidReg'
 const Registration =({ToLog,ToReg}) =>{
+    function onCreateUserButtonClick(event){
+    const email = event.target.parentElement.children[1].value;
+    const name =  event.target.parentElement.children[3].value.trim();
+    const number =  event.target.parentElement.children[5].value;
+    const password =  event.target.parentElement.children[7].value;
+    const passwordConfirm =  event.target.parentElement.children[9].value;
+
+    let radios = document.querySelectorAll('input[type="radio"]');
+    let gender;
+    
+    for (let radio of radios) {
+      if (radio.checked) { 
+         gender = radio.value;
+      } 
+    }  
+    valid(email, name, password, passwordConfirm, number, gender);
+}
     return (
         <div className='bodyRegistration'>
             <div className='borderRegistration'>
@@ -31,8 +50,8 @@ const Registration =({ToLog,ToReg}) =>{
                     <div  className = "Err" id = "genERR"></div>
                 </div>
                 
-                <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={ToReg}></input>
-                <div className='phref' href ="" onClick={ToLog}>Уже есть профиль?</div>
+                <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input>
+                <Link to="/login" >Уже есть профиль?</Link>
             </div>
         </div>
     )

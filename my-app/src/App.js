@@ -18,12 +18,14 @@ import { Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
       <Routes>
+       <Route path="/" element={<BannerReg />}>
+       <Route path="login" element={<Login />} />
+       <Route path="registration" element={<Registration />} />
+       </Route>
         <Route path="/" element={<Banner />}>
-          <Route index element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="profile" element={<Profile />}/>
-          <Route path="login" element={<Login />} />
           <Route path="confirm" element={<ConfirmMail />} />
-          <Route path="registration" element={<Registration />} />
           <Route path="branch" element={<Branch />} />
           <Route path="create" element={<CreateBranch />} />
         </Route>
