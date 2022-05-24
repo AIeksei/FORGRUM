@@ -6,6 +6,7 @@ import validator from 'validator';
 import axios from 'axios';
 
 const Login = ()=>{
+    const idUser = 2;
     const location = useLocation();
     const navigate = useNavigate();
     const fromPage = location.state?.from?.pathname || '/';
@@ -21,7 +22,7 @@ const Login = ()=>{
             checked = false;
         }
        // if(checked)
-        signin(user, true, () => navigate("/main", {replace: true}));
+        signin(user, idUser, true, () => navigate("/main", {replace: true}));
     }
     function AuthAcc(event){
         let checked;
@@ -55,7 +56,7 @@ const Login = ()=>{
                     type='text' className='logininput'></input>
                 <button type="submit" value = "Войти" className = 'loginbutton'  ></button>
                 <div className='butreg'> 
-                <Link to="/registration" >У вас нет аккаунта?</Link>
+                <Link  to="/registration" >У вас нет аккаунта?</Link>
                 </div>
             </form>
             </div>

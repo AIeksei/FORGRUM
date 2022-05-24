@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { CustomLink } from '../Components/CustomLink'
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { UseAuth } from '../Hook/UseAuth';
 const Banner = ()=> {
-
+  const {userid} = UseAuth();
   return (
     <>
       <header className="banner">
@@ -12,7 +13,7 @@ const Banner = ()=> {
         <Link to="/main"> <div className="Page_header">FORGRUM </div></Link>
         </div>
         <div className="profile">
-        <CustomLink to="/profile/1" >профиль</CustomLink>
+        <CustomLink to={`/profile/${userid}`} >профиль</CustomLink>
   
         </div>
       </header>

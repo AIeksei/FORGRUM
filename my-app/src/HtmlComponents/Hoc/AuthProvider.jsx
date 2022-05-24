@@ -3,10 +3,13 @@ import { createContext, useState } from 'react';
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
-    const [user, setUser, mod, SetMod] = useState(null);
+    const [user, setUser] = useState(null);
+    const [userid, SetUserid] = useState(null);
+    const [mod, SetMod] = useState(null);
 
-    const signin = (newUser,mod, cb) => {
+    const signin = (newUser,userid, mod, cb) => {
         SetMod(mod);
+        SetUserid(userid)
         setUser(newUser);
         cb();
     }
@@ -15,7 +18,7 @@ export const AuthProvider = ({children}) => {
         cb();
     }
 
-    const value = {user, signin, signout};
+    const value = {user, userid, signin, signout};
 
     return <AuthContext.Provider value={value}>
         {children}
