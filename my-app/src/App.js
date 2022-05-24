@@ -12,7 +12,7 @@ import {Branch} from './HtmlComponents/pages/Branch';
 import { RequireAuth } from './HtmlComponents/Hoc/RequireAuth';
 import { AuthProvider } from './HtmlComponents/Hoc/AuthProvider';
 import { Notfoundpage } from './HtmlComponents/pages/NotFoundPage';
-
+import { Test } from './HtmlComponents/pages/test';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 //запуск приложения
@@ -27,6 +27,7 @@ function App() {
        <Route path="registration" element={<Registration />} />
        <Route path="confirm" element={<ConfirmMail />} />
        <Route path="*" element={<Notfoundpage />} />
+       <Route path="test" element={<Test />} />
        </Route>
         <Route path="/" element={<Banner />}>
           <Route path="/main" element={
