@@ -1,8 +1,10 @@
 import '../Css/Branch.css';
 import React from 'react';
 import {NoteList} from '../Components/NoteList'
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigate } from 'react-router-dom';
+import { NoteForm } from '../Components/NoteForm';
 const Branch = () => {
+	const navigate = useNavigate();
 	const Vetka = [
 		{branchid: 1,
 		notes:[
@@ -38,6 +40,21 @@ const Branch = () => {
 	]}
 ]
 //console.log(Vetka.branchid[1]);
+/*const handleSubmit = (event) => {
+	console.log("clicked")
+	navigate(0, {replace: true})
+  }*/
+  const handleSubmit = (event) => {
+	const form = document.getElementById("input");
+	const input = form.value;
+	const note = { id: 6, autor: "NewCHEL", text: input , img: "profile.png"}
+	for(let i = 0; i < 2; i++)
+	return (
+		<div>
+		<NoteForm note={note} />
+		</div>
+	)
+	}
 	const {branchid} = useParams();
 	return (
 		<div>
@@ -60,22 +77,23 @@ const Branch = () => {
 				</div>
 			</div>
 			{Vetka.map(notes => {
-				if (notes.branchid = branchid){
+				if (notes.branchid == branchid){
             return (
               <NoteList note={Vetka[branchid - 1]} />
             );}
           })}
 	
-
+		  <Outlet/>
 			<div className="comment">
 				<div className="photo">
 					<img className='size' src='profile.png'></img>
 					<div> Имя пользователя</div>
 				</div>
 				<div className='message'>
-					<textarea placeholder='Введите текст'
-					 name='text' className='msinput'></textarea>
+					<textarea id = "input" placeholder='Введите текст'
+					 name='text' className='msinput'/>
 				</div>
+				<button onClick = {()=>handleSubmit()} >Login</button>
 			</div>
 		</div>
 
