@@ -26,16 +26,20 @@ const Registration =() =>{
       if (email.trim() != '') {
        axios.post("http://localhost:8080/users/", {
            'name': name, 
-           'email': email, 
-           'isModerator': false, 
+           'email': email,
            'gender': gender,
             'phoneNumber' : number, 
             'password': password,
             'confirmPassword': passwordConfirm
+        },
+        {
+            headers: {
+                Authorization: 'Basic dXNlcjpwYXNz'
+          }
         }).then (function(res){
             alert(JSON.stringify(res));
         }).catch(function(e){
-           alert(e)
+           alert(JSON.stringify(e))
         })
     
       }

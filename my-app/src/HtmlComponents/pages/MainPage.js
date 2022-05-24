@@ -17,7 +17,9 @@ const MainPage =()=> {
     ]
     const [posts, setPosts] = useState([]);
     useEffect ( () => {
-      axios.get("http://localhost:8080/posts").then((resp) => {
+      axios.get("http://localhost:8080/posts", {headers: {
+        Authorization: 'Basic dXNlcjpwYXNz'
+  }}).then((resp) => {
           const allBranches =  resp.data;
           setPosts(allBranches)
       });
