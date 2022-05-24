@@ -34,7 +34,7 @@ const Registration =() =>{
         },
         {
             headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
+                Authorization: 'Basic dXNlcjpwYXNz' 
           }
         }).then (function(res){
             if(res.data.name != name)
