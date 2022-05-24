@@ -1,11 +1,11 @@
 import '../Css/Registration.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import {valid} from '../Components/ValidReg'
 import axios from "axios";
 const Registration =() =>{
+    const navigate = useNavigate();
     function onCreateUserButtonClick(event){
-   
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[3].value.trim();
     const number =  event.target.parentElement.children[5].value;
@@ -39,10 +39,13 @@ const Registration =() =>{
         }).then (function(res){
             if(res.data.name != name)
             document.getElementById("emERR").innerHTML = "Почта уже занята";
+            checked = false;
         }).catch(function(e){
            alert(e)
         })
-    
+    if(checked){
+        navigate('/confirm', {replace: true})
+    }
       }
 
     
@@ -76,7 +79,7 @@ const Registration =() =>{
                     </div>
                     <div  className = "Err" id = "genERR"></div>
                 </div>
-                <Link to = "/confirm"> <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input> </Link>
+                <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input>
                 <Link to="/login" >Уже есть профиль?</Link>
             </div>
         </div>
