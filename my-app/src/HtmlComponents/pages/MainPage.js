@@ -1,11 +1,13 @@
 import '../Css/MainPage.css';
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Branchlist} from '../Components/BranchList';
 import { FindingBranches } from '../Components/FindingTagAndTitle';
 import { SortListTitle } from '../Components/SortListTitle';
 import { SortListCount } from '../Components/SortListCount';
+import { Link } from 'react-router-dom' 
 import axios from 'axios';
+import { BranchForm } from '../Components/BranchForm';
 const MainPage =()=> {
     let branchesWas = [
         {id: 1, autor: "lol", count: 105, tag: "cats", title : "DOG" },
@@ -14,12 +16,14 @@ const MainPage =()=> {
         {id: 4, autor: "art", count: 14, tag: "major", title : "AFaze" }
     ]
     const [posts, setPosts] = useState([]);
-      axios.get("http://localhost:8080/posts")
-            .then (function(res){})
-            .then(data => setPosts(data))
-            .catch(function(e){
-            alert(e)
-         })
+    useEffect ( () => {
+      axios.get("http://localhost:8080/posts").then((resp) => {
+          const allBranches =  resp.data;
+          setPosts(allBranches)
+      });
+    },[setPosts]);
+
+        console.log(posts)
     return (
         <div className='bodyMain'>
             <div className='space_beetwen search'>
@@ -41,8 +45,15 @@ const MainPage =()=> {
                     <input type={"button"} value = "count L > M"  className="select" onClick={()=>SortListCount(document.getElementById("ul"), document.getElementsByClassName("count"), false)}/>
                 
             </div>
-        
-            <Branchlist branches = {branchesWas} />
+          {
+            posts.map(post => (
+                <Link key={post.id} to = {`/branch/${post.id}`}> 
+                <BranchForm
+                branches={post}
+                />
+                </Link>
+                ))
+            }
         </div>
     )
 }
