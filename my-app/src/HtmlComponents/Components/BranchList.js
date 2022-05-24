@@ -4,6 +4,7 @@ import {BranchForm} from './BranchForm'
 import { Link } from 'react-router-dom' 
 
 function Branchlist(props){
+  console.log(props)
     return (
       <ul className='branchList' id = "ul">
           {props.branches.map(branches => {

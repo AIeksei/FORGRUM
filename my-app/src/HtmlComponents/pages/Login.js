@@ -20,9 +20,28 @@ const Login = ()=>{
             checked = false;
         }
        // if(checked)
-        signin(user, () => navigate("/main", {replace: true}));
+        signin(user, true, () => navigate("/main", {replace: true}));
     }
+    function AuthAcc(event){
+        let checked;
+        const email = event.target.parentElement.children[1].value;
+        const password =  event.target.parentElement.children[2].value.trim();
 
+        
+          if (email.trim() != '') {
+           axios.post("http://localhost:8080/users/", {
+               'email': email, 
+                'password': password,
+            }).then (function(res){
+                alert(JSON.stringify(res));
+            }).catch(function(e){
+               alert(e)
+            })
+        
+          }
+    
+        
+    }
     return (
         <div className='bodyLogin'>
             <div className='borderLogin'>

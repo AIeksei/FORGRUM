@@ -2,6 +2,7 @@ import '../Css/Registration.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {valid} from '../Components/ValidReg'
+import axios from "axios";
 const Registration =() =>{
     function onCreateUserButtonClick(event){
     let checked;
@@ -19,7 +20,27 @@ const Registration =() =>{
          gender = radio.value;
       } 
     }  
-    checked = valid(email, name, password, passwordConfirm, number, gender);
+    
+    //checked = valid(email, name, password, passwordConfirm, number, gender);
+    
+      if (email.trim() != '') {
+       axios.post("http://localhost:8080/users/", {
+           'name': name, 
+           'email': email, 
+           'isModerator': false, 
+           'gender': gender,
+            'phoneNumber' : number, 
+            'password': password,
+            'confirmPassword': passwordConfirm
+        }).then (function(res){
+            alert(JSON.stringify(res));
+        }).catch(function(e){
+           alert(e)
+        })
+    
+      }
+
+    
 }
     return (
         <div className='bodyRegistration'>
