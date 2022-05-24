@@ -5,7 +5,7 @@ import {valid} from '../Components/ValidReg'
 import axios from "axios";
 const Registration =() =>{
     function onCreateUserButtonClick(event){
-    let checked;
+   
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[3].value.trim();
     const number =  event.target.parentElement.children[5].value;
@@ -14,16 +14,16 @@ const Registration =() =>{
 
     let radios = document.querySelectorAll('input[type="radio"]');
     let gender;
-    
+    let checked;
     for (let radio of radios) {
       if (radio.checked) { 
          gender = radio.value;
       } 
     }  
     
-    //checked = valid(email, name, password, passwordConfirm, number, gender);
+     checked = valid(email, name, password, passwordConfirm, number, gender);
     
-      if (email.trim() != '') {
+      if (checked) {
        axios.post("http://localhost:8080/users/", {
            'name': name, 
            'email': email,
@@ -37,9 +37,10 @@ const Registration =() =>{
                 Authorization: 'Basic dXNlcjpwYXNz'
           }
         }).then (function(res){
-            alert(JSON.stringify(res));
+            if(res.data.name != name)
+            document.getElementById("emERR").innerHTML = "Почта уже занята";
         }).catch(function(e){
-           alert(JSON.stringify(e))
+           alert(e)
         })
     
       }
@@ -75,8 +76,7 @@ const Registration =() =>{
                     </div>
                     <div  className = "Err" id = "genERR"></div>
                 </div>
-                
-                <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input>
+                <Link to = "/confirm"> <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input> </Link>
                 <Link to="/login" >Уже есть профиль?</Link>
             </div>
         </div>
