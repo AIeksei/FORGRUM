@@ -10,6 +10,6 @@ function censor(){
          } else {flag = false}
         }
     }
+    console.log(text)
 }
   export {censor};
-  
