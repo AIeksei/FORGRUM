@@ -3,9 +3,10 @@ import { createContext, useState } from 'react';
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser, mod, SetMod] = useState(null);
 
-    const signin = (newUser, cb) => {
+    const signin = (newUser,mod, cb) => {
+        SetMod(mod);
         setUser(newUser);
         cb();
     }
