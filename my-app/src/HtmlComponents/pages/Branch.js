@@ -3,48 +3,37 @@ import React from 'react';
 import {NoteList} from '../Components/NoteList'
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import { NoteForm } from '../Components/NoteForm';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 const Branch = () => {
 	const navigate = useNavigate();
-	const Vetka = [
-		{branchid: 1,
-		notes:[
-		{ id: 1, autor: "lol", text: "CAT" , img: "profile.png"},
-		{ id: 2, autor: "test", text: "DOG", img: "profile.png" },
-		{ id: 3, autor: "test1", text: "Navi", img: "profile.png" },
-		{ id: 4, autor: "art", text: "Faze", img: "profile.png" },
-		{ id: 5, autor: "Alexey", text: "Ya ustal hochu spat", img: "profile.png" }
-	]},
-	{branchid: 2,
-		notes: [
-		{ id: 1, autor: "test", text: "Navi" , img: "profile.png"},
-		{ id: 2, autor: "test", text: "Navi", img: "profile.png" },
-		{ id: 3, autor: "test", text: "Navi", img: "profile.png" },
-		{ id: 4, autor: "test", text: "Navi", img: "profile.png" },
-		{ id: 5, autor: "test", text: "Ya ustal hochu spat", img: "profile.png" }
-	]},
-	{branchid: 3,
-		notes: [
-		{ id: 1, autor: "lol", text: "lol" , img: "profile.png"},
-		{ id: 2, autor: "lol", text: "lol", img: "profile.png" },
-		{ id: 3, autor: "lol", text: "lol", img: "profile.png" },
-		{ id: 4, autor: "lol", text: "lol", img: "profile.png" },
-		{ id: 5, autor: "lol", text: "Ya ustal hochu spat", img: "profile.png" }
-	]},
-	{branchid: 4,
-		notes: [
-		{ id: 1, autor: "Faze", text: "Faze" , img: "profile.png"},
-		{ id: 2, autor: "Faze", text: "Faze", img: "profile.png" },
-		{ id: 3, autor: "Faze", text: "Faze", img: "profile.png" },
-		{ id: 4, autor: "Faze", text: "Faze", img: "profile.png" },
-		{ id: 5, autor: "Faze", text: "Faze", img: "profile.png" }
-	]}
-]
-//console.log(Vetka.branchid[1]);
+
 /*const handleSubmit = (event) => {
 	console.log("clicked")
 	navigate(0, {replace: true})
   }*/
-  const handleSubmit = (event) => {
+  const {branchid} = useParams();
+  const [notes, setNotes] = useState([]);
+	const [title, setTitle] = useState([]);
+	const [text, setText] = useState([]);
+    useEffect ( () => {
+      axios.get(`http://localhost:8080/comments/post/${branchid}`).then((resp) => {
+          const allBranches =  resp.data;
+          setNotes(allBranches)
+      });
+    },[setNotes]);
+
+    useEffect ( () => {
+      axios.get(`http://localhost:8080/posts/${branchid}`).then((resp) => {
+          const title =  resp.data.title;
+		  const text =  resp.data.text;
+          setTitle(title)
+		  setText(text)
+      });
+    },[setTitle,setText]);
+	
+
+  /*const handleSubmit = (event) => {
 	const form = document.getElementById("input");
 	const input = form.value;
 	const note = { id: 6, autor: "NewCHEL", text: input , img: "profile.png"}
@@ -54,8 +43,8 @@ const Branch = () => {
 		<NoteForm note={note} />
 		</div>
 	)
-	}
-	const {branchid} = useParams();
+	}*/
+
 	return (
 		<div>
 			<div className="branchBody">
@@ -66,8 +55,8 @@ const Branch = () => {
 					</div>
 					<div className='message'>
 						<div className='text'>
-							<div className='h'>Заголовок</div>
-							<div className='p'>Текст ветки</div>
+							<div className='h'>{title}</div>
+							<div className='p'>{text}</div>
 						</div>
 						<div className='ocenka'>
 							<img className='sizelike' src='Like.png'></img>
@@ -76,12 +65,12 @@ const Branch = () => {
 					</div>
 				</div>
 			</div>
-			{Vetka.map(notes => {
-				if (notes.branchid == branchid){
+			{notes.map(notes => {
+		
             return (
-              <NoteList note={Vetka[branchid - 1]} />
-            );}
-          })}
+              <NoteForm note={notes} />
+            );
+			})}
 	
 		  <Outlet/>
 			<div className="comment">
@@ -93,7 +82,7 @@ const Branch = () => {
 					<textarea id = "input" placeholder='Введите текст'
 					 name='text' className='msinput'/>
 				</div>
-				<button onClick = {()=>handleSubmit()} >Login</button>
+				<button >Login</button>
 			</div>
 		</div>
 

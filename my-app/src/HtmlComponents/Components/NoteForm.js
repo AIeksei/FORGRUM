@@ -2,7 +2,6 @@ import React from 'react'
 import "../Css/NoteList.css";
 
 function NoteForm({ note }) {
-    console.log (note)
     return (
         <div className='comment'>
             <div className='photo'>
