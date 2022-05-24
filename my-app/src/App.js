@@ -11,8 +11,9 @@ import {CreateBranch} from './HtmlComponents/pages/CreateBranch';
 import {Branch} from './HtmlComponents/pages/Branch';
 import { RequireAuth } from './HtmlComponents/Hoc/RequireAuth';
 import { AuthProvider } from './HtmlComponents/Hoc/AuthProvider';
+import { Notfoundpage } from './HtmlComponents/pages/NotFoundPage';
 
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 //запуск приложения
 
@@ -20,10 +21,12 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
        <Route path="/" element={<BannerReg />}>
        <Route path="login" element={<Login />} />
        <Route path="registration" element={<Registration />} />
        <Route path="confirm" element={<ConfirmMail />} />
+       <Route path="*" element={<Notfoundpage />} />
        </Route>
         <Route path="/" element={<Banner />}>
           <Route path="/main" element={
