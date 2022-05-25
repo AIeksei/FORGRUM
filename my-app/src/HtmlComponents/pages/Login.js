@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UseAuth } from '../Hook/UseAuth';
 import validator from 'validator';
 import axios from 'axios';
+import { encode } from 'base-64';
 
 const Login = ()=>{
     const idUser = 2;
@@ -13,24 +14,27 @@ const Login = ()=>{
     const {signin} = UseAuth();
 
     const handleSubmit = (event) => {
-        let checked = true;
+        let checked = false;
         event.preventDefault();
         const form = event.target;
-        const user = form.username.value;
-        if(!validator.isEmail(user)) {
+        const email = form.username.value;
+        const password = form.pass.value;
+       /* const email = event.target.parentElement.children[1].value;
+        const password =  event.target.parentElement.children[2].value.trim();*/
+       
+        let encoded = encode(email + ":" + password);
+       console.log(encoded)
+        /*if(!validator.isEmail(user)) {
             document.getElementById("emERR").innerHTML = "Введите почту";
             checked = false;
-        }
-       // if(checked)
-        signin(user, idUser, true, () => navigate("/main", {replace: true}));
+        }*/
+       /* if(checked)
+        signin(user, idUser, true, () => navigate("/main", {replace: true}));*/
     }
     function AuthAcc(event){
         let checked;
-        const email = event.target.parentElement.children[1].value;
-        const password =  event.target.parentElement.children[2].value.trim();
-
-        
-          if (email.trim() != '') {
+       
+         /* if (email.trim() != '') {
            axios.post("http://localhost:8080/users/", {
                'email': email, 
                 'password': password,
@@ -40,7 +44,9 @@ const Login = ()=>{
                alert(e)
             })
         
-          }    
+          }*/
+    
+        
     }
     return (
         <div className='bodyLogin'>           
@@ -50,8 +56,8 @@ const Login = ()=>{
                     type='text' className='logininput' name = "username"></input>
                      <div  className = "Err" id = "emERR"></div>
                 <input placeholder='Пароль'
-                    type='text' className='logininput'></input>
-                <button type="submit" className = 'loginbutton'>Войти</button>
+                    type='text' className='logininput' name = "pass"></input>
+                <button type="submit" value = "Войти" className = 'loginbutton'  ></button>
                 <div className='butreg'> 
                 <Link  to="/registration" >У вас нет аккаунта?</Link>
                 </div>

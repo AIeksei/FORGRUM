@@ -1,11 +1,11 @@
 import '../Css/Registration.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import {valid} from '../Components/ValidReg'
 import axios from "axios";
 const Registration =() =>{
+    const navigate = useNavigate();
     function onCreateUserButtonClick(event){
-    let checked;
     const email = event.target.parentElement.children[1].value;
     const name =  event.target.parentElement.children[3].value.trim();
     const number =  event.target.parentElement.children[5].value;
@@ -14,16 +14,16 @@ const Registration =() =>{
 
     let radios = document.querySelectorAll('input[type="radio"]');
     let gender;
-    
+    let checked;
     for (let radio of radios) {
       if (radio.checked) { 
          gender = radio.value;
       } 
     }  
     
-    //checked = valid(email, name, password, passwordConfirm, number, gender);
+     checked = valid(email, name, password, passwordConfirm, number, gender);
     
-      if (email.trim() != '') {
+      if (checked) {
        axios.post("http://localhost:8080/users/", {
            'name': name, 
            'email': email,
@@ -34,14 +34,18 @@ const Registration =() =>{
         },
         {
             headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
+                Authorization: 'Basic dXNlcjpwYXNz' 
           }
         }).then (function(res){
-            alert(JSON.stringify(res));
+            if(res.data.name != name)
+            document.getElementById("emERR").innerHTML = "Почта уже занята";
+            checked = false;
         }).catch(function(e){
-           alert(JSON.stringify(e))
+           alert(e)
         })
-    
+    if(checked){
+        navigate('/confirm', {replace: true})
+    }
       }
 
     
@@ -75,7 +79,6 @@ const Registration =() =>{
                     </div>
                     <div  className = "Err" id = "genERR"></div>
                 </div>
-                
                 <input  type='button' value="Зарегестрироваться" className='regbutton' onClick={onCreateUserButtonClick}></input>
                 <Link to="/login" >Уже есть профиль?</Link>
             </div>

@@ -16,22 +16,45 @@ const Branch = () => {
   const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState([]);
 	const [text, setText] = useState([]);
+  //запрос на вывод коментов под постом
     useEffect ( () => {
-      axios.get(`http://localhost:8080/comments/post/${branchid}`).then((resp) => {
+      axios.get(`http://localhost:8080/comments/post/${branchid}`,
+		 {
+			 headers: {
+				 Authorization: 'Basic dXNlcjpwYXNz' 
+		   }
+		}).then((resp) => {
           const allBranches =  resp.data;
           setNotes(allBranches)
       });
     },[setNotes]);
-
+//запрос на вывод корневого сообщения
     useEffect ( () => {
-      axios.get(`http://localhost:8080/posts/${branchid}`).then((resp) => {
+      axios.get(`http://localhost:8080/posts/${branchid}`,
+	  {
+		headers: {
+			Authorization: 'Basic dXNlcjpwYXNz' 
+	  }
+   }).then((resp) => {
           const title =  resp.data.title;
 		  const text =  resp.data.text;
           setTitle(title)
 		  setText(text)
       });
     },[setTitle,setText]);
-	
+//запрос на отправление нового сообщения
+	axios.post("http://localhost:8080/comments/", {
+			'text': text, 
+			'commentOwnerID': title,
+		 },
+		 {
+			 headers: {
+				 Authorization: 'Basic dXNlcjpwYXNz' 
+		   }
+		});
+
+
+
 
   /*const handleSubmit = (event) => {
 	const form = document.getElementById("input");
