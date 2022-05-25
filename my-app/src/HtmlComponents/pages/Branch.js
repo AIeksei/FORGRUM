@@ -5,6 +5,7 @@ import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import { NoteForm } from '../Components/NoteForm';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {like, dislike,deleteBranch} from '../Components/buttons'
 const Branch = () => {
 	const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const Branch = () => {
           setNotes(allBranches)
       });
     },[setNotes]);
+	console.log(notes);
 //запрос на вывод корневого сообщения
     useEffect ( () => {
       axios.get(`http://localhost:8080/posts/${branchid}`,
@@ -43,15 +45,46 @@ const Branch = () => {
       });
     },[setTitle,setText]);
 //запрос на отправление нового сообщения
-	axios.post("http://localhost:8080/comments/", {
+let newNote = [{
+	'text': 'text',
+	'commentOwnerID': 2,
+	'postID' : 2
+},
+{
+	'text': 'text',
+	'commentOwnerID': 2,
+	'postID' : 2
+}
+]
+function newNotesButton(event) {
+	
+	 newNote = {
+		'text': 'text',
+		'commentOwnerID': 2,
+		'postID' : 2
+	}
+	console.log("click")
+};
+useEffect ( () => {
+setNotes(newNote)
+},[setNotes]);
+
+const deleteBranched = ()=>{
+  deleteBranch()
+  navigate('/main', {replace: true})
+}
+
+	/*axios.post("http://localhost:8080/comments/", {
 			'text': text, 
-			'commentOwnerID': title,
+			'commentOwnerID': 2,
+			'postID' : 2
 		 },
 		 {
 			 headers: {
 				 Authorization: 'Basic dXNlcjpwYXNz' 
 		   }
-		});
+		});*/
+
 
 
 
@@ -82,14 +115,14 @@ const Branch = () => {
 							<div className='p'>{text}</div>
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png'></img>
-							<img className='sizedislike' src='../DisLike.png'></img>
+						<img className='sizelike' src='../Like.png' onClick={like}></img>
+                   		 <img className='sizedislike' src='../DisLike.png' onClick={dislike}></img>
+						<img className='sizedislike' src='../Delete.png' onClick={deleteBranched}></img>
 						</div>
 					</div>
 				</div>
 			</div>
 			{notes.map(notes => {
-		
             return (
               <NoteForm note={notes} />
             );
@@ -104,7 +137,7 @@ const Branch = () => {
 				<div className='message sendColumn'>
 					<textarea id = "input" placeholder='Введите текст'
 					 name='text' className='msinput'/>
-					 <button className='sendButton' >Отправить</button>
+					 <button className='sendButton' onClick= {newNotesButton} >Отправить</button>
 				</div>				
 			</div>
 		</div>
