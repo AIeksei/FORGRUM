@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { UseAuth } from '../Hook/UseAuth';
 const Banner = ()=> {
-  const {userid} = UseAuth();
+  const {id} = UseAuth();
   return (
     <>
       <header className="banner">
@@ -13,7 +13,7 @@ const Banner = ()=> {
         <CustomLink to="/main" className=' Page_header'><div className="forgrum">FORGRUM </div></CustomLink>
         </div>
         <div className="profile">
-        <CustomLink to={`/profile/${userid}`} >профиль</CustomLink>
+        <CustomLink to={`/profile/${id}`} >профиль</CustomLink>
   
         </div>
       </header>
