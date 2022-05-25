@@ -24,12 +24,14 @@ const Login = ()=>{
        
         let encoded = encode(email + ":" + password);
        console.log(encoded)
+       navigate("/main", {replace: true})
+      // signin(user, idUser, true, () => navigate("/main", {replace: true}));
         /*if(!validator.isEmail(user)) {
             document.getElementById("emERR").innerHTML = "Введите почту";
             checked = false;
         }*/
        /* if(checked)
-        signin(user, idUser, true, () => navigate("/main", {replace: true}));*/
+        */
     }
     function AuthAcc(event){
         let checked;
@@ -57,7 +59,7 @@ const Login = ()=>{
                      <div  className = "Err" id = "emERR"></div>
                 <input placeholder='Пароль'
                     type='text' className='logininput' name = "pass"></input>
-                <button type="submit" value = "Войти" className = 'loginbutton'  ></button>
+                <button type="submit"  className = 'loginbutton'>Войти</button>
                 <div className='butreg'> 
                 <Link  to="/registration" >У вас нет аккаунта?</Link>
                 </div>
