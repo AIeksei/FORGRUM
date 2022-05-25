@@ -1,12 +1,3 @@
-//запрос на удаление коментарий
-axios.delete("http://localhost:8080/comments/{id}", {
-	'id': title,
- },
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
 
 //обновление коментария
 axios.put("http://localhost:8080/comments", {
@@ -56,21 +47,6 @@ axios.get("http://localhost:8080/users/{id}/avatar",
    }
 });
 
-//запрос на + рейт
-axios.get("http://localhost:8080/rating/up/{id}",
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
-
-//запрос на - рейт
-axios.get("http://localhost:8080/rating/down/{id}",
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
 
 //изменение имени
 axios.put("http://localhost:8080/users", {
@@ -123,10 +99,3 @@ axios.put("http://localhost:8080/posts/{id}", {
    }
 });
 
-//посты для пользователя
-axios.put("http://localhost:8080/posts/user/{id}", 
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
