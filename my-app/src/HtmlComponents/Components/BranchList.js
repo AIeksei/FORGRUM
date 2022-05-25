@@ -1,7 +1,8 @@
 import React from 'react'
 import '../Css/BranchList.css'
 import {BranchForm} from './BranchForm'
-import { Link } from 'react-router-dom' 
+import { CustomLink } from '../Components/CustomLink'
+
 
 function Branchlist(props){
   console.log(props)
@@ -9,11 +10,11 @@ function Branchlist(props){
       <ul className='branchList' id = "ul">
           {props.branches.map(branches => {
             return (
-              <Link key={branches.id} to = {`/branch/${branches.id}`}> 
+              <CustomLink className='noDecor' key={branches.id} to = {`/branch/${branches.id}`}> 
               <BranchForm
               branches={branches}
               />
-              </Link>
+              </CustomLink>
             );
           })}
        </ul>

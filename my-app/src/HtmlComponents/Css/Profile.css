@@ -1,23 +1,22 @@
 .bodyProfile {
-
     margin: 10vh 5vw;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
+
 
 .user {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 10%;
-    
-  
 }
 .userInfo{
     width: 30%;
 }
 .userSize {
-    width: 110px;
+    margin-right: 18%;
     height: 110px;
     border-radius: 100px;
     border: 1px solid;
@@ -25,6 +24,7 @@
 
 .points {
     width: fit-content;
+    margin-right: 17%;
 }
 
 .edit {
@@ -36,7 +36,6 @@
 .name {
     display: flex;
     align-items: center;
-
 }
 
 .profborder {
@@ -53,7 +52,7 @@
 }
 
 .recEndExit {
-    margin: 0 auto;
+    margin-right: 7.5%;
    width: 40%;
 }
 

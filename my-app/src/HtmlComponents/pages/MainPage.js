@@ -26,25 +26,44 @@ const MainPage =()=> {
     },[setPosts]);
 
         console.log(posts)
+        const SortListTitles = ()=>{
+            SortListTitle(document.getElementById("ul"), 
+            document.getElementsByClassName("titleBranch"));}
+
+        const SortListrise = ()=>{
+            SortListCount(document.getElementById("ul"), 
+            document.getElementsByClassName("count"), true);}
+
+        const sortListdecreasing = ()=>{
+            SortListCount(document.getElementById("ul"),
+             document.getElementsByClassName("count"), false);}
+
+        const FindingBranchesTag = ()=>{
+            FindingBranches(document.getElementById("ul"),
+            document.getElementById("tagFind"), document.getElementsByClassName("tags"));}
+
+        const FindingBranchesTitle = ()=>{
+            FindingBranches(document.getElementById("ul"),
+            document.getElementById("titleFind"), document.getElementsByClassName("titleBranch"));}
     return (
         <div className='bodyMain'>
             <div className='space_beetwen search'>
                 <div className='search'>
-                    <img className='searchImg' src='search.png' ></img>
+                    <img className='searchImg' src='search.png'></img>
                     <input type="text" className="searchInput" placeholder="Поиск по тегу" id ="tagFind" 
-                    onKeyUp={()=>{FindingBranches(document.getElementById("ul"),document.getElementById("tagFind"), document.getElementsByClassName("tags"));}}></input>
+                    onKeyUp={FindingBranchesTag}></input>
                 </div>
                 <div className='search'>
-                    <img className='searchImg' src='search.png' ></img>
+                    <img className='searchImg' src='search.png'></img>
                     <input type="text" className="searchInput" placeholder="Поиск по заголовку" id ="titleFind" 
-                    onKeyUp={()=>{FindingBranches(document.getElementById("ul"),document.getElementById("titleFind"), document.getElementsByClassName("titleBranch"));}}></input>
+                    onKeyUp={FindingBranchesTitle}></input>
                 </div>
             </div>
-            <div className="Sort">
+            <div className="Sort">Сортировка
              
-                    <input type={"button"} value = "title"  className="select" onClick={()=>SortListTitle(document.getElementById("ul"), document.getElementsByClassName("titleBranch"))}/>
-                    <input type={"button"} value = "count M > L"  className="select" onClick={()=>SortListCount(document.getElementById("ul"), document.getElementsByClassName("count"), true)}/>
-                    <input type={"button"} value = "count L > M"  className="select" onClick={()=>SortListCount(document.getElementById("ul"), document.getElementsByClassName("count"), false)}/>
+                    <input type={"button"} value = "title" className="select" onClick={SortListTitles}/>
+                    <input type={"button"} value = "count M > L" className="select" onClick={SortListrise}/>
+                    <input type={"button"} value = "count L > M" className="select" onClick={sortListdecreasing}/>
                 
             </div>
           {
@@ -55,7 +74,8 @@ const MainPage =()=> {
                 />
                 </Link>
                 ))
-            }
+            
+                 }
         </div>
     )
 }

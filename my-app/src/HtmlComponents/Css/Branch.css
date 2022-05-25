@@ -37,6 +37,7 @@
 
 .message {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
 	height: 100%;
@@ -81,4 +82,13 @@
 	width: 80%;
 	height: 100px;
 	overflow: hidden;
+}
+.sendButton{
+	margin-top: 1.5%;
+width: 12%;
+}
+.sendColumn{
+
+	flex-direction: column;
+	
 }

@@ -50,7 +50,7 @@ const Branch = () => {
 			<div className="branchBody">
 				<div className="comment">
 					<div className="photo">
-						<img className='size' src='profile.png'></img>
+						<img className='size' src='../profile.png'></img>
 						<div className='user_name'> Имя пользователя</div>
 					</div>
 					<div className='message'>
@@ -59,8 +59,8 @@ const Branch = () => {
 							<div className='p'>{text}</div>
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='Like.png'></img>
-							<img className='sizedislike' src='DisLike.png'></img>
+							<img className='sizelike' src='../Like.png'></img>
+							<img className='sizedislike' src='../DisLike.png'></img>
 						</div>
 					</div>
 				</div>
@@ -75,14 +75,14 @@ const Branch = () => {
 		  <Outlet/>
 			<div className="comment">
 				<div className="photo">
-					<img className='size' src='profile.png'></img>
+					<img className='size' src='../profile.png'></img>
 					<div> Имя пользователя</div>
 				</div>
-				<div className='message'>
+				<div className='message sendColumn'>
 					<textarea id = "input" placeholder='Введите текст'
 					 name='text' className='msinput'/>
-				</div>
-				<button >Login</button>
+					 <button className='sendButton' >Отправить</button>
+				</div>				
 			</div>
 		</div>
 

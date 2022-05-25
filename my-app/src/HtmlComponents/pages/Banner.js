@@ -10,7 +10,7 @@ const Banner = ()=> {
     <>
       <header className="banner">
         <div className="header">
-        <Link to="/main"> <div className="Page_header">FORGRUM </div></Link>
+        <CustomLink to="/main" className=' Page_header'><div className="forgrum">FORGRUM </div></CustomLink>
         </div>
         <div className="profile">
         <CustomLink to={`/profile/${userid}`} >профиль</CustomLink>

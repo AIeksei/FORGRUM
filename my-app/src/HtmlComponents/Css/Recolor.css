@@ -1,0 +1,25 @@
+.invisible{
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.colours{
+    position: relative;
+    float: left;
+    top: 70px;
+}
+.red{
+color: red;
+}
+.green{
+color: green;
+}
+.blue{
+color:blue;
+}
+.black{
+color:black;
+}

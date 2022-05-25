@@ -40,26 +40,22 @@ const Login = ()=>{
                alert(e)
             })
         
-          }
-    
-        
+          }    
     }
     return (
-        <div className='bodyLogin'>
-            <div className='borderLogin'>
-            <form onSubmit={handleSubmit}>
+        <div className='bodyLogin'>           
+            <form  className='borderLogin' onSubmit={handleSubmit}>
                 <p className='preg'>Авторизация</p>
                 <input placeholder='e-mail'
                     type='text' className='logininput' name = "username"></input>
                      <div  className = "Err" id = "emERR"></div>
                 <input placeholder='Пароль'
                     type='text' className='logininput'></input>
-                <button type="submit" value = "Войти" className = 'loginbutton'  ></button>
+                <button type="submit" className = 'loginbutton'>Войти</button>
                 <div className='butreg'> 
                 <Link  to="/registration" >У вас нет аккаунта?</Link>
                 </div>
-            </form>
-            </div>
+            </form>    
         </div>
     )
 }
