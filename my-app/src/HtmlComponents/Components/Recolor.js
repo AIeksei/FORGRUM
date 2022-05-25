@@ -39,6 +39,14 @@ function Colours() {
                 value="#000000" onClick={(e) => { e.preventDefault() 
                     changeColor('black');
                     }}></input>
+                   <input type="color" className="colour invisible" name=""
+                value="#FFD700" onClick={(e) => { e.preventDefault() 
+                    changeColor('gold');
+                    }}></input>
+                     <input type="color" className="colour invisible" name=""
+                value="#FF1493" onClick={(e) => { e.preventDefault() 
+                    changeColor('pink');
+                    }}></input>
         </div>
 
     );

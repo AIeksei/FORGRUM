@@ -1,7 +1,11 @@
 import React from 'react'
 import "../Css/NoteList.css";
+import {checkForMarks} from "./ToMark"
 
 function NoteForm({ note }) {
+    
+   let newText =checkForMarks(note.text);
+   console.log(newText);
     return (
         <div className='comment'>
             <div className='photo'>
@@ -9,13 +13,12 @@ function NoteForm({ note }) {
                 <div> {note.autor} </div>
             </div>
             <div className='message'>
-                <div> {note.text} </div>
+                <div dangerouslySetInnerHTML={newText} ></div>
                 <div className='ocenka'>
                     <img className='sizelike' src='Like.png'></img>
                     <img className='sizedislike' src='DisLike.png'></img>
                 </div>
-            </div>
-            
+            </div>       
         </div>
     )
 }

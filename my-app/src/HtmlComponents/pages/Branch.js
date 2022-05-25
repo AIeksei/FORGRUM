@@ -16,6 +16,13 @@ const Branch = () => {
   const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState([]);
 	const [text, setText] = useState([]);
+	const notes2 =[
+		{ id: 1, autor: "lol", text: "CAT" , img: "profile.png"},
+		{ id: 2, autor: "test", text: "DOG @gg, @dog", img: "profile.png" },
+		{ id: 3, autor: "test1", text: "Navi", img: "profile.png" },
+		{ id: 4, autor: "art", text: "Faze", img: "profile.png" },
+		{ id: 5, autor: "Alexey", text: "Ya ustal hochu spat", img: "profile.png" }
+	]
   //запрос на вывод коментов под постом
     useEffect ( () => {
       axios.get(`http://localhost:8080/comments/post/${branchid}`,
@@ -67,7 +74,6 @@ const Branch = () => {
 		</div>
 	)
 	}*/
-
 	return (
 		<div>
 			<div className="branchBody">
@@ -88,11 +94,11 @@ const Branch = () => {
 					</div>
 				</div>
 			</div>
-			{notes.map(notes => {
-		
-            return (
-              <NoteForm note={notes} />
-            );
+			{notes2.map(note => {
+				console.log("Jopa "+note.text);
+				return (
+					<NoteForm note={note} />
+				);
 			})}
 	
 		  <Outlet/>
@@ -102,9 +108,9 @@ const Branch = () => {
 					<div> Имя пользователя</div>
 				</div>
 				<div className='message sendColumn'>
-					<textarea id = "input" placeholder='Введите текст'
+					<textarea id = "inputComment" placeholder='Введите текст'
 					 name='text' className='msinput'/>
-					 <button className='sendButton' >Отправить</button>
+					 <button className='sendButton'>Отправить</button>
 				</div>				
 			</div>
 		</div>

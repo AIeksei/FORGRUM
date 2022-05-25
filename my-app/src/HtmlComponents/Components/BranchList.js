@@ -3,7 +3,6 @@ import '../Css/BranchList.css'
 import {BranchForm} from './BranchForm'
 import { CustomLink } from '../Components/CustomLink'
 
-
 function Branchlist(props){
   console.log(props)
     return (
