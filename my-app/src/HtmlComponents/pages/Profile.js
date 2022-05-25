@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchForm';
+import { CustomLink } from '../Components/CustomLink';
 const Profile = () => {
     const { id } = useParams();
     const { signout } = UseAuth();
@@ -78,7 +79,9 @@ const Profile = () => {
                     <p>Ветки в которых принимается участие</p>
                     {
             posts.map(post => (
+                <CustomLink key={post.id} to = {`/branch/${post.id}`}> 
                 <BranchForm branches={post} />
+                </CustomLink>
                 ))
             
                  }
