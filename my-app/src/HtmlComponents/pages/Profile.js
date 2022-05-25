@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
+import { BranchForm } from '../Components/BranchForm';
 const Profile = () => {
     const { id } = useParams();
     const { signout } = UseAuth();
@@ -13,24 +14,42 @@ const Profile = () => {
     const [name, setName] = useState([]);
     const [email, setEmail] = useState([]);
     const [numb, setNumb] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [rate, setRate] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:8080/users/${id}`).then((resp) => {
+        axios.get(`http://localhost:8080/users/${id}`, 
+         {
+            headers: {
+                Authorization: 'Basic dXNlcjpwYXNz' 
+          }
+       }).then((resp) => {
             console.log(resp)
             const name = resp.data.name;
             const email = resp.data.email;
             const numb = resp.data.phoneNumber;
+            const rate = resp.data.rating;
             setName(name)
             setEmail(email)
             setNumb(numb)
-        });
-    }, [setNumb, setEmail, setName]);
+            setRate(rate)
+        },
+       )
+       axios.get(`http://localhost:8080/posts/user/${id}`, 
+     {
+	     headers: {
+		     Authorization: 'Basic dXNlcjpwYXNz' 
+      }
+    }).then((resp) => {
+        const allBranches =  resp.data;
+        setPosts(allBranches);
+    })}, [setNumb, setEmail, setName, setPosts, setRate]);
     const reName = () => { rename(document.getElementById("UserName")) },
         out = () => signout(() => navigate('/login', { replace: true }));
     return (
         <div className='bodyProfile'>
             <div className='user'>
                 <img className='userSize' src='../profile.png'></img>
-                <div className='points'>Очки</div>
+                <div className='points'>Очки {rate}</div>
             </div>
             <div className='userInfo'>
                 <div className='profborder'>
@@ -57,6 +76,12 @@ const Profile = () => {
             <div className='recEndExit'>
                 <div className='record'>
                     <p>Ветки в которых принимается участие</p>
+                    {
+            posts.map(post => (
+                <BranchForm branches={post} />
+                ))
+            
+                 }
                 </div>
                 <button className='marginRight0' onClick={out}>Выйти из аккаунта</button>
             </div>
