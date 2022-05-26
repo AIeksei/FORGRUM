@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 function deleteComm(id, encoded){
+    alert(encoded)
     axios.delete(`http://localhost:8080/comments/${id}`,{
          headers: {
             Authorization: 'Basic ' + encoded

@@ -11,6 +11,7 @@ import { CustomLink } from '../Components/CustomLink';
 const Profile = ({ profile }) => {
     const { id } = useParams();
     const user = UseAuth();
+    console.log(user.id)
     const { signout } = UseAuth();
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);

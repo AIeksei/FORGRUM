@@ -99,9 +99,9 @@ const Branch = () => {
 							<div className='p' id="userComment" onClick={reName}>{text}</div>
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user)}></img>
-							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user)}></img>
-							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user, navigate)}></img>) : (<></>)}
+							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code )}></img>
+							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user.code )}></img>
+							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user.code , navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
