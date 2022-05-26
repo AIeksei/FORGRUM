@@ -23,18 +23,11 @@ const Profile = ({ profile }) => {
     const [language, setLanguage] = useState(null);
     const [enabled, setEnabled] = useState(null);
     const [nameColor, setNameColor] = useState(null);
-    const [moderator, setModerator] = useState(null);
-
-    const avatarSelected = (e) => {
-        console.log(e.target.files[0]);
-
-        console.log(e.target.files[0]);
-        //e.target.files[0];
+    const [moderator, setModerator] = useState(null);    const avatarSelected = (e) => {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             document.getElementById('img1').src = fileReader.result;
         }
-        console.log(e.target.files[0]);
         fileReader.readAsDataURL(e.target.files[0]);
 
     }
@@ -50,10 +43,12 @@ const Profile = ({ profile }) => {
                 const email = resp.data.email;
                 const numb = resp.data.phoneNumber;
                 const rate = resp.data.rating;
+                const nameColor = resp.data.nameColor;
                 setName(name)
                 setEmail(email)
                 setNumb(numb)
                 setRate(rate)
+                setNameColor(nameColor)
             },
             )
         axios.get(`http://localhost:8080/posts/user/${id}`,
@@ -161,7 +156,7 @@ out = () => signout(() => navigate('/login', { replace: true }));
                     <p>{email}</p>
                 </div>
                 <div className='profborder'>
-                    <p id="UserName" className='black'>User{name}</p>
+                    <p id="UserName" className= {nameColor}>{name}</p>
                     {user.id == id ?(
                     <div>
                         <img className='edit' src='../Edit.png'  onClick={reName}></img>
