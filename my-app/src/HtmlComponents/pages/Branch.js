@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {like, dislike,deleteBranch} from '../Components/buttons'
 import { UseAuth } from '../Hook/UseAuth';
+import { EditText } from '../Components/EditText';
 const Branch = () => {
 	const navigate = useNavigate();
 	const user = UseAuth();
@@ -109,6 +110,9 @@ const deleteBranched = ()=>{
 		   }
 		});
 	}*/
+	const reName = () => {
+		EditText(document.getElementById("userComment"))
+	}
 	return (
 		<div>
 			<div className="branchBody">
@@ -120,7 +124,7 @@ const deleteBranched = ()=>{
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							<div className='p'>{text}</div>
+							<div className='p'id="userComment" onClick={reName}>{text}</div>
 						</div>
 						<div className='ocenka'>
 						<img className='sizelike' src='../Like.png' onClick={like}></img>
