@@ -18,13 +18,9 @@ const Branch = () => {
   const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState([]);
 	const [text, setText] = useState([]);
-	const notes2 =[
-		{ id: 1, autor: "lol", text: "CAT" , img: "profile.png"},
-		{ id: 2, autor: "test", text: "DOG @gg, @dog", img: "profile.png" },
-		{ id: 3, autor: "test1", text: "Navi", img: "profile.png" },
-		{ id: 4, autor: "art", text: "Faze", img: "profile.png" },
-		{ id: 5, autor: "Alexey", text: "Ya ustal hochu spat", img: "profile.png" }
-	]
+	const [id, setUserId] = useState([]);
+	const [userName, setUserName] = useState([]);
+
   //запрос на вывод коментов под постом
     useEffect ( () => {
       axios.get(`http://localhost:8080/comments/post/${branchid}`,
@@ -48,10 +44,21 @@ const Branch = () => {
    }).then((resp) => {
           const title =  resp.data.title;
 		  const text =  resp.data.text;
+		  const id =  resp.data.postOwnerID;
           setTitle(title)
 		  setText(text)
-      });
-    },[setTitle,setText]);
+		  setUserId(id)
+      }).then(function(){
+		axios.get(`http://localhost:8080/users/${id}`,
+	  {
+		headers: {
+			Authorization: 'Basic dXNlcjpwYXNz' 
+	  }
+	  }).then((resp) => {
+		const userName =  resp.data.name;
+		setUserName(userName)
+	  });
+    })},[setTitle,setText]);
 //запрос на отправление нового сообщения
 let newNote = [{
 	'text': 'text',
@@ -114,7 +121,7 @@ const deleteBranched = ()=>{
 				<div className="comment">
 					<div className="photo">
 						<img className='size' src='../profile.png'></img>
-						<div className='user_name'> Имя пользователя</div>
+						<div className='user_name'> {userName}</div>
 					</div>
 					<div className='message'>
 						<div className='text'>
@@ -139,7 +146,7 @@ const deleteBranched = ()=>{
 			<div className="comment">
 				<div className="photo">
 					<img className='size' src='../profile.png'></img>
-					<div> Имя пользователя</div>
+					<div> {user.name}</div>
 				</div>
 				<div className='message sendColumn'>
 					<textarea id = "inputComment" placeholder='Введите текст'

@@ -33,7 +33,8 @@ const Login = ()=>{
                 alert(JSON.stringify(res.data));
                 let id = res.data.id;
                 let isModerator = res.data.moderator; 
-                signin(id, isModerator, () => navigate("/main", {replace: true}));
+                let name = res.data.name; 
+                signin(id, isModerator, name, () => navigate("/main", {replace: true}));
             }).catch(function(e){
                alert(e)
             })

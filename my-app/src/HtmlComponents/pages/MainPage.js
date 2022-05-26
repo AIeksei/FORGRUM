@@ -9,12 +9,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchForm';
 const MainPage =()=> {
-    let branchesWas = [
-        {id: 1, autor: "lol", count: 105, tag: "cats", title : "DOG" },
-        {id: 2, autor: "test", count: 24, tag: "dogs", title : "CAT" },
-        {id: 3, autor: "test1", count: 32, tag: "major", title : "Navi" },
-        {id: 4, autor: "art", count: 14, tag: "major", title : "AFaze" }
-    ]
+
     const [posts, setPosts] = useState([]);
     useEffect ( () => {
       axios.get("http://localhost:8080/posts", {headers: {
@@ -24,6 +19,7 @@ const MainPage =()=> {
           setPosts(allBranches)
       });
     },[setPosts]);
+
 
         console.log(posts)
         const SortListTitles = ()=>{
@@ -66,6 +62,7 @@ const MainPage =()=> {
                     <input type={"button"} value = "count L > M" className="select" onClick={sortListdecreasing}/>
                 
             </div>
+            <ul className='branchList' id = "ul">
           {
             posts.map(post => (
                 <Link key={post.id} to = {`/branch/${post.id}`}> 
@@ -76,6 +73,7 @@ const MainPage =()=> {
                 ))
             
                  }
+                 </ul>
         </div>
     )
 }
