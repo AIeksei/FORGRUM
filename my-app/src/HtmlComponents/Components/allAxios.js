@@ -10,16 +10,6 @@ axios.put("http://localhost:8080/comments", {
    }
 });
 
-//Количество элементов в посте
-axios.put("http://localhost:8080/comments/count/{postId}", {
-	'postId': title,
- },
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
-
 //запрос на блокировку пользователя
 axios.get("http://localhost:8080/users/disable/{userId}",
  {
@@ -77,15 +67,6 @@ axios.get("http://localhost:8080/tags/post/{id}",
    }
 });
 
-//удаление поста
-axios.delete("http://localhost:8080/posts/{id}", {
-	'id': title,
- },
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
 
 //обновление поста
 axios.put("http://localhost:8080/posts/{id}", {

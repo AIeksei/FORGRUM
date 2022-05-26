@@ -64,32 +64,34 @@ let newNote = [{
 	'text': 'text',
 	'commentOwnerID': 2,
 	'postID' : 2
-},
-{
-	'text': 'text',
-	'commentOwnerID': 2,
-	'postID' : 2
 }
 ]
 function newNotesButton(event) {
-	
-	 newNote = {
-		'text': 'text',
-		'commentOwnerID': 2,
-		'postID' : 2
-	}
-	console.log("click")
+	let textMessage = document.getElementById('inputComment')
+	console.log(textMessage.value)
+	axios.post("http://localhost:8080/comments/", {
+		'text': textMessage.value, 
+		'commentOwnerID': user.id,
+		'postID' : branchid
+	 },
+	 {
+		 headers: {
+			 Authorization: 'Basic dXNlcjpwYXNz' 
+	   }
+	});
 };
-useEffect ( () => {
-setNotes(newNote)
-},[setNotes]);
 
 const deleteBranched = ()=>{
   deleteBranch()
   navigate('/main', {replace: true})
 }
 
-	/*axios.post("http://localhost:8080/comments/", {
+
+/*
+  	const handleSubmit = (event) => {
+	const form = document.getElementById("input");
+	const input = form.value;
+	axios.post("http://localhost:8080/comments/", {
 			'text': text, 
 			'commentOwnerID': 2,
 			'postID' : 2
@@ -98,22 +100,7 @@ const deleteBranched = ()=>{
 			 headers: {
 				 Authorization: 'Basic dXNlcjpwYXNz' 
 		   }
-		});*/
-
-
-
-
-
-  /*const handleSubmit = (event) => {
-	const form = document.getElementById("input");
-	const input = form.value;
-	const note = { id: 6, autor: "NewCHEL", text: input , img: "profile.png"}
-	for(let i = 0; i < 2; i++)
-	return (
-		<div>
-		<NoteForm note={note} />
-		</div>
-	)
+		});
 	}*/
 	return (
 		<div>
@@ -142,7 +129,6 @@ const deleteBranched = ()=>{
             );
 			})}
 	
-		  <Outlet/>
 			<div className="comment">
 				<div className="photo">
 					<img className='size' src='../profile.png'></img>
