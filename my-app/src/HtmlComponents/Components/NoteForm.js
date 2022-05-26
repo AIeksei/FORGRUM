@@ -3,14 +3,17 @@ import "../Css/NoteList.css";
 import {like, dislike, deleteComm} from './buttons'
 import {checkForMarks} from "./ToMark"
 import { UseAuth } from '../Hook/UseAuth';
+import { useNavigate } from 'react-router-dom';
 
 function NoteForm({ note }) {
+   const navigate = useNavigate();
    const user = UseAuth();
-    console.log(note.id)
+
+
     return (
         <div className='comment'>
             <div className='photo'>
-                <div> <img className='size' src={note.img} /> </div>
+                <div> <img className='size' src={note.img} onClick = {() => navigate(`/profile/${note.commentOwnerID}`, {replace: false}) } /> </div>
                 <div> {note.autor} </div>
             </div>
             <div className='message'>

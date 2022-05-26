@@ -19,7 +19,7 @@ const Branch = () => {
   const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState([]);
 	const [text, setText] = useState([]);
-	const [id, setUserId] = useState([]);
+	const [Ownerid, setUserId] = useState([]);
 	const [userName, setUserName] = useState([]);
 
   //запрос на вывод коментов под постом
@@ -50,7 +50,7 @@ const Branch = () => {
 		  setText(text)
 		  setUserId(id)
       }).then(function(){
-		axios.get(`http://localhost:8080/users/${id}`,
+		axios.get(`http://localhost:8080/users/${Ownerid}`,
 	  {
 		headers: {
 			Authorization: 'Basic dXNlcjpwYXNz' 
@@ -94,22 +94,6 @@ const deleteBranched = ()=>{
   navigate('/main', {replace: true})
 }
 
-
-/*
-  	const handleSubmit = (event) => {
-	const form = document.getElementById("input");
-	const input = form.value;
-	axios.post("http://localhost:8080/comments/", {
-			'text': text, 
-			'commentOwnerID': 2,
-			'postID' : 2
-		 },
-		 {
-			 headers: {
-				 Authorization: 'Basic dXNlcjpwYXNz' 
-		   }
-		});
-	}*/
 	const reName = () => {
 		EditText(document.getElementById("userComment"))
 	}
@@ -118,7 +102,7 @@ const deleteBranched = ()=>{
 			<div className="branchBody">
 				<div className="comment">
 					<div className="photo">
-						<img className='size' src='../profile.png'></img>
+						<img className='size' src='../profile.png' onClick = {() => navigate(`/profile/${Ownerid}`, {replace: false})} ></img>
 						<div className='user_name'> {userName}</div>
 					</div>
 					<div className='message'>

@@ -34,7 +34,8 @@ const Login = ()=>{
                 let id = res.data.id;
                 let isModerator = res.data.moderator; 
                 let name = res.data.name; 
-                signin(id, isModerator, name, () => navigate("/main", {replace: true}));
+                let nameColor = res.data.nameColor; 
+                signin(id, isModerator, name, nameColor, () => navigate("/main", {replace: true}));
             }).catch(function(e){
                alert(e)
             })

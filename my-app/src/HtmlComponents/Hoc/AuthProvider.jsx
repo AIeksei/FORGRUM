@@ -7,10 +7,12 @@ export const AuthProvider = ({children}) => {
     const [id, SetUserid] = useState(null);
     const [name, SetName] = useState(null);
     const [mod, SetMod] = useState(null);
-    const signin = (id, mod, name, cb) => {
+    const [color, SetColor] = useState(null);
+    const signin = (id, mod, name, nameColor,  cb) => {
         SetMod(mod);
         SetUserid(id)
         SetName(name)
+        SetColor(nameColor)
         cb();
     }
     const signout = (cb) => {
