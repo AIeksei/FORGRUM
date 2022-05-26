@@ -197,7 +197,6 @@ out = () => signout(() => navigate('/login', { replace: true }));
                                 <BranchForm branches={post} />
                             </CustomLink>
                         ))
-
                     }
                 </div>
                 {user.id == id ?(
