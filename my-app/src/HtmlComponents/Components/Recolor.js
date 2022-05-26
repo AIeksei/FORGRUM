@@ -14,9 +14,8 @@ function showColor() {
 }
 function changeColor(newColor){
     let item = document.getElementById("UserName");
-    console.log( item.classList.item(0));
+   // console.log( item.classList.item(0));
     item.classList.replace( item.classList.item(0),newColor);
-   
 }
 
 function Colours() {
