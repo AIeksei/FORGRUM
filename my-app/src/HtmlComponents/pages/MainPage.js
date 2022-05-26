@@ -5,7 +5,7 @@ import {Branchlist} from '../Components/BranchList';
 import { FindingBranches } from '../Components/FindingTagAndTitle';
 import { SortListTitle } from '../Components/SortListTitle';
 import { SortListCount } from '../Components/SortListCount';
-import { Link } from 'react-router-dom' 
+import  { CustomLink } from '../Components/CustomLink';
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchForm';
 const MainPage =()=> {
@@ -60,16 +60,17 @@ const MainPage =()=> {
                     <input type={"button"} value = "title" className="select" onClick={SortListTitles}/>
                     <input type={"button"} value = "count M > L" className="select" onClick={SortListrise}/>
                     <input type={"button"} value = "count L > M" className="select" onClick={sortListdecreasing}/>
+                    <input type={"button"} value = "last message" className="select" onClick={sortListdecreasing}/>
                 
             </div>
             <ul className='branchList' id = "ul">
           {
             posts.map(post => (
-                <Link key={post.id} to = {`/branch/${post.id}`}> 
+                <CustomLink key={post.id} to = {`/branch/${post.id}`}> 
                 <BranchForm
                 branches={post}
                 />
-                </Link>
+                </CustomLink>
                 ))
             
                  }
