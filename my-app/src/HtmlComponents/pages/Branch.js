@@ -22,7 +22,7 @@ const Branch = () => {
 		axios.get(`http://localhost:8080/comments/post/${branchid}`,
 			{
 				headers: {
-					Authorization: 'Basic ' + user.code 
+					Authorization: 'Basic ' + user.code
 				}
 			}).then((resp) => {
 				const allBranches = resp.data;
@@ -34,7 +34,7 @@ const Branch = () => {
 		axios.get(`http://localhost:8080/posts/${branchid}`,
 			{
 				headers: {
-					Authorization: 'Basic ' + user.code 
+					Authorization: 'Basic ' + user.code
 				}
 			}).then((resp) => {
 				const title = resp.data.title;
@@ -47,7 +47,7 @@ const Branch = () => {
 				axios.get(`http://localhost:8080/users/${Ownerid}`,
 					{
 						headers: {
-							Authorization: 'Basic ' + user.code 
+							Authorization: 'Basic ' + user.code
 						}
 					}).then((resp) => {
 						const userName = resp.data.name;
@@ -65,13 +65,13 @@ const Branch = () => {
 		},
 			{
 				headers: {
-					Authorization: 'Basic ' + user.code 
+					Authorization: 'Basic ' + user.code
 				}
 			}).then(function () {
 				axios.get(`http://localhost:8080/comments/post/${branchid}`,
 					{
 						headers: {
-							Authorization: 'Basic ' + user.code 
+							Authorization: 'Basic ' + user.code
 						}
 					}).then((resp) => {
 						const allBranches = resp.data;
@@ -90,23 +90,24 @@ const Branch = () => {
 				<div className="comment">
 					<div className="photo">
 						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${Ownerid}`, { replace: false })} ></img>
+						{userName}
 					</div>
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
+							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code )}></img>
-							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user.code )}></img>
-							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user.code , navigate)}></img>) : (<></>)}
+							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code)}></img>
+							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user.code)}></img>
+							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user.code, navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
 			</div>
 			{notes.map(notes => {
 				return (
-					<NoteForm note={notes} branchid = {branchid} />
+					<NoteForm note={notes} branchid={branchid} />
 				);
 			})}
 
