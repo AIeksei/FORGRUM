@@ -59,10 +59,10 @@ const MainPage =()=> {
             </div>
             <div className="Sort">Сортировка
              
-                    <input type={"button"} value = "title" className="select" onClick={SortListTitles}/>
-                    <input type={"button"} value = "count M > L" className="select" onClick={SortListrise}/>
-                    <input type={"button"} value = "count L > M" className="select" onClick={sortListdecreasing}/>
-                    <input type={"button"} value = "last message" className="select" onClick={sortListdecreasing}/>
+                    <input type={"button"} value = "По заголовку" className="select" onClick={SortListTitles}/>
+                    <input type={"button"} value = "Кол-во сообщений ↑" className="select" onClick={SortListrise}/>
+                    <input type={"button"} value = "Кол-во сообщений ↓" className="select" onClick={sortListdecreasing}/>
+                    <input type={"button"} value = "По последнему сообщению" className="select" onClick={sortListdecreasing}/>
                 
             </div>
             <ul className='branchList' id = "ul">
