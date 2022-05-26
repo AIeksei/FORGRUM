@@ -8,9 +8,11 @@ import { SortListCount } from '../Components/SortListCount';
 import  { CustomLink } from '../Components/CustomLink';
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchForm';
+import { newTexts } from '../Components/NewText';
 const MainPage =()=> {
 
     const [posts, setPosts] = useState([]);
+    const [tag, setTag] = useState([]);
     useEffect ( () => {
       axios.get("http://localhost:8080/posts", {headers: {
         Authorization: 'Basic dXNlcjpwYXNz'
@@ -67,9 +69,7 @@ const MainPage =()=> {
           {
             posts.map(post => (
                 <CustomLink key={post.id} to = {`/branch/${post.id}`}> 
-                <BranchForm
-                branches={post}
-                />
+                <BranchForm branches={post} />
                 </CustomLink>
                 ))
             

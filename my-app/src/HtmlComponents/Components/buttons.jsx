@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-function deleteComm(){
-    axios.delete("http://localhost:8080/comments/5",{
+function deleteComm(id){
+    console.log(id)
+    axios.delete(`http://localhost:8080/comments/${id}`,{
          headers: {
              Authorization: 'Basic dXNlcjpwYXNz' 
        }
@@ -35,9 +36,9 @@ function dislike(){
           alert(e)
        });  
 }
-function deleteBranch(){
+function deleteBranch(branchId){
 
-    axios.delete("http://localhost:8080/posts/5",{
+    axios.delete(`http://localhost:8080/posts/${branchId}`,{
          headers: {
              Authorization: 'Basic dXNlcjpwYXNz' 
        }
