@@ -49,24 +49,6 @@ axios.put("http://localhost:8080/users", {
    }
 });
 
-//добавление тега
-axios.post("http://localhost:8080/tags", {
-	'tag': title,
- },
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
-
-//все теги в посте
-axios.get("http://localhost:8080/tags/post/{id}",
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-});
-
 
 //обновление поста
 axios.put("http://localhost:8080/posts/{id}", {
