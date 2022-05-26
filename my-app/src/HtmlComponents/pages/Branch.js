@@ -22,7 +22,7 @@ const Branch = () => {
 		axios.get(`http://localhost:8080/comments/post/${branchid}`,
 			{
 				headers: {
-					Authorization: 'Basic dXNlcjpwYXNz'
+					Authorization: 'Basic ' + user.code 
 				}
 			}).then((resp) => {
 				const allBranches = resp.data;
@@ -34,7 +34,7 @@ const Branch = () => {
 		axios.get(`http://localhost:8080/posts/${branchid}`,
 			{
 				headers: {
-					Authorization: 'Basic dXNlcjpwYXNz'
+					Authorization: 'Basic ' + user.code 
 				}
 			}).then((resp) => {
 				const title = resp.data.title;
@@ -47,7 +47,7 @@ const Branch = () => {
 				axios.get(`http://localhost:8080/users/${Ownerid}`,
 					{
 						headers: {
-							Authorization: 'Basic dXNlcjpwYXNz'
+							Authorization: 'Basic ' + user.code 
 						}
 					}).then((resp) => {
 						const userName = resp.data.name;
@@ -65,13 +65,13 @@ const Branch = () => {
 		},
 			{
 				headers: {
-					Authorization: 'Basic dXNlcjpwYXNz'
+					Authorization: 'Basic ' + user.code 
 				}
 			}).then(function () {
 				axios.get(`http://localhost:8080/comments/post/${branchid}`,
 					{
 						headers: {
-							Authorization: 'Basic dXNlcjpwYXNz'
+							Authorization: 'Basic ' + user.code 
 						}
 					}).then((resp) => {
 						const allBranches = resp.data;

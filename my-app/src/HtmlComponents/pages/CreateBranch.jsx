@@ -5,11 +5,12 @@ import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { censor } from '../Components/censor';
 
 const CreateBranch = () => {
   const [tags, setTags] = useState();
   const navigate = useNavigate();
-  const { id } = UseAuth();
+  const { id, code } = UseAuth();
   let postIdd;
 
   const checker = true;
@@ -19,14 +20,15 @@ const CreateBranch = () => {
     const form = event.target;
     const title = form.title.value;
     const text = form.text.value;
+    const censoredText = censor(text);
     axios.post("http://localhost:8080/posts/", {
       'title': title,
-      'text': text,
+      'text': censoredText,
       'postOwnerID': id
     },
       {
         headers: {
-          Authorization: 'Basic dXNlcjpwYXNz'
+          Authorization: 'Basic ' + code
         }
       }).then(function (res) {
         postIdd = res.data.id;
@@ -39,7 +41,7 @@ const CreateBranch = () => {
           },
             {
               headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
+                Authorization: 'Basic ' + code
               }
             })
         }
@@ -50,7 +52,7 @@ const CreateBranch = () => {
       })
 
   }
-  
+
   const addTagS = () => {
     const newTag = addTag();
     setTags(newTag)
@@ -63,7 +65,7 @@ const CreateBranch = () => {
         <input placeholder='Введите заголовок'
           type='text' className='CreateBranchinput' name='title'></input>
         <textarea placeholder='Текст ветки'
-          type='text' className='CreateBranchArea' name='text'></textarea>
+          type='text' className='CreateBranchArea' name='text' id = 'text'></textarea>
         <div className='tagAdding'>
           <input placeholder='Теги' id="inputTag"
             type='text' className='CreateBranchTag'></input>

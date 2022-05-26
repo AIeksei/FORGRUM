@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-function deleteComm(id){
+function deleteComm(id, encoded){
     axios.delete(`http://localhost:8080/comments/${id}`,{
          headers: {
-             Authorization: 'Basic dXNlcjpwYXNz' 
+            Authorization: 'Basic ' + encoded
        }
     }).then (function(res){
         alert(res.data);
@@ -13,11 +13,11 @@ function deleteComm(id){
     
 }
 
-function like(id){
+function like(id, encoded){
     axios.get(`http://localhost:8080/users/rating/up/${id}/1`,
  {
 	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
+		 Authorization: 'Basic ' + encoded
    }}).then (function(res){
     alert("Пользователь с ID" + id + "Получил лайк")
     }).catch(function(e){
@@ -26,11 +26,11 @@ function like(id){
     
 }
 
-function dislike(id){
+function dislike(id, encoded){
     axios.get(`http://localhost:8080/users/rating/down/${id}/1`,
     {
         headers: {
-            Authorization: 'Basic dXNlcjpwYXNz' 
+            Authorization: 'Basic ' + encoded 
       }}).then (function(res){
            alert("Пользователь с ID" + id + "Получил дизлайк")
        }).catch(function(e){
@@ -38,12 +38,12 @@ function dislike(id){
        });  
 }
 
-function deleteBranch(branchId, navigate){
+function deleteBranch(branchId, encoded, navigate){
 
-    axios.delete(`http://localhost:8080/posts/${branchId}`,{
+    axios.delete(`http://localhost:8080/posts/${branchId}`,
+    {
          headers: {
-             Authorization: 'Basic dXNlcjpwYXNz' 
-       }
+             Authorization: 'Basic ' + encoded}
     }).then (function(res){
         alert(res.data);
     }

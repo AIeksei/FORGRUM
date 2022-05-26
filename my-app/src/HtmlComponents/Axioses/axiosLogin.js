@@ -10,11 +10,11 @@ const AxiosLogin = (email, password, {signin}, navigate)=>{
     }else{document.getElementById("emERR").innerHTML = "";
         valid = true;
     }
-    let encoded = encode(email + ":" + password);
+    const encoded = encode(email + ":" + password);
     if(valid)
     axios.get(`http://localhost:8080/users/email/${email}`,{
         headers: {
-            Authorization: 'Basic dXNlcjpwYXNz'
+            Authorization: 'Basic ' + encoded
         }
        }).then (function(res){
             let id = res.data.id;
@@ -31,7 +31,7 @@ const AxiosLogin = (email, password, {signin}, navigate)=>{
             if(enabled)
             signin(id, moderator, name, nameColor, enabled, 
                 language, country, gender, rate, mail,
-                 numb, () => navigate("/main", {replace: true}));
+                 numb, encoded, () => navigate("/main", {replace: true}));
         }).catch(function(e){
             console.log(e)
            document.getElementById("authERR").innerHTML = "Неверный логин или пароль";

@@ -3,14 +3,15 @@ import '../../Css/BranchForm.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Tags } from './Tags';
+import { UseAuth } from '../../Hook/UseAuth';
 function BranchForm({ branches }) {
     const [count, setCount] = useState();
-
+    const {code} = UseAuth();
     useEffect(() => {
         axios.get(`http://localhost:8080/comments/count/${branches.id}`,
             {
                 headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
+                    Authorization: 'Basic ' + code
                 }
             }).then(function (resp) {
                 setCount(resp.data);

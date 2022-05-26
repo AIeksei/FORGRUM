@@ -19,18 +19,38 @@ const Profile = ({ profile }) => {
     const [numb, setNumb] = useState(null);
     const [rate, setRate] = useState(null);
     const [nameColor, setNameColor] = useState(null);
+    const [avatar, setAvatar] = useState([]);
+
     const avatarSelected = (e) => {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             document.getElementById('img1').src = fileReader.result;
         }
         fileReader.readAsDataURL(e.target.files[0]);
+        const file = e.target.files[0];
+        const formData = new FormData()
+        formData.append('file', file) 
+        axios.put(`http://localhost:8080/users/${id}/avatar`, formData,
+        {
+        headers: {
+        Authorization: 'Basic ' + user.code
+        }});
     }
+    useEffect (() => {
+    axios.get(`http://localhost:8080/users/${id}/avatar`, 
+     {
+	 headers: {
+        Authorization: 'Basic ' + user.code
+   },  responseType: 'blob' 
+}).then((resp) => {
+    setAvatar(URL.createObjectURL(resp.data));
+});
+}, [setAvatar]);
     useEffect(() => {
         axios.get(`http://localhost:8080/users/${id}`,
             {
                 headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
+                    Authorization: 'Basic ' + user.code
                 }
             }).then((resp) => {
                 const name = resp.data.name;
@@ -48,7 +68,7 @@ const Profile = ({ profile }) => {
         axios.get(`http://localhost:8080/posts/user/${id}`,
             {
                 headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
+                    Authorization: 'Basic ' + user.code
                 }
             }).then((resp) => {
                 const allBranches = resp.data;
@@ -109,7 +129,7 @@ const Profile = ({ profile }) => {
     return (
         <div className='bodyProfile'>
             <div className='user'>
-                <img className='userSize' id='img1' src='../profile.png'></img>
+                <img className='userSize' id='img1' defaultValue = "../profile.png" src={avatar}></img>
                 {user.id == id ? (
                     <input type='file' className='AvatarLoad'
                         placeholder='Загрузить аватар' onChange={avatarSelected}></input>

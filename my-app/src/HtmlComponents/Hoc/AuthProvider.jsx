@@ -12,10 +12,11 @@ export const AuthProvider = ({children}) => {
     const [enabled, setEnabled] = useState(null);
     const [nameColor, setNameColor] = useState(null);
     const [moderator, setModerator] = useState(null);
+    const [code, setCode] = useState(null);
     const [name, setName] = useState(null);
     const [id, setId] = useState(null);
     const signin = (id, moderator, name, nameColor, enabled,
-        language, country, gender, rate, mail, numb, cb) => {
+        language, country, gender, rate, mail, numb,code, cb) => {
         setModerator(moderator);
         setNameColor(nameColor)
         setEnabled(enabled)
@@ -27,6 +28,7 @@ export const AuthProvider = ({children}) => {
         setEmail(mail)
         setName (name)
         setId(id)
+        setCode(code)
         cb();
     }
     const signout = (cb) => {
@@ -35,7 +37,7 @@ export const AuthProvider = ({children}) => {
     }
 
     const value = {id, moderator, name, nameColor, enabled,
-        language, country, gender, rate, email, numb, signin, signout};
+        language, country, gender, rate, email, numb, code, signin, signout};
 
     return <AuthContext.Provider value={value}>
         {children}

@@ -9,12 +9,7 @@ const Registr = (name, email, gender, number, password, passwordConfirm, navigat
         'phoneNumber': number,
         'password': password,
         'confirmPassword': passwordConfirm
-    },
-        {
-            headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
-            }
-        }).catch(function (e) {
+    },).catch(function (e) {
             console.log(e)
             document.getElementById("emERR").innerHTML = e.data;
             checked = false;

@@ -7,14 +7,16 @@ import { SortListCount } from '../Components/SortListCount';
 import { CustomLink } from '../Components/CustomLink';
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchInfo/BranchForm';
+import { UseAuth } from '../Hook/UseAuth';
 
 const MainPage = () => {
 
     const [posts, setPosts] = useState([]);
+    const {code} = UseAuth();
     useEffect(() => {
         axios.get("http://localhost:8080/posts", {
             headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
+                Authorization: 'Basic ' + code
             }
         }).then((resp) => {
             const allBranches = resp.data;
