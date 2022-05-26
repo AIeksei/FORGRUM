@@ -4,10 +4,14 @@ import {addTag} from "../Components/AddTag";
 import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const CreateBranch = ()=> {
+  const [tags, setTags] = useState();
    const navigate = useNavigate();
    const {id} = UseAuth();
+   let postIdd;
+
    const checker = true;
 
    const handleSubmit = (event) => {
@@ -25,22 +29,30 @@ const CreateBranch = ()=> {
 		 Authorization: 'Basic dXNlcjpwYXNz' 
    }
 }).then( function(res){
-    const postId = res.data.id;
+   postIdd = res.data.id;
+     let TagArr = tags.split(', ');
+     for(let i = 0; i < TagArr.length; i++){
+       const tag = TagArr[i];
     axios.post("http://localhost:8080/tags/", {
-    'tag': "title",
-    'postID': postId,
+    'tag': tag,
+    'postID': postIdd,
  }, 
  {
 	 headers: {
 		 Authorization: 'Basic dXNlcjpwYXNz' 
    }
 })
+}
+navigate(`/branch/${postIdd}`, {replace: true});
 }).catch(function(e){
   alert(e)
   checker = false;
-}).then( function(){
-  if (checker)
-  navigate("/branch/1", {replace: true})});
+})
+  
+ }
+ const addTagS = () => {
+   const newTag = addTag();
+   setTags(newTag) 
  }
   return (
     <div className='bodyCreateBranch'>
@@ -54,7 +66,7 @@ const CreateBranch = ()=> {
           <input placeholder='Теги' id="inputTag"
             type='text' className='CreateBranchTag'></input>
           <input type='button' value="Добавить тег" className='CreateTagbutton'
-            onClick={addTag}></input>
+            onClick={addTagS}></input>
         </div>
         <div id="tagsPlaceholder" className='addedTags'></div>
         <button type="submit" value="Создать ветку" className='CreateBranchbutton' > Создать ветку </button>

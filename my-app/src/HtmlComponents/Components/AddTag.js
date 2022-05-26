@@ -9,6 +9,8 @@ function addTag(){
     tagsPlaceholder.innerText += inputedTag;
     else 
     tagsPlaceholder.innerText += ", " + inputedTag;
+    let tagsArray =tagsPlaceholder.innerText
+    return(tagsArray)
     }
 }
 
