@@ -6,7 +6,6 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [id, SetUserid] = useState(null);
     const [mod, SetMod] = useState(null);
-
     const signin = (id, mod, cb) => {
         SetMod(mod);
         SetUserid(id)
