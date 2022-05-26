@@ -27,9 +27,13 @@
 }
 
 .CreateBranchbutton{
-  width: 30%;
+  width: 35%;
   height: 6%;
   
+}
+.CreateTagbutton{
+  width: 35%;
+  height: 100%;
 }
 textarea{
   resize: none;
@@ -42,7 +46,19 @@ textarea{
 }
 .CreateBranchTag{
   background: rgb(225, 224, 224);
-  width: 80%;
-  height: 10%;
-  margin: 3% 0;
+  width: 60%;
+  height: 100%;
+}
+.tagAdding{
+  display: flex;
+  flex-direction: row;
+  height: 7%;
+  width: 76%;
+  align-items: center;
+  justify-content: space-around;
+}
+.addedTags{
+  width: 73%;
+  margin: 1% 1%;
+  text-align: start;
 }
