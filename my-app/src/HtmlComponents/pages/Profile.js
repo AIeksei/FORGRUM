@@ -64,7 +64,7 @@ const Profile = ({ profile }) => {
                 const allBranches = resp.data;
                 setPosts(allBranches);
             })
-    }, [setNumb, setEmail, setName, setPosts, setRate]);
+   
     
         axios.get(`http://localhost:8080/users/${id}`, 
          {
@@ -94,16 +94,7 @@ const Profile = ({ profile }) => {
         setNameColor(nameColor);
         },
        )
-       axios.get(`http://localhost:8080/posts/user/${id}`, 
-     {
-	     headers: {
-		     Authorization: 'Basic dXNlcjpwYXNz' 
-      }
-    }).then((resp) => {
-        const allBranches =  resp.data;
-        setPosts(allBranches);
-    });
-
+}, [setNumb, setEmail, setName, setPosts, setRate]);
 const reName = () => {
     Rename(document.getElementById("UserName"))
     let newName = document.getElementById("UserName").innerText;
