@@ -8,6 +8,7 @@ import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
 import { BranchForm } from '../Components/BranchInfo/BranchForm';
 import { CustomLink } from '../Components/CustomLink';
+import { AxiosColor } from '../Axioses/axiosColor';
 const Profile = ({ profile }) => {
     const { id } = useParams();
     const user = UseAuth();
@@ -84,47 +85,10 @@ const Profile = ({ profile }) => {
 
     }
         
-       /*  axios.put("http://localhost:8080/users", {
-          'id': user.id,
-          'name': user.name,
-          'email': user.email,
-          'gender': user.gender,
-          'phoneNumber': user.numb,
-          'country': user.country,
-          'language': user.language,
-          'enabled': user.enabled,
-          'rating': user.rate,
-          'moderator': user.moderator,
-          'nameColor': user.nameColor
-      },
-          {
-              headers: {
-                  Authorization: 'Basic dXNlcjpwYXNz'
-              }
-          });
-  }*/
     const showColorS = () => {
         showColor();
         let newColor = document.getElementById("UserName").classList[0].toUpperCase();
-        /*setNameColor(newColor)
-        axios.put("http://localhost:8080/users", {
-            'id': user.id,
-            'name': user.name,
-            'email': user.email,
-            'gender': user.gender,
-            'phoneNumber': user.numb,
-            'country': user.country,
-            'language': user.language,
-            'enabled': user.enabled,
-            'rating': user.rate,
-            'moderator': user.moderator,
-            'nameColor': user.nameColor
-        },
-            {
-                headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
-                }
-            });*/
+        AxiosColor(newColor,user)
     },
         out = () => signout(() => navigate('/login', { replace: true }));
 

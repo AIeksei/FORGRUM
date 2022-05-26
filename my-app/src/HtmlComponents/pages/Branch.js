@@ -95,7 +95,7 @@ const Branch = () => {
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id = Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment" onClick={reName}>{text}</div></>)}
+							{user.id == Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment" onClick={reName}>{text}</div></>)}
 							<div className='p' id="userComment" onClick={reName}>{text}</div>
 						</div>
 						<div className='ocenka'>
