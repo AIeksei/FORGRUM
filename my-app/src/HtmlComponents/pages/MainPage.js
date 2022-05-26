@@ -12,7 +12,7 @@ import { UseAuth } from '../Hook/UseAuth';
 const MainPage = () => {
 
     const [posts, setPosts] = useState([]);
-    const {code} = UseAuth();
+    const { code } = UseAuth();
     useEffect(() => {
         axios.get("http://localhost:8080/posts", {
             headers: {
