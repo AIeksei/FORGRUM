@@ -46,10 +46,5 @@ function EditText(nameDiv, user) {
     });
     nameDiv.replaceWith(input);
     input.focus();
-
-
-
 }
-
-
 export { EditText };

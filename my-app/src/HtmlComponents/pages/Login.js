@@ -2,9 +2,6 @@ import '../Css/Login.css';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UseAuth } from '../Hook/UseAuth';
-import validator from 'validator';
-import axios from 'axios';
-import { encode } from 'base-64';
 import { AxiosLogin } from '../Axioses/axiosLogin';
 
 const Login = ()=>{
