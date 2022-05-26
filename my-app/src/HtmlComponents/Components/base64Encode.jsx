@@ -4,6 +4,6 @@ function encode(){
 
     let text = document.getElementById("test").value
     let encoded = base64_encode(text);
-    console.log(encoded)
+    return(encoded);
 }
   export {encode};

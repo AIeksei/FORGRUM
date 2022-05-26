@@ -1,45 +1,23 @@
 import '../Css/Login.css';
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UseAuth } from '../Hook/UseAuth';
 import validator from 'validator';
 import axios from 'axios';
 import { encode } from 'base-64';
+import { AxiosLogin } from '../Axioses/axiosLogin';
 
 const Login = ()=>{
-    const idUser = 2;
-    const location = useLocation();
-    const navigate = useNavigate();
-    const fromPage = location.state?.from?.pathname || '/';
-    const {signin} = UseAuth();
 
+    const navigate = useNavigate();
+    const {signin} = UseAuth();
+    let valid = true;
     const handleSubmit = (event) => {
-        let checked = false;
         event.preventDefault();
         const form = event.target;
         const email = form.username.value;
         const password = form.pass.value;
-        if(!validator.isEmail(email)) {
-            document.getElementById("emERR").innerHTML = "Введите почту";
-            checked = false;
-        }else{document.getElementById("emERR").innerHTML = "";}
-        let encoded = encode(email + ":" + password);
-       axios.get(`http://localhost:8080/users/email/${email}`,{
-                headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
-              }
-           }).then (function(res){
-                let id = res.data.id;
-                let isModerator = res.data.moderator; 
-                let name = res.data.name; 
-                let nameColor = res.data.nameColor; 
-                let enabled = res.data.enabled; 
-                if(enabled)
-                signin(id, isModerator, name, nameColor, () => navigate("/main", {replace: true}));
-            }).catch(function(e){
-               document.getElementById("authERR").innerHTML = "Неверный логин или пароль";
-            })
-      
+        AxiosLogin(email, password, {signin}, navigate)
     }
  
     return (
