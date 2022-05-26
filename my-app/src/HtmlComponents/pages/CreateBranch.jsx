@@ -11,6 +11,7 @@ const CreateBranch = () => {
   const [tags, setTags] = useState();
   const navigate = useNavigate();
   const { id, code } = UseAuth();
+  const user = UseAuth();
   let postIdd;
 
   const checker = true;
@@ -62,7 +63,8 @@ const CreateBranch = () => {
   }
 
   return (
-    <div className='bodyCreateBranch'>
+    <>
+    {user.language == "Russian" ?(<><div className='bodyCreateBranch'>
       <form className='borderCreateBranch' onSubmit={handleSubmit}>
         <p className='CreateBranch'>Создание ветки</p>
         <input placeholder='Введите заголовок'
@@ -78,7 +80,25 @@ const CreateBranch = () => {
         <div id="tagsPlaceholder" className='addedTags'></div>
         <button type="submit" value="Создать ветку" className='CreateBranchbutton' > Создать ветку </button>
       </form>
-    </div>
+    </div></>):(<><div className='bodyCreateBranch'>
+      <form className='borderCreateBranch' onSubmit={handleSubmit}>
+        <p className='CreateBranch'>Creating branch</p>
+        <input placeholder='Title'
+          type='text' className='CreateBranchinput' name='title'></input>
+        <textarea placeholder='Text of post'
+          type='text' className='CreateBranchArea' name='text' id='text'></textarea>
+        <div className='tagAdding'>
+          <input placeholder='Теги' id="inputTag"
+            type='text' className='CreateBranchTag'></input>
+          <input type='button' value="Add tag" className='CreateTagbutton'
+            onClick={addTagS}></input>
+        </div>
+        <div id="tagsPlaceholder" className='addedTags'></div>
+        <button type="submit" value="Create branch" className='CreateBranchbutton' >Create branch</button>
+      </form>
+    </div></>)
+    }
+    </>
   );
 }
 

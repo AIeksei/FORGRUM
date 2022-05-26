@@ -6,7 +6,8 @@ import { Tags } from './Tags';
 import { UseAuth } from '../../Hook/UseAuth';
 function BranchForm({ branches }) {
     const [count, setCount] = useState();
-    const {code} = UseAuth();
+    const { code } = UseAuth();
+    const user = UseAuth();
     useEffect(() => {
         axios.get(`http://localhost:8080/comments/count/${branches.id}`,
             {
@@ -23,11 +24,18 @@ function BranchForm({ branches }) {
             <div className="AutorBranch"> {branches.autor} </div>
             <div className='NameRoot'>
                 <div className='titleBranch' >{branches.title} </div>
-                <div className='tags'> Теги:
+                {user.language == "Russian" ? (<><div className='tags'> Теги:
                     {<Tags id={branches.id} />}
-                </div>
+                </div></>) : (<><div className='tags'> Tags:
+                    {<Tags id={branches.id} />}
+                </div></>)
+                }
             </div>
-            <div className='countMessage'>Количество сообщений : <div className='count' value={count}> {count} </div> </div>
+            {user.language == "Russian" ? (<> <div className='countMessage'>Количество сообщений : 
+            <div className='count' value={count}> {count}</div></div></>) :
+             (<> <div className='countMessage'>Count message : 
+             <div className='count' value={count}> {count} </div> </div></>)
+            }
 
         </li>
     )

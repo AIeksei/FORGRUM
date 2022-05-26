@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-function valid(email, name, password, passwordConfirm, number, gender){ 
+function valid(email, name, password, passwordConfirm, number, gender,language){ 
     let checked = true;
     if(!validator.isEmail(email)) {
     document.getElementById("emERR").innerHTML = "Не правильная почта";

@@ -110,8 +110,7 @@ const Branch = () => {
 					<NoteForm note={notes} branchid={branchid} />
 				);
 			})}
-
-			<div className="comment">
+			{user.language == "Russian" ? (<><div className="comment">
 				<div className="photo">
 					<img className='size' src='../profile.png'></img>
 					<div> {user.name}</div>
@@ -121,7 +120,20 @@ const Branch = () => {
 						name='text' className='msinput' />
 					<button className='sendButton' onClick={newNotesButton} >Отправить</button>
 				</div>
-			</div>
+			</div></>) : (<><div className="comment">
+				<div className="photo">
+					<img className='size' src='../profile.png'></img>
+					<div> {user.name}</div>
+				</div>
+				<div className='message sendColumn'>
+					<textarea id="inputComment" placeholder='Enter text'
+						name='text' className='msinput' />
+					<button className='sendButton' onClick={newNotesButton} >Send</button>
+				</div>
+			</div></>)
+
+			}
+			
 		</div>
 
 	);
