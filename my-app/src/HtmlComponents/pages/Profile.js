@@ -1,6 +1,6 @@
 import '../Css/Profile.css';
 import React from 'react';
-import { EditText } from '../Components/EditText'
+import { EditText } from '../Axioses/axiosRename'
 import { showColor, Colours } from '../Components/Recolor'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';

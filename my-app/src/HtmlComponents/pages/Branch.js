@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { like, dislike, deleteBranch } from '../Components/buttons'
 import { UseAuth } from '../Hook/UseAuth';
-import { EditText } from '../Components/EditText';
+import { EditText } from '../Axioses/axioisUpdateBranch';
 
 const Branch = () => {
 	const navigate = useNavigate();
@@ -82,7 +82,7 @@ const Branch = () => {
 	};
 
 	const reName = () => {
-		EditText(document.getElementById("userComment"))
+		EditText(document.getElementById("userComment"), user.code, title, branchid, Ownerid)
 	}
 	return (
 		<div>
@@ -90,13 +90,11 @@ const Branch = () => {
 				<div className="comment">
 					<div className="photo">
 						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${Ownerid}`, { replace: false })} ></img>
-						<div className='user_name'> {userName}</div>
 					</div>
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment" onClick={reName}>{text}</div></>)}
-							<div className='p' id="userComment" onClick={reName}>{text}</div>
+							{user.id == Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
 							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code)}></img>
@@ -108,7 +106,7 @@ const Branch = () => {
 			</div>
 			{notes.map(notes => {
 				return (
-					<NoteForm note={notes} />
+					<NoteForm note={notes} branchid = {branchid} />
 				);
 			})}
 			{user.language == "Russian" ? (<><div className="comment">

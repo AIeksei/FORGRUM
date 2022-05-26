@@ -1,16 +1,16 @@
 import React from 'react'
 import "../Css/NoteList.css";
 import {like, dislike, deleteComm} from './buttons'
-import { EditText } from './EditText';
+import { EditText } from '../Axioses/axiosUpdareNote';
 import { UseAuth } from '../Hook/UseAuth';
 import { useNavigate } from 'react-router-dom';
 
-function NoteForm({ note }) {
+function NoteForm({ note, branchid }) {
    const navigate = useNavigate();
    const user = UseAuth();
-
+    console.log(branchid)
    const reName = () => {
-    EditText(document.getElementById("userComment"))
+    EditText(document.getElementById(note.commentOwnerID), user.code, branchid, note )
 }
     return (
         <div className='comment'>
@@ -19,8 +19,8 @@ function NoteForm({ note }) {
                 <div> {note.autor} </div>
             </div>
             <div className='message'>
-            {user.id == note.commentOwnerID ? (<div onClick={reName}> {note.text} </div>) 
-            : (<div> {note.text} </div>)}                 
+            {user.id == note.commentOwnerID ? (<div  id = {note.commentOwnerID} onClick={reName}> {note.text} </div>) 
+            : (<div> {note.text} </div>)} 
                 <div className='ocenka'>
                     <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID, user.code)}></img>
                     <img className='sizedislike' src='../DisLike.png' onClick={() => dislike(note.commentOwnerID,  user.code)}></img>           
