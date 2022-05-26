@@ -20,7 +20,7 @@ function like(id, encoded){
 	 headers: {
 		 Authorization: 'Basic ' + encoded
    }}).then (function(res){
-    alert("Пользователь с ID" + id + "Получил лайк")
+    alert("Пользователь с ID " + id + " Получил лайк")
     }).catch(function(e){
        alert("Проблема соединения с сервером")
     });
@@ -33,7 +33,7 @@ function dislike(id, encoded){
         headers: {
             Authorization: 'Basic ' + encoded 
       }}).then (function(res){
-           alert("Пользователь с ID" + id + "Получил дизлайк")
+           alert("Пользователь с ID " + id + " Получил дизлайк")
        }).catch(function(e){
         alert("Проблема соединения с сервером")
        });  
