@@ -19,37 +19,53 @@ const Login = ()=>{
         const form = event.target;
         const email = form.username.value;
         const password = form.pass.value;
-       /* const email = event.target.parentElement.children[1].value;
-        const password =  event.target.parentElement.children[2].value.trim();*/
-       
-        let encoded = encode(email + ":" + password);
-       console.log(encoded)
-       navigate("/main", {replace: true})
-      // signin(user, idUser, true, () => navigate("/main", {replace: true}));
-        /*if(!validator.isEmail(user)) {
+        if(!validator.isEmail(email)) {
             document.getElementById("emERR").innerHTML = "Введите почту";
             checked = false;
-        }*/
+        }
+        let encoded = encode(email + ":" + password);
+       console.log(encoded)
+       axios.get(`http://localhost:8080/users/email/${email}`,{
+                headers: {
+                    Authorization: 'Basic dXNlcjpwYXNz'
+              }
+           }).then (function(res){
+                alert(JSON.stringify(res.data));
+                let id = res.data.id;
+                let isModerator = res.data.moderator; 
+                signin(id, isModerator, () => navigate("/main", {replace: true}));
+            }).catch(function(e){
+               alert(e)
+            })
+           
+       //navigate("/main", {replace: true})
+      // signin(user, idUser, true, () => navigate("/main", {replace: true}));
+        
+        
        /* if(checked)
         */
     }
-    function AuthAcc(event){
+  /* function AuthAcc(event){
         let checked;
-       
-         /* if (email.trim() != '') {
+        let code = encode(email + ":" + password)
+          if (email.trim() != '') {
            axios.post("http://localhost:8080/users/", {
                'email': email, 
                 'password': password,
-            }).then (function(res){
+            }, {
+                headers: {
+                    Authorization: 'Basic ' + code
+              }
+           }).then (function(res){
                 alert(JSON.stringify(res));
             }).catch(function(e){
                alert(e)
             })
         
-          }*/
+          }
     
         
-    }
+    }*/
     return (
         <div className='bodyLogin'>           
             <form  className='borderLogin' onSubmit={handleSubmit}>

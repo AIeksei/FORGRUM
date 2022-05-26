@@ -6,9 +6,10 @@ import { NoteForm } from '../Components/NoteForm';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {like, dislike,deleteBranch} from '../Components/buttons'
+import { UseAuth } from '../Hook/UseAuth';
 const Branch = () => {
 	const navigate = useNavigate();
-
+	const user = UseAuth();
 /*const handleSubmit = (event) => {
 	console.log("clicked")
 	navigate(0, {replace: true})
@@ -123,7 +124,7 @@ const deleteBranched = ()=>{
 						<div className='ocenka'>
 						<img className='sizelike' src='../Like.png' onClick={like}></img>
                    		 <img className='sizedislike' src='../DisLike.png' onClick={dislike}></img>
-						<img className='sizedislike' src='../Delete.png' onClick={deleteBranched}></img>
+							{user.mod ?(<img className='sizedislike' src='../Delete.png' onClick={deleteBranched}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
