@@ -22,52 +22,26 @@ const Login = ()=>{
         if(!validator.isEmail(email)) {
             document.getElementById("emERR").innerHTML = "Введите почту";
             checked = false;
-        }
+        }else{document.getElementById("emERR").innerHTML = "";}
         let encoded = encode(email + ":" + password);
-       console.log(encoded)
        axios.get(`http://localhost:8080/users/email/${email}`,{
                 headers: {
                     Authorization: 'Basic dXNlcjpwYXNz'
               }
            }).then (function(res){
-                alert(JSON.stringify(res.data));
                 let id = res.data.id;
                 let isModerator = res.data.moderator; 
                 let name = res.data.name; 
                 let nameColor = res.data.nameColor; 
+                let enabled = res.data.enabled; 
+                if(enabled)
                 signin(id, isModerator, name, nameColor, () => navigate("/main", {replace: true}));
             }).catch(function(e){
-               alert(e)
+               document.getElementById("authERR").innerHTML = "Неверный логин или пароль";
             })
-           
-       //navigate("/main", {replace: true})
-      // signin(user, idUser, true, () => navigate("/main", {replace: true}));
-        
-        
-       /* if(checked)
-        */
+      
     }
-  /* function AuthAcc(event){
-        let checked;
-        let code = encode(email + ":" + password)
-          if (email.trim() != '') {
-           axios.post("http://localhost:8080/users/", {
-               'email': email, 
-                'password': password,
-            }, {
-                headers: {
-                    Authorization: 'Basic ' + code
-              }
-           }).then (function(res){
-                alert(JSON.stringify(res));
-            }).catch(function(e){
-               alert(e)
-            })
-        
-          }
-    
-        
-    }*/
+ 
     return (
         <div className='bodyLogin'>           
             <form  className='borderLogin' onSubmit={handleSubmit}>
@@ -77,6 +51,7 @@ const Login = ()=>{
                      <div  className = "Err" id = "emERR"></div>
                 <input placeholder='Пароль'
                     type='text' className='logininput' name = "pass"></input>
+                    <div  className = "Err" id = "authERR"></div>
                 <button type="submit"  className = 'loginbutton'>Войти</button>
                 <div className='butreg'> 
                 <Link  to="/registration" >У вас нет аккаунта?</Link>

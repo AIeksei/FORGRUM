@@ -147,8 +147,11 @@ out = () => signout(() => navigate('/login', { replace: true }));
         <div className='bodyProfile'>
             <div className='user'>         
                     <img className='userSize' id='img1' src='../profile.png'></img>
-                    <input type='file' className='AvatarLoad'
-                        placeholder='Загрузить аватар' onChange={avatarSelected}></input>            
+                    {user.id == id ?(
+                         <input type='file' className='AvatarLoad'
+                         placeholder='Загрузить аватар' onChange={avatarSelected}></input> 
+                     ) : (<></>) }
+                               
                 <div className='points'>Очки {rate}</div>
             </div>
             <div className='userInfo'>
