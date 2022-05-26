@@ -30,7 +30,6 @@
 .edit {
     width: 30px;
     height: 30px;
-
 }
 
 .name {
@@ -63,9 +62,7 @@
     border-radius: 30px;
 }
 .marginRight0{
-    width: fit-content;
-    margin-right: 0;
-    margin-left: auto;
+    margin-left: 3%;
 }
 p{
     font-size: x-large;

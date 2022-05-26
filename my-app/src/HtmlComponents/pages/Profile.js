@@ -65,7 +65,6 @@ const Profile = ({ profile }) => {
                 const allBranches = resp.data;
                 setPosts(allBranches);
             })
-   
     
         axios.get(`http://localhost:8080/users/${id}`, 
          {
@@ -155,6 +154,8 @@ out = () => signout(() => navigate('/login', { replace: true }));
                     <input type='file' className='AvatarLoad'
                         placeholder='Загрузить аватар' onChange={avatarSelected}></input>            
                 <div className='points'>Очки {rate}</div>
+                {user.mod ?(
+                  <button className='marginRight0' >Заблокировать</button>) : (<></>) }
             </div>
             <div className='userInfo'>
                 <div className='profborder'>
@@ -176,6 +177,8 @@ out = () => signout(() => navigate('/login', { replace: true }));
                          <Link to="create" className='loginbutton' >
                          <input type='button' value="Создать свою ветку" className='marginRight0'>
                          </input>
+                         {user.id == id ?(
+                        <button className='marginRight0' onClick={out}>Выйти из аккаунта</button>) : (<></>) }
                      </Link>) : (<></>) }
                
             </div>
@@ -190,10 +193,7 @@ out = () => signout(() => navigate('/login', { replace: true }));
                             </CustomLink>
                         ))
                     }
-                </div>
-                {user.id == id ?(
-                        <button className='marginRight0' onClick={out}>Выйти из аккаунта</button>) : (<></>) }
-                
+                </div>       
             </div>
         </div>
     )
