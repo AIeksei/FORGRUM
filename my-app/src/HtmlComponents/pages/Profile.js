@@ -20,12 +20,15 @@ const Profile = ({ profile }) => {
     const [rate, setRate] = useState(null);
     const [nameColor, setNameColor] = useState(null);
     const [avatar, setAvatar] = useState([]);
+    const [checker, setChecker] = useState(false);
 
     const avatarSelected = (e) => {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             document.getElementById('img1').src = fileReader.result;
+            console.log('updated');
         }
+   
         fileReader.readAsDataURL(e.target.files[0]);
         const file = e.target.files[0];
         const formData = new FormData()
@@ -34,7 +37,7 @@ const Profile = ({ profile }) => {
         {
         headers: {
         Authorization: 'Basic ' + user.code
-        }});
+        }})
     }
     useEffect (() => {
     axios.get(`http://localhost:8080/users/${id}/avatar`, 
@@ -76,12 +79,11 @@ const Profile = ({ profile }) => {
             })
     }, [setNumb, setEmail, setName, setPosts, setRate]);
     const reName = () => {
-        EditText(document.getElementById("UserName"))
-        let newName = document.getElementById("UserName").innerText;
-        setName(newName);
-    }
+        EditText(document.getElementById("UserName"), user)
 
-    /*  axios.put("http://localhost:8080/users", {
+    }
+        
+       /*  axios.put("http://localhost:8080/users", {
           'id': user.id,
           'name': user.name,
           'email': user.email,
@@ -147,8 +149,8 @@ const Profile = ({ profile }) => {
                     <p id="UserName" className={nameColor}>{name}</p>
                     {user.id == id ? (
                         <div>
-                            <img className='edit' src='../Edit.png' onClick={() => reName}></img>
-                            <img className='colors edit' src='../colors.png' onClick={() => showColorS}></img>
+                            <img className='edit' src='../Edit.png' onClick={reName}></img>
+                            <img className='colors edit' src='../colors.png' onClick={showColorS}></img>
                         </div>) : (<></>)}
 
                 </div>

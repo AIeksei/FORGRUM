@@ -4,13 +4,14 @@ import axios from 'axios';
 import { encode } from 'base-64';
 const AxiosLogin = (email, password, {signin}, navigate)=>{
     let valid = true;
-    if(!validator.isEmail(email)) {
+    /*if(!validator.isEmail(email)) {
         document.getElementById("emERR").innerHTML = "Введите почту";
         valid = false;
     }else{document.getElementById("emERR").innerHTML = "";
         valid = true;
-    }
+    }*/
     const encoded = encode(email + ":" + password);
+    console.log('Basic ' + encoded);
     if(valid)
     axios.get(`http://localhost:8080/users/email/${email}`,{
         headers: {

@@ -21,7 +21,7 @@ const CreateBranch = () => {
     const title = form.title.value;
     const text = form.text.value;
     const censoredText = censor(text);
-    axios.post("http://localhost:8080/posts/", {
+    axios.post("http://localhost:8080/posts", {
       'title': title,
       'text': censoredText,
       'postOwnerID': id
@@ -33,18 +33,7 @@ const CreateBranch = () => {
       }).then(function (res) {
         postIdd = res.data.id;
         let TagArr = tags.split(', ');
-        for (let i = 0; i < TagArr.length; i++) {
-          const tag = TagArr[i];
-          axios.post("http://localhost:8080/tags/", {
-            'tag': tag,
-            'postID': postIdd,
-          },
-            {
-              headers: {
-                Authorization: 'Basic ' + code
-              }
-            })
-        }
+        sendRequestTags(TagArr, postIdd);
         navigate(`/branch/${postIdd}`, { replace: true });
       }).catch(function (e) {
         alert(e)
@@ -52,12 +41,28 @@ const CreateBranch = () => {
       })
 
   }
+  const sendRequestTags = async (tagArr, postIdd) => {
+    for (let i = 0; i < tagArr.length; i++) {
+      const tag = tagArr[i];
+      console.log(postIdd);
+      console.log(tag);
+      await axios.post("http://localhost:8080/tags", {
+        'tag': tagArr[i],
+        'postID': postIdd
+      },
+        {
+          headers: {
+            Authorization: 'Basic ' + code
+          }
+        });
+    }
+  }
 
   const addTagS = () => {
     const newTag = addTag();
     setTags(newTag)
   }
-  
+
   return (
     <div className='bodyCreateBranch'>
       <form className='borderCreateBranch' onSubmit={handleSubmit}>
@@ -65,7 +70,7 @@ const CreateBranch = () => {
         <input placeholder='Введите заголовок'
           type='text' className='CreateBranchinput' name='title'></input>
         <textarea placeholder='Текст ветки'
-          type='text' className='CreateBranchArea' name='text' id = 'text'></textarea>
+          type='text' className='CreateBranchArea' name='text' id='text'></textarea>
         <div className='tagAdding'>
           <input placeholder='Теги' id="inputTag"
             type='text' className='CreateBranchTag'></input>

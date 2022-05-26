@@ -23,9 +23,9 @@ const Registration =() =>{
     
      checked = valid(email, name, password, passwordConfirm, number, gender);
     
-      //if (checked) {
+      if (checked) {
         Registr(name, email, gender,  number, password, passwordConfirm,  navigate)
-      //}
+      }
 
     
 }

@@ -58,7 +58,7 @@ const Branch = () => {
 
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment')
-		axios.post("http://localhost:8080/comments/", {
+		axios.post("http://localhost:8080/comments", {
 			'text': textMessage.value,
 			'commentOwnerID': user.id,
 			'postID': branchid
@@ -95,12 +95,13 @@ const Branch = () => {
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
+							{user.id = Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment" onClick={reName}>{text}</div></>)}
 							<div className='p' id="userComment" onClick={reName}>{text}</div>
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid)}></img>
-							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid)}></img>
-							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, navigate)}></img>) : (<></>)}
+							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user)}></img>
+							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user)}></img>
+							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user, navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
@@ -119,7 +120,7 @@ const Branch = () => {
 				<div className='message sendColumn'>
 					<textarea id="inputComment" placeholder='Введите текст'
 						name='text' className='msinput' />
-					<button className='sendButton' onClick={() => newNotesButton} >Отправить</button>
+					<button className='sendButton' onClick={newNotesButton} >Отправить</button>
 				</div>
 			</div>
 		</div>

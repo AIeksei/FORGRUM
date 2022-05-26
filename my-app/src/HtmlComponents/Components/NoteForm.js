@@ -23,8 +23,8 @@ function NoteForm({ note }) {
             : (<div> {note.text} </div>)} 
                 
                 <div className='ocenka'>
-                    <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID)}></img>
-                    <img className='sizedislike' src='../DisLike.png' onClick={() => dislike(note.commentOwnerID)}></img>
+                    <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID, user.id)}></img>
+                    <img className='sizedislike' src='../DisLike.png' onClick={() => dislike(note.commentOwnerID,  user.id)}></img>
             
                     {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.id)}></img></>) : (<></>) }
                 
