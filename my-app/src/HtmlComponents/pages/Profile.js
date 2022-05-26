@@ -24,6 +24,19 @@ const Profile = ({ profile }) => {
     const [enabled, setEnabled] = useState(null);
     const [nameColor, setNameColor] = useState(null);
     const [moderator, setModerator] = useState(null);
+    const avatarSelected = (e) => {
+        console.log(e.target.files[0]);
+
+        console.log(e.target.files[0]);
+        //e.target.files[0];
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+            document.getElementById('img1').src = fileReader.result;
+        }
+        console.log(e.target.files[0]);
+        fileReader.readAsDataURL(e.target.files[0]);
+
+    }
     useEffect(() => {
         axios.get(`http://localhost:8080/users/${id}`,
             {
@@ -52,22 +65,7 @@ const Profile = ({ profile }) => {
                 setPosts(allBranches);
             })
     }, [setNumb, setEmail, setName, setPosts, setRate]);
-    const reName = () => { rename(document.getElementById("UserName")) },
-        out = () => signout(() => navigate('/login', { replace: true }));
-
-    const avatarSelected = (e) => {
-        console.log(e.target.files[0]);
-
-        console.log(e.target.files[0]);
-        //e.target.files[0];
-        let fileReader = new FileReader();
-        fileReader.onload = () => {
-            document.getElementById('img1').src = fileReader.result;
-        }
-        console.log(e.target.files[0]);
-        fileReader.readAsDataURL(e.target.files[0]);
-
-    }
+    
         axios.get(`http://localhost:8080/users/${id}`, 
          {
             headers: {
@@ -104,7 +102,7 @@ const Profile = ({ profile }) => {
     }).then((resp) => {
         const allBranches =  resp.data;
         setPosts(allBranches);
-    })}, [setNumb, setEmail, setName, setPosts, setRate]);
+    });
 
 const reName = () => {
     Rename(document.getElementById("UserName"))
