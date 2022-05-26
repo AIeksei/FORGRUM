@@ -1,31 +1,55 @@
-
-function EditText(nameDiv) {
+import axios from "axios";
+function EditText(nameDiv, user) {
 
     let newName;
-   // let color = curName.classList.item(0);
+    // let color = curName.classList.item(0);
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = nameDiv.textContent;
     input.id = nameDiv.id;
-    
+
     input.addEventListener('keydown', (e) => {
         if (e.keyCode == 13) {
             if (input.value == "") {
-                newName =  nameDiv.innerText;
+                newName = nameDiv.innerText;
             }
-            else{
-                newName =  input.value;
+            else {
+                newName = input.value;
             }
-            //let div = document.createElement("p");
-            //div.id = input.id;
             nameDiv.textContent = newName;
-            
+
             input.replaceWith(nameDiv);
+
+            let usedName = newName;
+            axios.put("http://localhost:8080/users", {
+               'id': user.id,
+               'name': usedName,
+               'email': user.email,
+               'gender': user.gender,
+               'phoneNumber': user.numb,
+               'country': user.country,
+               'language': user.language,
+               'enabled': user.enabled,
+               'rating': user.rate,
+               'moderator': user.moderator,
+               'nameColor': user.nameColor
+           },
+               {
+                   headers: {
+                       Authorization: 'Basic dXNlcjpwYXNz'
+                   }
+               }).catch(function (res) {
+                   alert(res);
+               });
+
         }
     });
     nameDiv.replaceWith(input);
-    input.focus();   
+    input.focus();
+
+
+
 }
 
-    
-  export {EditText};
+
+export { EditText };

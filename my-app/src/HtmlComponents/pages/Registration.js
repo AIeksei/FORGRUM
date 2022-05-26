@@ -2,7 +2,7 @@ import '../Css/Registration.css';
 import React from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import {valid} from '../Components/ValidReg'
-import axios from "axios";
+import { Registr } from '../Axioses/axiosRegistration';
 const Registration =() =>{
     const navigate = useNavigate();
     function onCreateUserButtonClick(event){
@@ -24,28 +24,7 @@ const Registration =() =>{
      checked = valid(email, name, password, passwordConfirm, number, gender);
     
       if (checked) {
-       axios.post("http://localhost:8080/users/", {
-           'name': name, 
-           'email': email,
-           'gender': gender,
-            'phoneNumber' : number, 
-            'password': password,
-            'confirmPassword': passwordConfirm
-        },
-        {
-            headers: {
-                Authorization: 'Basic dXNlcjpwYXNz' 
-          }
-        }).then (function(res){
-            if(res.data.name != name)
-            document.getElementById("emERR").innerHTML = "Почта уже занята";
-            checked = false;
-        }).catch(function(e){
-           alert(e)
-        })
-    if(checked){
-        navigate('/confirm', {replace: true})
-    }
+        Registr(name, email, gender,  number, password, passwordConfirm,  navigate)
       }
 
     

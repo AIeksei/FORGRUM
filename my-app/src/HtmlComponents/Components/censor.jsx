@@ -1,6 +1,6 @@
-function censor(){
+function censor(text){
     let censorArr = ["ВОЙНА", "УКРАИНА", "БАЙДЕН", "ДАУН"]
-    let text = document.getElementById("test").value.toUpperCase()
+    text = text.toUpperCase()
     for (let i = 0; i < censorArr.length;i++ ){
         let flag = true;
         while (flag){
@@ -10,6 +10,6 @@ function censor(){
          } else {flag = false}
         }
     }
-    console.log(text)
+    return(text)
 }
   export {censor};

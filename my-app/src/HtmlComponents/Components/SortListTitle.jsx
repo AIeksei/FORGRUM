@@ -1,7 +1,9 @@
-function SortListTitle(e,title) {
+const SortListTitle = () => {
+    let ul = document.getElementById("ul"); 
+    let title = document.getElementsByClassName("titleBranch")
     let  i, switching, shouldSwitch;
     switching = true;
-    let li = e.children;
+    let li = ul.children;
     while (switching) {
       switching = false;
       

@@ -1,7 +1,6 @@
 import './HtmlComponents/Css/App.css';
 import React from 'react';
 import {Registration} from "./HtmlComponents/pages/Registration"
-import {BannerReg} from './HtmlComponents/pages/BannerReg';
 import {MainPage} from './HtmlComponents/pages/MainPage';
 import {Profile} from './HtmlComponents/pages/Profile';
 import {Login} from './HtmlComponents/pages/Login';
@@ -22,14 +21,12 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
-       <Route path="/" element={<BannerReg />}>
+        <Route path="/" element={<Banner />}>
        <Route path="login" element={<Login />} />
        <Route path="registration" element={<Registration />} />
        <Route path="confirm" element={<ConfirmMail />} />
        <Route path="*" element={<Notfoundpage />} />
-       <Route path="test" element={<Test />} />
-       </Route>
-        <Route path="/" element={<Banner />}>
+       <Route path="test" element={<Test />} />       
           <Route path="/main" element={
             <RequireAuth>
               <MainPage />

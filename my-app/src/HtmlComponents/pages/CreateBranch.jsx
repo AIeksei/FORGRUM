@@ -1,59 +1,68 @@
 import '../Css/CreateBranch.css';
 import React from 'react';
-import {addTag} from "../Components/AddTag";
+import { addTag } from "../Components/AddTag";
 import { UseAuth } from '../Hook/UseAuth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { censor } from '../Components/censor';
 
-const CreateBranch = ()=> {
+const CreateBranch = () => {
   const [tags, setTags] = useState();
-   const navigate = useNavigate();
-   const {id} = UseAuth();
-   let postIdd;
+  const navigate = useNavigate();
+  const { id, code } = UseAuth();
+  let postIdd;
 
-   const checker = true;
+  const checker = true;
 
-   const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const title = form.title.value;
     const text = form.text.value;
-    axios.post("http://localhost:8080/posts/", {
-    'title': title,
-    'text': text,
-    'postOwnerID': id
- }, 
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-}).then( function(res){
-   postIdd = res.data.id;
-     let TagArr = tags.split(', ');
-     for(let i = 0; i < TagArr.length; i++){
-       const tag = TagArr[i];
-    axios.post("http://localhost:8080/tags/", {
-    'tag': tag,
-    'postID': postIdd,
- }, 
- {
-	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
-   }
-})
-}
-navigate(`/branch/${postIdd}`, {replace: true});
-}).catch(function(e){
-  alert(e)
-  checker = false;
-})
-  
- }
- const addTagS = () => {
-   const newTag = addTag();
-   setTags(newTag) 
- }
+    const censoredText = censor(text);
+    axios.post("http://localhost:8080/posts", {
+      'title': title,
+      'text': censoredText,
+      'postOwnerID': id
+    },
+      {
+        headers: {
+          Authorization: 'Basic ' + code
+        }
+      }).then(function (res) {
+        postIdd = res.data.id;
+        let TagArr = tags.split(', ');
+        sendRequestTags(TagArr, postIdd);
+        navigate(`/branch/${postIdd}`, { replace: true });
+      }).catch(function (e) {
+        alert(e)
+        checker = false;
+      })
+
+  }
+  const sendRequestTags = async (tagArr, postIdd) => {
+    for (let i = 0; i < tagArr.length; i++) {
+      const tag = tagArr[i];
+      console.log(postIdd);
+      console.log(tag);
+      await axios.post("http://localhost:8080/tags", {
+        'tag': tagArr[i],
+        'postID': postIdd
+      },
+        {
+          headers: {
+            Authorization: 'Basic ' + code
+          }
+        });
+    }
+  }
+
+  const addTagS = () => {
+    const newTag = addTag();
+    setTags(newTag)
+  }
+
   return (
     <div className='bodyCreateBranch'>
       <form className='borderCreateBranch' onSubmit={handleSubmit}>
@@ -61,7 +70,7 @@ navigate(`/branch/${postIdd}`, {replace: true});
         <input placeholder='Введите заголовок'
           type='text' className='CreateBranchinput' name='title'></input>
         <textarea placeholder='Текст ветки'
-          type='text' className='CreateBranchArea' name='text'></textarea>
+          type='text' className='CreateBranchArea' name='text' id='text'></textarea>
         <div className='tagAdding'>
           <input placeholder='Теги' id="inputTag"
             type='text' className='CreateBranchTag'></input>
@@ -73,6 +82,6 @@ navigate(`/branch/${postIdd}`, {replace: true});
       </form>
     </div>
   );
-} 
+}
 
-export {CreateBranch}; 
+export { CreateBranch }; 

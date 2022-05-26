@@ -1,10 +1,10 @@
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-function deleteComm(id){
-    console.log(id)
+
+function deleteComm(id, encoded){
+    alert(encoded)
     axios.delete(`http://localhost:8080/comments/${id}`,{
          headers: {
-             Authorization: 'Basic dXNlcjpwYXNz' 
+            Authorization: 'Basic ' + encoded
        }
     }).then (function(res){
         alert(res.data);
@@ -13,42 +13,45 @@ function deleteComm(id){
     });
     
 }
-function like(){
-    axios.get("http://localhost:8080/users/rating/up/2/5",
+
+function like(id, encoded){
+    axios.get(`http://localhost:8080/users/rating/up/${id}/1`,
  {
 	 headers: {
-		 Authorization: 'Basic dXNlcjpwYXNz' 
+		 Authorization: 'Basic ' + encoded
    }}).then (function(res){
-    alert(res.data.gender);
+    alert("Пользователь с ID" + id + "Получил лайк")
     }).catch(function(e){
-       alert(e)
+       alert("Проблема соединения с сервером")
     });
     
 }
-function dislike(){
-    axios.get("http://localhost:8080/users/rating/down/2/5",
+
+function dislike(id, encoded){
+    axios.get(`http://localhost:8080/users/rating/down/${id}/1`,
     {
         headers: {
-            Authorization: 'Basic dXNlcjpwYXNz' 
+            Authorization: 'Basic ' + encoded 
       }}).then (function(res){
-           alert(res.data.gender);
+           alert("Пользователь с ID" + id + "Получил дизлайк")
        }).catch(function(e){
-          alert(e)
+        alert("Проблема соединения с сервером")
        });  
 }
-function deleteBranch(branchId){
 
-    axios.delete(`http://localhost:8080/posts/${branchId}`,{
+function deleteBranch(branchId, encoded, navigate){
+
+    axios.delete(`http://localhost:8080/posts/${branchId}`,
+    {
          headers: {
-             Authorization: 'Basic dXNlcjpwYXNz' 
-       }
+             Authorization: 'Basic ' + encoded}
     }).then (function(res){
         alert(res.data);
     }
     ).catch(function(e){
        alert(e)
     });
-    
+    navigate('/main', {replace: true});
 }
 
 export {like, dislike, deleteBranch, deleteComm}
