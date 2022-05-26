@@ -1,6 +1,6 @@
 import '../Css/Profile.css';
 import React from 'react';
-import { Rename } from '../Components/Rename'
+import { EditText } from '../Components/EditText'
 import {showColor,Colours}  from '../Components/Recolor'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -24,6 +24,7 @@ const Profile = ({ profile }) => {
     const [enabled, setEnabled] = useState(null);
     const [nameColor, setNameColor] = useState(null);
     const [moderator, setModerator] = useState(null);
+
     const avatarSelected = (e) => {
         console.log(e.target.files[0]);
 
@@ -105,9 +106,9 @@ const Profile = ({ profile }) => {
     });
 
 const reName = () => {
-    Rename(document.getElementById("UserName"))
+    EditText(document.getElementById("UserName"))
     let newName = document.getElementById("UserName").innerText;
-    setName(newName)
+    setName(newName);
     console.log(name);
        axios.put("http://localhost:8080/users", {
         'id': id,
@@ -172,7 +173,7 @@ out = () => signout(() => navigate('/login', { replace: true }));
                     <p id="UserName" className='black'>User{name}</p>
                     {user.id == id ?(
                     <div>
-                        <img className='edit' src='../Edit.png' onClick={reName}></img>
+                        <img className='edit' src='../Edit.png'  onClick={reName}></img>
                         <img className='colors edit' src='../colors.png' onClick={showColorS}></img>
                     </div>) : (<></>) }
                     
