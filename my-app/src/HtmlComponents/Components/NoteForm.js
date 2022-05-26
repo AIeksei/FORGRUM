@@ -6,8 +6,7 @@ import { UseAuth } from '../Hook/UseAuth';
 
 function NoteForm({ note }) {
    const user = UseAuth();
-   let newText =checkForMarks(note.text);
-   console.log(newText);
+    console.log(note.id)
     return (
         <div className='comment'>
             <div className='photo'>
@@ -15,12 +14,12 @@ function NoteForm({ note }) {
                 <div> {note.autor} </div>
             </div>
             <div className='message'>
-                <div dangerouslySetInnerHTML={newText} ></div>
+                <div dangerouslySetInnerHTML={checkForMarks(note.text)} ></div>
                 <div className='ocenka'>
                     <img className='sizelike' src='../Like.png' onClick={like}></img>
                     <img className='sizedislike' src='../DisLike.png' onClick={dislike}></img>
             
-                    {user.mod ?(<><img className='sizelike' src='../Delete.png' onClick={deleteComm}></img></>) : (<></>) }
+                    {user.mod ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.id)}></img></>) : (<></>) }
                 
                 </div>
             </div>       

@@ -60,13 +60,7 @@ const Branch = () => {
 		setUserName(userName)
 	  });
     })},[setTitle,setText]);
-//запрос на отправление нового сообщения
-let newNote = [{
-	'text': 'text',
-	'commentOwnerID': 2,
-	'postID' : 2
-}
-]
+
 function newNotesButton(event) {
 	let textMessage = document.getElementById('inputComment')
 	console.log(textMessage.value)
@@ -79,11 +73,24 @@ function newNotesButton(event) {
 		 headers: {
 			 Authorization: 'Basic dXNlcjpwYXNz' 
 	   }
+	}).then(function(){
+		axios.get(`http://localhost:8080/comments/post/${branchid}`,
+		 {
+			 headers: {
+				 Authorization: 'Basic dXNlcjpwYXNz' 
+		   }
+		}).then((resp) => {
+          const allBranches =  resp.data;
+		  console.log(resp.data)
+          setNotes(allBranches)
+		
+      });
 	});
+
 };
 
 const deleteBranched = ()=>{
-  deleteBranch()
+  deleteBranch(branchid)
   navigate('/main', {replace: true})
 }
 
