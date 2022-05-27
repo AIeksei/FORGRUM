@@ -1,7 +1,6 @@
 import axios from "axios";
 const Registr = (name, email, gender, number, password, passwordConfirm, navigate) => {
     let checked = true;
-    console.log("clikc")
     axios.post("http://localhost:8080/users", {
         'name': name,
         'email': email,

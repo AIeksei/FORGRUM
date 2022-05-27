@@ -54,8 +54,8 @@ const Branch = () => {
 						setUserName(userName)
 					});
 			})
-	}, [setTitle, setText]);
-
+	}, [setTitle, setText, setUserName]);
+ 
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment')
 		axios.post("http://localhost:8080/comments", {
