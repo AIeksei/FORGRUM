@@ -123,7 +123,7 @@ const Branch = () => {
 				<div className='message sendColumn'>
 					<textarea id="inputComment" placeholder='Enter text'
 						name='text' className='msinput' />
-					{user.language == "Russian" ? (<> <button className='sendButton' onClick={newNotesButton} >Отправить</button>
+					{user.language == "ru" ? (<> <button className='sendButton' onClick={newNotesButton} >Отправить</button>
 					</>) : (<> <button className='sendButton' onClick={newNotesButton} >Send</button> </>)}
 				</div>
 			</div>

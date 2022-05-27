@@ -96,7 +96,7 @@ const Profile = () => {
 
     return (
         <div className='bodyProfile'>
-            {user.language == "Russian" ? (<>  <div className='user'>
+            {user.language == "ru" ? (<>  <div className='user'>
                 <img className='userSize' id='img1' defaultValue="../profile.png" src={avatar}></img>
                 {user.id == id ? (
                     <input type='file' className='AvatarLoad'

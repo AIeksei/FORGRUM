@@ -5,6 +5,7 @@ function addTag(){
         inputedTag = input.value;
         if(input.value.trim()!=""){
     input.value = "";
+    tagsPlaceholder.classList.remove("red");
     if (tagsPlaceholder.innerText == "")
     tagsPlaceholder.innerText += inputedTag;
     else 
