@@ -82,7 +82,7 @@ const Branch = () => {
 	};
 
 	const reName = () => {
-		EditText(document.getElementById("userComment"), user.code, title, branchid, Ownerid)
+		EditText(document.getElementById("userComment"), title, branchid, Ownerid)
 	}
 	return (
 		<div>

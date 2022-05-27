@@ -9,7 +9,7 @@ function NoteForm({ note, branchid }) {
    const navigate = useNavigate();
    const user = UseAuth();
    const reName = () => {
-    EditText(document.getElementById(note.commentOwnerID), user.code, branchid, note )
+    EditText(document.getElementById(note.id), branchid, note )
 }
     return (
         <div className='comment'>
@@ -18,7 +18,7 @@ function NoteForm({ note, branchid }) {
                 <div> {note.autor} </div>
             </div>
             <div className='message'>
-            {user.id == note.commentOwnerID ? (<div  id = {note.commentOwnerID} onClick={reName}> {note.text} </div>) 
+            {user.id == note.commentOwnerID ? (<div  id = {note.id} onClick={reName}> {note.text} </div>) 
             : (<div> {note.text} </div>)} 
                 <div className='ocenka'>
                     <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID, user.code)}></img>
