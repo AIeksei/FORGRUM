@@ -163,7 +163,7 @@ const Profile = () => {
 
                     <div className='points'>Points {rate}</div>
                     {user.moderator ? (
-                        <button className='marginRight0' >Block</button>) : (<></>)}
+                        <button className='marginRight0' onClick={() => banUser}>Block</button>) : (<></>)}
                 </div>
                     <div className='userInfo'>
                         <div className='profborder'>
