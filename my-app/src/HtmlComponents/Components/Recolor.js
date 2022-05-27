@@ -1,6 +1,7 @@
 import "../Css/Recolor.css";
 
-function showColor() {
+function ShowColor() {
+
     let items = document.getElementsByClassName("colour");
     Array.from(items).forEach(item => {
         if (item.classList.contains("invisible")) {
@@ -17,7 +18,7 @@ function changeColor(newColor){
     item.classList.replace( item.classList.item(0),newColor);
 }
 
-function Colours() {
+function Colours({rate}) {
     return (
         <div className="colours">
             <input type="color" className="colour invisible" name=""
@@ -37,18 +38,19 @@ function Colours() {
                 value="#000000" onClick={(e) => { e.preventDefault() 
                     changeColor('BLACK');
                     }}></input>
-                   <input type="color" className="colour invisible" name=""
+                    {rate > 100 ? (<input type="color" className="colour invisible" name=""
                 value="#FFD700" onClick={(e) => { e.preventDefault() 
                     changeColor('GOLD');
-                    }}></input>
-                     <input type="color" className="colour invisible" name=""
+                    }}></input>  ) : (<></>) }
+                    {rate > 250 ? ( <input type="color" className="colour invisible" name=""
                 value="#FF1493" onClick={(e) => { e.preventDefault() 
                     changeColor('PINK');
-                    }}></input>
+                    }}></input>  ) : (<></>) }
+                   
         </div>
 
     );
 }
 
 
-export { showColor, Colours };
+export { ShowColor, Colours };

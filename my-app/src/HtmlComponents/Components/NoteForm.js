@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Css/NoteList.css";
-import {like, dislike, deleteComm} from './buttons'
+import {rateDown, rateUp, deleteComm} from './buttons'
 import { EditText } from '../Axioses/axiosUpdareNote';
 import { UseAuth } from '../Hook/UseAuth';
 import { useNavigate } from 'react-router-dom';
@@ -21,8 +21,8 @@ function NoteForm({ note, branchid }) {
             {user.id == note.commentOwnerID ? (<div  id = {note.id} onClick={reName}> {note.text} </div>) 
             : (<div> {note.text} </div>)} 
                 <div className='ocenka'>
-                    <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID, user.code)}></img>
-                    <img className='sizedislike' src='../DisLike.png' onClick={() => dislike(note.commentOwnerID,  user.code)}></img>           
+                    <img className='sizelike' src='../Like.png' onClick={() =>rateUp(note.commentOwnerID, 1 ,user.code)}></img>
+                    <img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(note.commentOwnerID, 1, user.code)}></img>           
                     {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.id, user.code)}></img></>) : (<></>) }                
                 </div>
             </div>       

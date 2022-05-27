@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { NoteForm } from '../Components/NoteForm';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { like, dislike, deleteBranch } from '../Components/buttons'
+import { rateDown, rateUp, deleteBranch } from '../Components/buttons'
 import { UseAuth } from '../Hook/UseAuth';
 import { EditText } from '../Axioses/axioisUpdateBranch';
 
@@ -77,7 +77,9 @@ const Branch = () => {
 						const allBranches = resp.data;
 						setNotes(allBranches)
 					});
-			});
+			}).then(function () {
+					rateUp(user.id, 5, user.code)
+					});
 
 	};
 
@@ -95,12 +97,14 @@ const Branch = () => {
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
+							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) 
+							: (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code)}></img>
-							<img className='sizedislike' src='../DisLike.png' onClick={() => dislike(Ownerid, user.code)}></img>
-							{user.moderator ? (<img className='sizedislike' src='../Delete.png' onClick={() => deleteBranch(branchid, user.code, navigate)}></img>) : (<></>)}
+							<img className='sizelike' src='../Like.png' onClick={() => rateUp(Ownerid, 1, user.code)}></img>
+							<img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(Ownerid, 1, user.code)}></img>
+							{user.moderator ? (<img className='sizedislike' src='../Delete.png' 
+							onClick={() => deleteBranch(branchid, user.code, navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
@@ -110,17 +114,7 @@ const Branch = () => {
 					<NoteForm note={notes} branchid={branchid} />
 				);
 			})}
-			{user.language == "Russian" ? (<><div className="comment">
-				<div className="photo">
-					<img className='size' src='../profile.png'></img>
-					<div> {user.name}</div>
-				</div>
-				<div className='message sendColumn'>
-					<textarea id="inputComment" placeholder='Введите текст'
-						name='text' className='msinput' />
-					<button className='sendButton' onClick={newNotesButton} >Отправить</button>
-				</div>
-			</div></>) : (<><div className="comment">
+			<div className="comment">
 				<div className="photo">
 					<img className='size' src='../profile.png'></img>
 					<div> {user.name}</div>
@@ -128,12 +122,10 @@ const Branch = () => {
 				<div className='message sendColumn'>
 					<textarea id="inputComment" placeholder='Enter text'
 						name='text' className='msinput' />
-					<button className='sendButton' onClick={newNotesButton} >Send</button>
+					{user.language == "Russian" ? (<> <button className='sendButton' onClick={newNotesButton} >Отправить</button>
+					</>) : (<> <button className='sendButton' onClick={newNotesButton} >Send</button> </>)}
 				</div>
-			</div></>)
-
-			}
-			
+			</div>
 		</div>
 
 	);
