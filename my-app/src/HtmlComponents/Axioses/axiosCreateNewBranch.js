@@ -19,7 +19,6 @@ const AxiosCreateNewBranch = (tags, title, text, id, code, navigate)=>{
           alert(e)
           checker = false;
         })
-  
     }
 
     const sendRequestTags = async (tagArr, postIdd, code) => {

@@ -17,7 +17,7 @@ const Banner = () => {
           {enabled ? (
             <>
             {
-              user.language == "Russian" ? (<><div className="profile">
+              user.language == "ru" ? (<><div className="profile">
                 <CustomLink to={`/profile/${id}`} >профиль</CustomLink>
               </div></>) : (<><div className="profile">
                 <CustomLink to={`/profile/${id}`} >profile</CustomLink>

@@ -24,14 +24,14 @@ function BranchForm({ branches }) {
             <div className="AutorBranch"> {branches.autor} </div>
             <div className='NameRoot'>
                 <div className='titleBranch' >{branches.title} </div>
-                {user.language == "Russian" ? (<><div className='tags'> Теги:
+                {user.language == "ru" ? (<><div className='tags'> Теги:
                     {<Tags id={branches.id} />}
                 </div></>) : (<><div className='tags'> Tags:
                     {<Tags id={branches.id} />}
                 </div></>)
                 }
             </div>
-            {user.language == "Russian" ? (<> <div className='countMessage'>Количество сообщений : 
+            {user.language == "ru" ? (<> <div className='countMessage'>Количество сообщений : 
             <div className='count' value={count}> {count}</div></div></>) :
              (<> <div className='countMessage'>Count message : 
              <div className='count' value={count}> {count} </div> </div></>)

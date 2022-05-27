@@ -43,7 +43,7 @@ const MainPage = () => {
     return (
         <>
        { 
-        user.language == "Russian" ?(<><div className='bodyMain'> 
+        user.language == "ru" ?(<><div className='bodyMain'> 
         
         <div className='space_beetwen search'>
             <div className='search'>
