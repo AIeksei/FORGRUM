@@ -188,7 +188,7 @@ const Profile = () => {
                                 <button className='marginRight0' onClick={out}>Exit</button></>)
                             : (<></>)}
                     </div>
-                    <Colours></Colours>
+                    <Colours rate = {user.rate}></Colours>
                     <div className='recEndExit'>
                         <div className='record'>
                             <p>Using branch</p>

@@ -35,9 +35,11 @@ export const AuthProvider = ({children}) => {
         setEnabled(false)
         cb();
     }
-
+    const updateRate = (newRate) => {
+        setRate(newRate)
+    }
     const value = {id, moderator, name, nameColor, enabled,
-        language, country, gender, rate, email, numb, code, signin, signout};
+        language, country, gender, rate, email, numb, code, signin, signout, updateRate};
 
     return <AuthContext.Provider value={value}>
         {children}
