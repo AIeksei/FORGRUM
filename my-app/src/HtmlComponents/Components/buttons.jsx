@@ -53,7 +53,6 @@ function deleteBranch(ownerId, branchId, encoded, navigate) {
         }
         ).then(function () {
             rateDown(ownerId, 10, encoded)
-            navigate('/main', { replace: true });
         }).then(function () {
             navigate('/main', { replace: true });
         }).catch(function (e) {
