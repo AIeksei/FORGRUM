@@ -78,7 +78,7 @@ const Branch = () => {
 					})});
 	
 	}, [setTitle, setText, setUserName, setAvatar]);
-
+	useEffect(() => {
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment');
 		axios.post("http://localhost:8080/comments", {
@@ -152,5 +152,6 @@ const Branch = () => {
 		</div>
 
 	);
+}, [setNotes]);
 }
 export { Branch };
