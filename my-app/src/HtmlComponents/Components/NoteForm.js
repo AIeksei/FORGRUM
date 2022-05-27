@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 function NoteForm({ note, branchid }) {
    const navigate = useNavigate();
    const user = UseAuth();
-    console.log(branchid)
    const reName = () => {
     EditText(document.getElementById(note.commentOwnerID), user.code, branchid, note )
 }

@@ -45,8 +45,6 @@ const CreateBranch = () => {
   const sendRequestTags = async (tagArr, postIdd) => {
     for (let i = 0; i < tagArr.length; i++) {
       const tag = tagArr[i];
-      console.log(postIdd);
-      console.log(tag);
       await axios.post("http://localhost:8080/tags", {
         'tag': tagArr[i],
         'postID': postIdd

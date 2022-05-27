@@ -90,11 +90,12 @@ const Branch = () => {
 				<div className="comment">
 					<div className="photo">
 						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${Ownerid}`, { replace: false })} ></img>
+						{userName}
 					</div>
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == Ownerid? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
+							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) : (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
 							<img className='sizelike' src='../Like.png' onClick={() => like(Ownerid, user.code)}></img>
@@ -106,7 +107,7 @@ const Branch = () => {
 			</div>
 			{notes.map(notes => {
 				return (
-					<NoteForm note={notes} branchid = {branchid} />
+					<NoteForm note={notes} branchid={branchid} />
 				);
 			})}
 			{user.language == "Russian" ? (<><div className="comment">

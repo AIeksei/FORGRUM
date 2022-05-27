@@ -41,6 +41,7 @@ const Profile = () => {
                 }
             })
     }
+
     useEffect(() => {
         axios.get(`http://localhost:8080/users/${id}/avatar`,
             {
@@ -51,6 +52,7 @@ const Profile = () => {
                 setAvatar(URL.createObjectURL(resp.data));
             });
     }, [setAvatar]);
+
     useEffect(() => {
         axios.get(`http://localhost:8080/users/${id}`,
             {
@@ -68,8 +70,7 @@ const Profile = () => {
                 setNumb(numb)
                 setRate(rate)
                 setNameColor(nameColor)
-            },
-            )
+            });
         axios.get(`http://localhost:8080/posts/user/${id}`,
             {
                 headers: {
@@ -80,6 +81,7 @@ const Profile = () => {
                 setPosts(allBranches);
             })
     }, [setNumb, setEmail, setName, setPosts, setRate]);
+
     const reName = () => {
         EditText(document.getElementById("UserName"), user)
 
@@ -89,8 +91,8 @@ const Profile = () => {
         showColor();
         let newColor = document.getElementById("UserName").classList[0].toUpperCase();
         AxiosColor(newColor, user)
-    },
-        out = () => signout(() => navigate('/login', { replace: true }));
+    }
+    const out = () => signout(() => navigate('/login', { replace: true }));
 
 
     return (

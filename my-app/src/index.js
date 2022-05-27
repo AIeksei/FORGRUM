@@ -8,21 +8,11 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
-/*
-console.log(
-  document.getElementById("add"))
-document.querySelector("add").onclick = (event)=>{
-  root.render(
-    <React.StrictMode>
-      <Add />
-    </React.StrictMode>
-  );
-}*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
