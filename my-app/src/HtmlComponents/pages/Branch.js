@@ -7,6 +7,7 @@ import axios from 'axios';
 import { like, dislike, deleteBranch } from '../Components/buttons'
 import { UseAuth } from '../Hook/UseAuth';
 import { EditText } from '../Axioses/axioisUpdateBranch';
+import { censor } from '../Components/censor';
 
 const Branch = () => {
 	const navigate = useNavigate();
@@ -57,9 +58,9 @@ const Branch = () => {
 	}, [setTitle, setText]);
 
 	const newNotesButton = (event) => {
-		let textMessage = document.getElementById('inputComment')
+		let textMessage = document.getElementById('inputComment');
 		axios.post("http://localhost:8080/comments", {
-			'text': textMessage.value,
+			'text': censor(textMessage.value),
 			'commentOwnerID': user.id,
 			'postID': branchid
 		},
@@ -78,7 +79,6 @@ const Branch = () => {
 						setNotes(allBranches)
 					});
 			});
-
 	};
 
 	const reName = () => {
