@@ -86,6 +86,7 @@ const Profile = () => {
     }
 
     function banUser() {
+        console.log("bann")
         axios.get(`http://localhost:8080/users/disable/${id}`,
             {
                 headers: {
@@ -116,7 +117,7 @@ const Profile = () => {
 
                 <div className='points'>Очки {rate}</div>
                 {user.moderator ? (
-                    <button className='marginRight0' onClick={() => banUser} >Заблокировать</button>) : (<></>)}
+                    <button className='marginRight0' onClick={() => {banUser(); console.log("bann")}} >Заблокировать</button>) : (<></>)}
             </div>
                 <div className='userInfo'>
                     <div className='profborder'>
@@ -163,7 +164,7 @@ const Profile = () => {
 
                     <div className='points'>Points {rate}</div>
                     {user.moderator ? (
-                        <button className='marginRight0' onClick={() => banUser}>Block</button>) : (<></>)}
+                        <button className='marginRight0' onClick={() => {banUser()}}>Block</button>) : (<></>)}
                 </div>
                     <div className='userInfo'>
                         <div className='profborder'>
