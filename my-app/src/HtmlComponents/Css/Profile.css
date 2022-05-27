@@ -15,7 +15,6 @@
     width: 30%;
 }
 .userSize {
-    margin-right: 18%;
     height: 110px;
     width: 110px;
     border-radius: 100px;
@@ -23,8 +22,9 @@
 }
 
 .points {
-    width: fit-content;
-    margin-right: 17%;
+    margin: 2px 0;
+    width: 100%;
+    text-align: center;
 }
 
 .edit {
@@ -61,8 +61,8 @@
     height: 100%;
     border-radius: 30px;
 }
-.marginRight0{
-    margin-left: 3%;
+.margin_left{
+    margin-left: 2%;
 }
 p{
     font-size: x-large;
@@ -70,4 +70,7 @@ p{
 .AvatarLoad{
     margin-right: -20px;
     margin-top: 4px;
+}
+.ban{
+    margin: 2% 0;
 }
