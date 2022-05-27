@@ -1,7 +1,7 @@
 import '../Css/Profile.css';
 import React from 'react';
 import { EditText } from '../Axioses/axiosRename'
-import { showColor, Colours } from '../Components/Recolor'
+import { ShowColor, Colours } from '../Components/Recolor'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { UseAuth } from '../Hook/UseAuth';
@@ -12,7 +12,6 @@ import { AxiosColor } from '../Axioses/axiosColor';
 const Profile = () => {
     const { id } = useParams();
     const user = UseAuth();
-    console.log(user.id)
     const { signout } = UseAuth();
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
@@ -88,7 +87,7 @@ const Profile = () => {
     }
 
     const showColorS = () => {
-        showColor();
+        ShowColor();
         let newColor = document.getElementById("UserName").classList[0].toUpperCase();
         AxiosColor(newColor, user)
     }
@@ -132,7 +131,7 @@ const Profile = () => {
                         : (<></>)}
 
                 </div>
-                <Colours></Colours>
+                <Colours rate = {user.rate} ></Colours>
                 <div className='recEndExit'>
                     <div className='record'>
                         <p>Ветки в которых принимается участие</p>

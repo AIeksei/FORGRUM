@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Css/NoteList.css";
-import {like, dislike, deleteComm} from './buttons'
+import {rateDown, rateUp, deleteComm} from './buttons'
 import { EditText } from '../Axioses/axiosUpdareNote';
 import { UseAuth } from '../Hook/UseAuth';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ function NoteForm({ note, branchid }) {
    const navigate = useNavigate();
    const user = UseAuth();
    const reName = () => {
-    EditText(document.getElementById(note.commentOwnerID), user.code, branchid, note )
+    EditText(document.getElementById(note.id), branchid, note )
 }
     return (
         <div className='comment'>
@@ -18,12 +18,12 @@ function NoteForm({ note, branchid }) {
                 <div> {note.autor} </div>
             </div>
             <div className='message'>
-            {user.id == note.commentOwnerID ? (<div  id = {note.commentOwnerID} onClick={reName}> {note.text} </div>) 
+            {user.id == note.commentOwnerID ? (<div  id = {note.id} onClick={reName}> {note.text} </div>) 
             : (<div> {note.text} </div>)} 
                 <div className='ocenka'>
-                    <img className='sizelike' src='../Like.png' onClick={() =>like(note.commentOwnerID, user.code)}></img>
-                    <img className='sizedislike' src='../DisLike.png' onClick={() => dislike(note.commentOwnerID,  user.code)}></img>           
-                    {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.id, user.code)}></img></>) : (<></>) }                
+                    <img className='sizelike' src='../Like.png' onClick={() =>rateUp(note.commentOwnerID, 1 ,user.code)}></img>
+                    <img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(note.commentOwnerID, 1, user.code)}></img>           
+                    {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.commentOwnerID, note.id, user.code)}></img></>) : (<></>) }                
                 </div>
             </div>       
         </div>

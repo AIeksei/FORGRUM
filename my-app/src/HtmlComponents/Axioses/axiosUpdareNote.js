@@ -1,6 +1,7 @@
 import axios from "axios";
+import { UseAuth } from "../Hook/UseAuth";
 
-function EditText(nameDiv, code, branchId, note ) {
+function EditText(nameDiv, branchId, note ) {
 
     let newText;
     let input = document.createElement("input");
@@ -19,7 +20,7 @@ function EditText(nameDiv, code, branchId, note ) {
             nameDiv.textContent = newText;
             input.replaceWith(nameDiv);
             let usedText = newText;
-            AxiosUpdateNote(code, branchId, usedText, note)
+            AxiosUpdateNote(branchId, usedText, note)
         
         }});
            
@@ -30,7 +31,8 @@ function EditText(nameDiv, code, branchId, note ) {
 export { EditText };
 
 
-const AxiosUpdateNote = (code, branchId, newText, note) => {
+const AxiosUpdateNote = (branchId, newText, note) => {
+    const {code} = UseAuth();
     axios.put(`http://localhost:8080/comments`, {
         'commentOwnerID': note.commentOwnerID,
         'text': newText,

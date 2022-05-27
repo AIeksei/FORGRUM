@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { censor } from '../Components/censor';
+import { rateUp } from '../Components/buttons';
 
 const CreateBranch = () => {
   const [tags, setTags] = useState();
@@ -35,6 +36,9 @@ const CreateBranch = () => {
         postIdd = res.data.id;
         let TagArr = tags.split(', ');
         sendRequestTags(TagArr, postIdd);
+ 
+      }).then(function (res) {
+        rateUp(user.id, 5, user.code)
         navigate(`/branch/${postIdd}`, { replace: true });
       }).catch(function (e) {
         alert(e)

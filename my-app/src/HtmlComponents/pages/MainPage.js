@@ -40,7 +40,6 @@ const MainPage = () => {
     const FindingBranchesTitle = () => {
         FindingBranches(document.getElementById("titleFind"), document.getElementsByClassName("titleBranch"));
     }
-    console.log(user.language);
     return (
         <>
        { 
