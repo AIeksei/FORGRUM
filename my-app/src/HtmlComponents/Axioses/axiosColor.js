@@ -15,7 +15,7 @@ axios.put("http://localhost:8080/users", {
         },
             {
                 headers: {
-                    Authorization: 'Basic dXNlcjpwYXNz'
+                    Authorization: 'Basic ' + user.code
                 }
             }).catch(function(res){
                 alert(res);
