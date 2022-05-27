@@ -1,6 +1,5 @@
 import axios from "axios";
 const AxiosCreateNewBranch = (tags, title, text, id, code, navigate)=>{
-    console.log(tags + " " + title + " " + text + " " + id + " " + code); 
     const checker = true;
     axios.post("http://localhost:8080/posts", {
         'title': title,

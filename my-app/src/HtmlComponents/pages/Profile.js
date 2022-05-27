@@ -83,9 +83,20 @@ const Profile = () => {
 
     const reName = () => {
         EditText(document.getElementById("UserName"), user)
-
     }
 
+    function banUser() {
+        axios.get(`http://localhost:8080/users/disable/${id}`,
+            {
+                headers: {
+                    Authorization: 'Basic ' + user.code
+                }
+            }).then((res) => {
+                alert("Вы забанили пользователя")
+                navigate('/main', { replace: true });
+
+            });
+    }
     const showColorS = () => {
         ShowColor();
         let newColor = document.getElementById("UserName").classList[0].toUpperCase();
@@ -105,7 +116,7 @@ const Profile = () => {
 
                 <div className='points'>Очки {rate}</div>
                 {user.moderator ? (
-                    <button className='marginRight0' >Заблокировать</button>) : (<></>)}
+                    <button className='marginRight0' onClick={() => banUser} >Заблокировать</button>) : (<></>)}
             </div>
                 <div className='userInfo'>
                     <div className='profborder'>
@@ -131,7 +142,7 @@ const Profile = () => {
                         : (<></>)}
 
                 </div>
-                <Colours rate = {user.rate} ></Colours>
+                <Colours rate={user.rate} ></Colours>
                 <div className='recEndExit'>
                     <div className='record'>
                         <p>Ветки в которых принимается участие</p>
@@ -193,6 +204,5 @@ const Profile = () => {
             }
         </div>
     )
-
 }
 export { Profile }
