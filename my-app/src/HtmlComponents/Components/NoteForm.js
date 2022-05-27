@@ -34,7 +34,7 @@ function NoteForm({ note, branchid }) {
 }, [setUserName, setAvatar]);
 
    const reName = () => {
-    EditText(document.getElementById(note.id), branchid, note )
+    EditText(document.getElementById(note.id), branchid, note, user.code )
 }
     return (
         <div className='comment'>

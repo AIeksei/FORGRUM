@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UseAuth } from "../Hook/UseAuth";
 
-function EditText(nameDiv, title, branchid, Ownerid) {
+function EditText(nameDiv, title, branchid, Ownerid, code) {
     let newText;
     let input = document.createElement("input");
     input.type = "text";
@@ -19,7 +19,7 @@ function EditText(nameDiv, title, branchid, Ownerid) {
             nameDiv.textContent = newText;
             input.replaceWith(nameDiv);
             let usedText = newText;
-            AxiosUpdateBranch(title, branchid, usedText, Ownerid)
+            AxiosUpdateBranch(title, branchid, usedText, Ownerid, code)
         }});
            
     nameDiv.replaceWith(input);
@@ -29,8 +29,7 @@ function EditText(nameDiv, title, branchid, Ownerid) {
 export { EditText };
 
 
-const AxiosUpdateBranch = (title, branchId, newText, Ownerid) => {
-    const {code} = UseAuth();
+const AxiosUpdateBranch = (title, branchId, newText, Ownerid, code) => {
     axios.put(`http://localhost:8080/posts`, {
         'id': branchId,
         'text': newText,
