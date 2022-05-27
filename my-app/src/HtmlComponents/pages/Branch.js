@@ -52,7 +52,7 @@ const Branch = () => {
 			}).then((resp) => {
 				const title = resp.data.title;
 				const text = resp.data.text;
-				const id = resp.data.postownerId;
+				const id = resp.data.postOwnerID;
 				setTitle(title)
 				setText(text)
 				setUserId(id)
