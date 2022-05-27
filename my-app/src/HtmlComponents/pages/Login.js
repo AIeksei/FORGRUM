@@ -25,7 +25,7 @@ const Login = () => {
                     type='text' className='logininput' name="username"></input>
                 <div className="Err" id="emERR"></div>
                 <input placeholder='Пароль'
-                    type='text' className='logininput' name="pass"></input>
+                    type='password' className='logininput' name="pass"></input>
                 <div className="Err" id="authERR"></div>
                 <button type="submit" className='loginbutton'>Войти</button>
                 <div className='butreg'>

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { rateDown, rateUp, deleteBranch } from '../Components/buttons'
 import { UseAuth } from '../Hook/UseAuth';
 import { EditText } from '../Axioses/axioisUpdateBranch';
+import { censor } from '../Components/censor';
 
 const Branch = () => {
 	const navigate = useNavigate();
@@ -57,10 +58,10 @@ const Branch = () => {
 	}, [setTitle, setText, setUserName]);
  
 	const newNotesButton = (event) => {
-		let textMessage = document.getElementById('inputComment')
+		let textMessage = document.getElementById('inputComment');
 		axios.post("http://localhost:8080/comments", {
-			'text': textMessage.value,
-			'commentownerId': user.id,
+			'text': censor(textMessage.value),
+			'commentOwnerID': user.id,
 			'postID': branchid
 		},
 			{
