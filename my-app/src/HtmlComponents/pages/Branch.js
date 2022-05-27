@@ -15,7 +15,7 @@ const Branch = () => {
 	const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState([]);
 	const [text, setText] = useState([]);
-	const [Ownerid, setUserId] = useState([]);
+	const [ownerId, setUserId] = useState([]);
 	const [userName, setUserName] = useState([]);
 
 	useEffect(() => {
@@ -39,12 +39,12 @@ const Branch = () => {
 			}).then((resp) => {
 				const title = resp.data.title;
 				const text = resp.data.text;
-				const id = resp.data.postOwnerID;
+				const id = resp.data.postownerId;
 				setTitle(title)
 				setText(text)
 				setUserId(id)
 			}).then(function () {
-				axios.get(`http://localhost:8080/users/${Ownerid}`,
+				axios.get(`http://localhost:8080/users/${ownerId}`,
 					{
 						headers: {
 							Authorization: 'Basic ' + user.code
@@ -60,7 +60,7 @@ const Branch = () => {
 		let textMessage = document.getElementById('inputComment')
 		axios.post("http://localhost:8080/comments", {
 			'text': textMessage.value,
-			'commentOwnerID': user.id,
+			'commentownerId': user.id,
 			'postID': branchid
 		},
 			{
@@ -84,27 +84,27 @@ const Branch = () => {
 	};
 
 	const reName = () => {
-		EditText(document.getElementById("userComment"), title, branchid, Ownerid)
+		EditText(document.getElementById("userComment"), title, branchid, ownerId)
 	}
 	return (
 		<div>
 			<div className="branchBody">
 				<div className="comment">
 					<div className="photo">
-						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${Ownerid}`, { replace: false })} ></img>
+						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${ownerId}`, { replace: false })} ></img>
 						{userName}
 					</div>
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == Ownerid ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) 
+							{user.id == ownerId ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) 
 							: (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
-							<img className='sizelike' src='../Like.png' onClick={() => rateUp(Ownerid, 1, user.code)}></img>
-							<img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(Ownerid, 1, user.code)}></img>
+							<img className='sizelike' src='../Like.png' onClick={() => rateUp(ownerId, 1, user.code)}></img>
+							<img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(ownerId, 1, user.code)}></img>
 							{user.moderator ? (<img className='sizedislike' src='../Delete.png' 
-							onClick={() => deleteBranch(branchid, user.code, navigate)}></img>) : (<></>)}
+							onClick={() => deleteBranch(ownerId, branchid, user.code, navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>

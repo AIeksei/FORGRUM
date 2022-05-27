@@ -23,7 +23,7 @@ function NoteForm({ note, branchid }) {
                 <div className='ocenka'>
                     <img className='sizelike' src='../Like.png' onClick={() =>rateUp(note.commentOwnerID, 1 ,user.code)}></img>
                     <img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(note.commentOwnerID, 1, user.code)}></img>           
-                    {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.id, user.code)}></img></>) : (<></>) }                
+                    {user.moderator ?(<><img className='sizelike' src='../Delete.png' onClick= {() => deleteComm(note.commentOwnerID, note.id, user.code)}></img></>) : (<></>) }                
                 </div>
             </div>       
         </div>

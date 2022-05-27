@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-function deleteComm(id, encoded){
+function deleteComm(ownerId, id, encoded){
     axios.delete(`http://localhost:8080/comments/${id}`,{
          headers: {
             Authorization: 'Basic ' + encoded
        }
     }).then (function(res){
         alert(res.data);
+        rateDown(ownerId, 10, encoded)
     }).catch(function(e){
        alert(e)
     });
@@ -36,7 +37,7 @@ function rateDown(id, rate, encoded){
        });  
 }
 
-function deleteBranch(branchId, encoded, navigate){
+function deleteBranch(ownerId, branchId, encoded, navigate){
 
     axios.delete(`http://localhost:8080/posts/${branchId}`,
     {
@@ -46,6 +47,7 @@ function deleteBranch(branchId, encoded, navigate){
         alert(res.data);
     }
     ).then (function(){
+        rateDown(ownerId, 10, encoded)
         navigate('/main', {replace: true});
     }
     ).catch(function(e){
