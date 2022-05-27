@@ -14,11 +14,12 @@ function deleteComm(ownerId, id, encoded) {
 
 }
 
-function rateUp(id, rate, encoded) {
+function rateUp(id, rate, user) {
+    user.updateRate(user.rate - rate)
     axios.get(`http://localhost:8080/users/rating/up/${id}/${rate}`,
         {
             headers: {
-                Authorization: 'Basic ' + encoded
+                Authorization: 'Basic ' + user.code
             }
         }).then(function (res) {
             alert("Пользователь с ID " + id + " Получил лайк")
@@ -28,11 +29,12 @@ function rateUp(id, rate, encoded) {
 
 }
 
-function rateDown(id, rate, encoded) {
+function rateDown(id, rate, user) {
+    user.updateRate(user.rate - rate)
     axios.get(`http://localhost:8080/users/rating/down/${id}/${rate}`,
         {
             headers: {
-                Authorization: 'Basic ' + encoded
+                Authorization: 'Basic ' + user.code
             }
         }).then(function (res) {
             alert("Пользователь с ID " + id + " Получил дизлайк")

@@ -34,7 +34,7 @@ function NoteForm({ note, branchid }) {
 }, [setUserName, setAvatar]);
 
    const reName = () => {
-    EditText(document.getElementById(note.id), branchid, note )
+    EditText(document.getElementById(note.id), branchid, note, user.code )
 }
     return (
         <div className='comment'>
@@ -46,8 +46,8 @@ function NoteForm({ note, branchid }) {
             {user.id == note.commentOwnerID ? (<div  id = {note.id} onClick={reName}> {note.text} </div>) 
             : (<div> {note.text} </div>)} 
                 <div className='ocenka'>
-                    <img className='sizelike' src='../Like.png' onClick={() =>rateUp(note.commentOwnerID, 1 ,user.code)}></img>
-                    <img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(note.commentOwnerID, 1, user.code)}></img>           
+                    <img className='sizelike' src='../Like.png' onClick={() =>rateUp(note.commentOwnerID, 1 ,user)}></img>
+                    <img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(note.commentOwnerID, 1, user)}></img>           
                     {user.moderator ?(<><img className='sizelike' src='../Delete.png' 
                     onClick= {() => deleteComm(note.commentOwnerID, note.id, user.code)}></img></>) : (<></>) }                
                 </div>

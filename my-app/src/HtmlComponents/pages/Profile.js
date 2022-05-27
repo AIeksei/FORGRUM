@@ -127,9 +127,9 @@ const Profile = () => {
                 {
                     user.moderator ? (
                         user.language == "ru" ? (
-                            <button className='ban' onClick={() => banUser} >Заблокировать</button>
+                            <button className='ban' onClick={banUser} >Заблокировать</button>
                         ) : (
-                            <button className='ban' onClick={() => banUser} >BAN</button>
+                            <button className='ban' onClick={ banUser} >BAN</button>
                         )
                     ) : (<></>)
                 }
