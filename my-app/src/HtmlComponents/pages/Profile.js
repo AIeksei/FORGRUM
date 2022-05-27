@@ -107,101 +107,86 @@ const Profile = () => {
 
     return (
         <div className='bodyProfile'>
-            {user.language == "ru" ? (<>  <div className='user'>
-                <img className='userSize' id='img1' defaultValue="../profile.png" src={avatar}></img>
-                {user.id == id ? (
-                    <input type='file' className='AvatarLoad'
-                        placeholder='Загрузить аватар' onChange={avatarSelected}></input>
-                ) : (<></>)}
 
-                <div className='points'>Очки {rate}</div>
-                {user.moderator ? (
-                    <button className='marginRight0' onClick={() => banUser} >Заблокировать</button>) : (<></>)}
+
+            <div className='user'>
+                <img className='userSize' id='img1' defaultValue="../profile.png" src={avatar}></img>
+                {
+                    user.id == id ? (
+                        <input type='file' className='AvatarLoad' onChange={avatarSelected}></input>
+                    ) : (<></>)
+                }
+                {
+                    user.language == "ru" ? (
+                        <div className='points'>Очки: {rate}</div>
+                    ) : (
+                        <div className='points'>Points: {rate}</div>
+                    )
+                }
+
+                {
+                    user.moderator ? (
+                        user.language == "ru" ? (
+                            <button className='ban' onClick={() => banUser} >Заблокировать</button>
+                        ) : (
+                            <button className='ban' onClick={() => banUser} >BAN</button>
+                        )
+                    ) : (<></>)
+                }
             </div>
-                <div className='userInfo'>
-                    <div className='profborder'>
-                        <p>{email}</p>
-                    </div>
-                    <div className='profborder'>
-                        <p id="UserName" className={nameColor}>{name}</p>
-                        {user.id == id ? (
+            <div className='userInfo'>
+                <div className='profborder'>
+                    <p>{email}</p>
+                </div>
+                <div className='profborder'>
+                    <p id="UserName" className={nameColor}>{name}</p>
+                    {
+                        user.id == id ? (
                             <div>
                                 <img className='edit' src='../Edit.png' onClick={reName}></img>
                                 <img className='colors edit' src='../colors.png' onClick={showColorS}></img>
-                            </div>) : (<></>)}
-
-                    </div>
-                    <div className='profborder'>
-                        <p>{numb}</p>
-                    </div>
-                    {user.id == id ? (
-                        <><Link to="create" className='loginbutton' >
-                            <input type='button' value="Создать свою ветку" className='marginRight0'>
-                            </input> </Link>
-                            <button className='marginRight0' onClick={out}>Выйти из аккаунта</button></>)
-                        : (<></>)}
-
+                            </div>
+                        ) : (<></>)
+                    }
                 </div>
-                <Colours rate={user.rate} ></Colours>
-                <div className='recEndExit'>
-                    <div className='record'>
-                        <p>Ветки в которых принимается участие</p>
-                        {
-                            posts.map(post => (
-                                <CustomLink key={post.id} to={`/branch/${post.id}`}>
-                                    <BranchForm branches={post} />
-                                </CustomLink>
-                            ))
-                        }
-                    </div>
-                </div></>) : (<>  <div className='user'>
-                    <img className='userSize' id='img1' defaultValue="../profile.png" src={avatar}></img>
-                    {user.id == id ? (
-                        <input type='file' className='AvatarLoad'
-                            placeholder='Load avatar' onChange={avatarSelected}></input>
-                    ) : (<></>)}
-
-                    <div className='points'>Points {rate}</div>
-                    {user.moderator ? (
-                        <button className='marginRight0' >Block</button>) : (<></>)}
+                <div className='profborder'>
+                    <p>{numb}</p>
                 </div>
-                    <div className='userInfo'>
-                        <div className='profborder'>
-                            <p>{email}</p>
-                        </div>
-                        <div className='profborder'>
-                            <p id="UserName" className={nameColor}>{name}</p>
-                            {user.id == id ? (
-                                <div>
-                                    <img className='edit' src='../Edit.png' onClick={reName}></img>
-                                    <img className='colors edit' src='../colors.png' onClick={showColorS}></img>
-                                </div>) : (<></>)}
-
-                        </div>
-                        <div className='profborder'>
-                            <p>{numb}</p>
-                        </div>
-                        {user.id == id ? (
-                            <><Link to="create" className='loginbutton' >
-                                <input type='button' value="Create new branch" className='marginRight0'>
-                                </input> </Link>
-                                <button className='marginRight0' onClick={out}>Exit</button></>)
-                            : (<></>)}
-                    </div>
-                    <Colours></Colours>
-                    <div className='recEndExit'>
-                        <div className='record'>
-                            <p>Using branch</p>
-                            {
-                                posts.map(post => (
-                                    <CustomLink key={post.id} to={`/branch/${post.id}`}>
-                                        <BranchForm branches={post} />
-                                    </CustomLink>
-                                ))
-                            }
-                        </div>
-                    </div></>)
-            }
+                {
+                    user.id == id ? (
+                        user.language == "ru" ? (<>
+                            <Link to="create" className='loginbutton' >
+                                <input type='button' value="Создать свою ветку" className='marginRight0'></input>
+                            </Link>
+                            <button className='margin_left' onClick={out}>Выйти из аккаунта</button>
+                        </>) : (<>
+                            <Link to="create" className='loginbutton' >
+                                <input type='button' value="Create new branch" className='marginRight0'></input>
+                            </Link>
+                            <button className='margin_left' onClick={out}>Log out</button>
+                        </>)
+                    ) : (<></>)
+                }
+            </div>
+            <Colours rate={user.rate} ></Colours>
+            <div className='recEndExit'>
+                <div className='record'>
+                    {
+                        user.language == "ru" ? (
+                            <p>Ветки в которых принимается участие</p>
+                        ) : (
+                            <p>User`s branch</p>
+                        )
+                    }
+                    {
+                        posts.map(post => (
+                            <CustomLink key={post.id} to={`/branch/${post.id}`}>
+                                <BranchForm branches={post} />
+                            </CustomLink>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     )
 }
