@@ -20,7 +20,7 @@ const Tags = ({ id }) => {
     return (
         <> {
             tags.map(tag => (
-                tag.tag
+                tag.tag+" "
             ))
         } </>
     )
