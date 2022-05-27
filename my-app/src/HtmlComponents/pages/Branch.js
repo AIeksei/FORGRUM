@@ -56,7 +56,11 @@ const Branch = () => {
 				setTitle(title)
 				setText(text)
 				setUserId(id)
-			}).then(function () {
+				
+			})
+		}, [setTitle, setText, setUserName, ]);
+		console.log(ownerId)
+		useEffect(() => {
 				axios.get(`http://localhost:8080/users/${ownerId}`,
 					{
 						headers: {
@@ -75,8 +79,8 @@ const Branch = () => {
 								setAvatar(URL.createObjectURL(resp.data));
 							});
 					});
-			})
-	}, [setTitle, setText, setUserName, setAvatar]);
+	
+	}, [setAvatar ]);
 
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment');
