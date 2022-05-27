@@ -18,6 +18,8 @@ const Branch = () => {
 	const [text, setText] = useState([]);
 	const [ownerId, setUserId] = useState([]);
 	const [userName, setUserName] = useState([]);
+	const [avatar, setAvatar] = useState([]);
+	const [UserAvatar, setUserAvatar] = useState([]);
 
 	useEffect(() => {
 		axios.get(`http://localhost:8080/comments/post/${branchid}`,
@@ -30,6 +32,16 @@ const Branch = () => {
 				setNotes(allBranches)
 			});
 	}, [setNotes]);
+	useEffect(() => {
+		axios.get(`http://localhost:8080/users/${user.id}/avatar`,
+			{
+				headers: {
+					Authorization: 'Basic ' + user.code
+				}, responseType: 'blob'
+			}).then((resp) => {
+				setUserAvatar(URL.createObjectURL(resp.data));
+			});
+	}, [setUserAvatar]);
 
 	useEffect(() => {
 		axios.get(`http://localhost:8080/posts/${branchid}`,
@@ -53,10 +65,19 @@ const Branch = () => {
 					}).then((resp) => {
 						const userName = resp.data.name;
 						setUserName(userName)
+					}).then(function () {
+						axios.get(`http://localhost:8080/users/${ownerId}/avatar`,
+							{
+								headers: {
+									Authorization: 'Basic ' + user.code
+								}, responseType: 'blob'
+							}).then((resp) => {
+								setAvatar(URL.createObjectURL(resp.data));
+							});
 					});
 			})
-	}, [setTitle, setText, setUserName]);
- 
+	}, [setTitle, setText, setUserName, setAvatar]);
+
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment');
 		axios.post("http://localhost:8080/comments", {
@@ -79,8 +100,8 @@ const Branch = () => {
 						setNotes(allBranches)
 					});
 			}).then(function () {
-					rateUp(user.id, 5, user.code)
-					});
+				rateUp(user.id, 5, user.code)
+			});
 
 	};
 
@@ -92,20 +113,20 @@ const Branch = () => {
 			<div className="branchBody">
 				<div className="comment">
 					<div className="photo">
-						<img className='size' src='../profile.png' onClick={() => navigate(`/profile/${ownerId}`, { replace: false })} ></img>
+						<img className='size' src={avatar} onClick={() => navigate(`/profile/${ownerId}`, { replace: false })} ></img>
 						{userName}
 					</div>
 					<div className='message'>
 						<div className='text'>
 							<div className='h'>{title}</div>
-							{user.id == ownerId ? (<div className='p' id="userComment" onClick={reName}>{text}</div>) 
-							: (<><div className='p' id="userComment">{text}</div></>)}
+							{user.id == ownerId ? (<div className='p' id="userComment" onClick={reName}>{text}</div>)
+								: (<><div className='p' id="userComment">{text}</div></>)}
 						</div>
 						<div className='ocenka'>
 							<img className='sizelike' src='../Like.png' onClick={() => rateUp(ownerId, 1, user.code)}></img>
 							<img className='sizedislike' src='../DisLike.png' onClick={() => rateDown(ownerId, 1, user.code)}></img>
-							{user.moderator ? (<img className='sizedislike' src='../Delete.png' 
-							onClick={() => deleteBranch(ownerId, branchid, user.code, navigate)}></img>) : (<></>)}
+							{user.moderator ? (<img className='sizedislike' src='../Delete.png'
+								onClick={() => deleteBranch(ownerId, branchid, user.code, navigate)}></img>) : (<></>)}
 						</div>
 					</div>
 				</div>
@@ -117,7 +138,7 @@ const Branch = () => {
 			})}
 			<div className="comment">
 				<div className="photo">
-					<img className='size' src='../profile.png'></img>
+					<img className='size' src={UserAvatar}></img>
 					<div> {user.name}</div>
 				</div>
 				<div className='message sendColumn'>

@@ -9,7 +9,7 @@ function deleteComm(ownerId, id, encoded){
         alert(res.data);
         rateDown(ownerId, 10, encoded)
     }).catch(function(e){
-       alert(e)
+       alert("сообщение уже удалено")
     });
     
 }
@@ -32,7 +32,9 @@ function rateDown(id, rate, encoded){
     {
         headers: {
             Authorization: 'Basic ' + encoded 
-      }}).catch(function(e){
+      }}).then (function(res){
+        alert("Пользователь с ID " + id + " Получил дизлайк")
+        }).catch(function(e){
         alert("Проблема соединения с сервером")
        });  
 }
