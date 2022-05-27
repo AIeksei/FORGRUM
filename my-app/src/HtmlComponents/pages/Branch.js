@@ -42,7 +42,7 @@ const Branch = () => {
 				setUserAvatar(URL.createObjectURL(resp.data));
 			});
 	}, [setUserAvatar]);
-
+	let id;
 	useEffect(() => {
 		axios.get(`http://localhost:8080/posts/${branchid}`,
 			{
@@ -52,16 +52,13 @@ const Branch = () => {
 			}).then((resp) => {
 				const title = resp.data.title;
 				const text = resp.data.text;
-				const id = resp.data.postOwnerID;
+				id = resp.data.postOwnerID;
 				setTitle(title)
 				setText(text)
 				setUserId(id)
-				
-			})
-		}, [setTitle, setText, setUserName, ]);
-		console.log(ownerId)
-		useEffect(() => {
-				axios.get(`http://localhost:8080/users/${ownerId}`,
+				console.log(ownerId)
+			}).then(function () {
+				axios.get(`http://localhost:8080/users/${id}`,
 					{
 						headers: {
 							Authorization: 'Basic ' + user.code
@@ -70,7 +67,7 @@ const Branch = () => {
 						const userName = resp.data.name;
 						setUserName(userName)
 					}).then(function () {
-						axios.get(`http://localhost:8080/users/${ownerId}/avatar`,
+						axios.get(`http://localhost:8080/users/${id}/avatar`,
 							{
 								headers: {
 									Authorization: 'Basic ' + user.code
@@ -78,9 +75,9 @@ const Branch = () => {
 							}).then((resp) => {
 								setAvatar(URL.createObjectURL(resp.data));
 							});
-					});
+					})});
 	
-	}, [setAvatar ]);
+	}, [setTitle, setText, setUserName, setAvatar]);
 
 	const newNotesButton = (event) => {
 		let textMessage = document.getElementById('inputComment');
