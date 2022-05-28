@@ -86,6 +86,7 @@ const Profile = () => {
     }
 
     function banUser() {
+        console.log("bann")
         axios.get(`http://localhost:8080/users/disable/${id}`,
             {
                 headers: {
