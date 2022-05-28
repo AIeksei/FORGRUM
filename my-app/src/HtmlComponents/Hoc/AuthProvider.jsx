@@ -38,8 +38,15 @@ export const AuthProvider = ({children}) => {
     const updateRate = (newRate) => {
         setRate(newRate)
     }
+    const updateColor = (newColor) => {
+        setNameColor(newColor)
+    }
+    const updateName = (newName) => {
+        setName(newName)
+    }
     const value = {id, moderator, name, nameColor, enabled,
-        language, country, gender, rate, email, numb, code, signin, signout, updateRate};
+        language, country, gender, rate, email, numb, code, 
+        signin, signout, updateRate, updateColor, updateName};
 
     return <AuthContext.Provider value={value}>
         {children}

@@ -20,6 +20,7 @@ function EditText(nameDiv, user) {
             nameDiv.textContent = newName;
             input.replaceWith(nameDiv);
             let usedName = newName;
+            user.updateName(usedName)
              AxiosRename(user, usedName);
         
         }});

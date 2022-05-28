@@ -100,6 +100,7 @@ const Profile = () => {
     const showColorS = () => {
         ShowColor();
         let newColor = document.getElementById("UserName").classList[0].toUpperCase();
+        user.updateColor(newColor);
         AxiosColor(newColor, user)
     }
     const out = () => signout(() => navigate('/login', { replace: true }));
@@ -107,8 +108,6 @@ const Profile = () => {
 
     return (
         <div className='bodyProfile'>
-
-
             <div className='user'>
                 <img className='userSize' id='img1' defaultValue="../profile.png" src={avatar}></img>
                 {
