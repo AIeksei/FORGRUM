@@ -8,9 +8,10 @@ import { useState } from 'react';
 import { censor } from '../Components/censor';
 
 const CreateBranch = () => {
-  const [tags, setTags] = useState();
+  const [tags, setTags] = useState("NoTags");
   const navigate = useNavigate();
   const { id, code } = UseAuth();
+  const user = UseAuth();
   let postIdd;
 
   const checker = true;
@@ -36,7 +37,7 @@ const CreateBranch = () => {
         sendRequestTags(TagArr, postIdd);
         navigate(`/branch/${postIdd}`, { replace: true });
       }).catch(function (e) {
-        alert("Заполните все поля")
+        alert(e)
         checker = false;
       })
 
